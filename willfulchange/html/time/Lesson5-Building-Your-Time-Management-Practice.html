@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 5: Building Your Time-Management Practice</title>
+  <style>
+    :root {
+      --teal: #174A5B;
+      --seafoam: #77BFA3;
+      --tangerine: #F4A261;
+      --ivory: #FBF7F0;
+      --mist: #DDE8E5;
+      --charcoal: #263238;
+      --white: #FFFFFF;
+      --radius: 14px;
+      --shadow: 0 4px 18px #DDE8E5;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--charcoal);
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+    button { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible {
+      outline: 4px solid #000000;
+      outline-offset: 3px;
+    }
+
+    .app { min-height: 100vh; }
+    .lesson-header {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--white) 0%, var(--mist) 100%);
+      color: var(--teal);
+    }
+    .header-inner, .stage { max-width: 980px; margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 2px;
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.2; }
+    h1 { margin: 0; font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 22px; }
+    .header-sub { max-width: 680px; margin: 3px 0 0; color: var(--charcoal); font-size: 16px; }
+
+    .progress-rail {
+      display: flex;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0 0;
+      align-items: flex-start;
+    }
+    .rail-step { display: flex; min-width: 0; flex: 1; align-items: center; }
+    .rail-step:last-child { flex: 0 0 auto; }
+    .dot {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border: 2px solid var(--seafoam);
+      border-radius: 50%;
+      background: var(--mist);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .rail-step.active .dot, .rail-step.complete .dot {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: var(--white);
+    }
+    .rail-step.complete .dot::after { content: " ✓"; }
+    .rail-label { margin-left: 9px; color: var(--charcoal); font-size: 16px; font-weight: 700; }
+    .connector { height: 2px; min-width: 18px; flex: 1; margin: 0 12px; background: var(--mist); }
+
+    .stage { position: relative; height: 480px; overflow: hidden; padding: 26px 28px 0; }
+    .panel { position: absolute; inset: 26px 28px 0; display: none; animation: rise .3s ease-out; }
+    .panel.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .panel-title { margin: 0; color: var(--teal); font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 24px; }
+    .panel-sub { max-width: 720px; margin: 4px 0 14px; font-size: 17px; }
+
+    .definition-grid, .benefit-grid, .choice-grid { display: grid; gap: 12px; }
+    .foundation-layout, .practice-layout, .workplace-layout { display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start; }
+    .image-slot { height: 180px; min-height: 180px; }
+    .workplace-layout .image-slot { height: 238px; min-height: 238px; }
+    .workplace-layout .image-slot img { height: 238px; min-height: 238px; }
+    .image-slot {
+      display: flex;
+      min-height: 180px;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border: 2px solid var(--tangerine);
+      border-radius: var(--radius);
+      background: var(--ivory);
+      color: var(--teal);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      overflow: hidden;
+    }
+    .image-slot img { width: 100%; height: 100%; min-height: 180px; display: block; object-fit: cover; }
+    .image-slot.filled { padding: 0; }
+    .image-slot small { display: block; margin-top: 8px; font-size: 16px; font-weight: 400; }
+    .definition-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .workplace-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .audit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .energy-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card {
+      padding: 15px 16px;
+      border: 2px solid var(--mist);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0 0 5px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .card p { margin: 0; font-size: 16px; }
+    .definition-card { border-left: 7px solid var(--seafoam); }
+    .definition-card strong { color: var(--teal); }
+
+    .section-label {
+      margin: 18px 0 8px;
+      color: var(--teal);
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .benefit-card { border-left: 7px solid var(--seafoam); }
+    .benefit-card.team { border-left-color: var(--seafoam); }
+    .benefit-card h3 { font-size: 18px; }
+    .benefit-card p { font-size: 16px; }
+
+    .scenario {
+      padding: 16px 18px;
+      border-left: 7px solid var(--seafoam);
+      border-radius: 12px;
+      background: var(--mist);
+    }
+    .scenario h3 { margin: 0 0 4px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .scenario p { margin: 0; font-size: 16px; }
+    .choice {
+      min-height: 62px;
+      border: 2px solid var(--teal);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--teal);
+      text-align: left;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .choice:hover { transform: translateY(-2px); background: var(--mist); }
+    .choice.selected { border-color: var(--seafoam); background: var(--mist); }
+    .choice strong { display: block; padding: 16px; font-size: 18px; }
+    .choice span { display: none; }
+    .energy-grid .choice { min-height: 58px; }
+    .energy-grid .choice strong { padding: 13px 12px; font-size: 17px; }
+    .feedback {
+      min-height: 24px;
+      margin-top: 10px;
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .feedback-card {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border: 2px solid var(--tangerine);
+      border-radius: var(--radius);
+      background: var(--ivory);
+      color: var(--charcoal);
+    }
+    .feedback-card[hidden] { display: none; }
+    .feedback-card h3 { margin: 0 0 3px; color: var(--teal); font-family: Cambria, serif; font-size: 18px; }
+    .feedback-card p { margin: 0; font-size: 16px; }
+
+    .reflection-card {
+      border: 2px solid var(--teal);
+      border-radius: 14px;
+      background: var(--mist);
+      padding: 18px;
+    }
+    .reflection-card h3 { margin: 0 0 5px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .reflection-card p { margin: 0 0 10px; font-size: 16px; }
+    .action-choice { min-height: 58px; }
+    .action-choice strong { padding: 13px 14px; font-size: 17px; }
+    .action-feedback { min-height: 24px; margin: 10px 0 0; color: var(--teal); font-size: 16px; font-weight: 700; }
+
+    .nav-controls { display: flex; max-width: 980px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 28px 4px; border-top: 1px solid var(--mist); }
+    .btn {
+      min-width: 120px;
+      padding: 11px 22px;
+      border: 2px solid var(--teal);
+      border-radius: 9px;
+      background: var(--white);
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .btn:hover:not(:disabled) { background: var(--mist); }
+    .btn.primary { border-color: var(--teal); background: var(--teal); color: var(--white); }
+    .btn.primary:hover:not(:disabled) { border-color: var(--seafoam); background: var(--seafoam); color: var(--teal); }
+    .btn:disabled { cursor: not-allowed; opacity: .55; }
+    .step-counter { color: var(--teal); font-size: 16px; font-weight: 700; letter-spacing: .05em; }
+
+    @media (max-width: 700px) {
+      .definition-grid, .benefit-grid, .choice-grid, .foundation-layout, .practice-layout, .workplace-layout, .energy-grid, .workplace-grid, .audit-grid { grid-template-columns: 1fr; }
+      .stage { height: auto; min-height: 0; overflow: visible; }
+      .panel { position: static; }
+      .progress-rail { align-items: flex-start; }
+      .rail-label { display: none; }
+      .connector { margin: 19px 6px 0; }
+      .nav-controls { flex-wrap: wrap; padding: 18px 18px 4px; }
+      .step-counter { order: -1; width: 100%; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner">
+        <h1>Lesson 5: Building Your Time-Management Practice</h1>
+      </div>
+      <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+        <div class="rail-step active" data-step="0"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Plan around what matters">1</button><span class="rail-label">Plan around what matters</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="1"><button class="dot" type="button" aria-label="Go to step 2: Protect your capacity">2</button><span class="rail-label">Protect your capacity</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="2"><button class="dot" type="button" aria-label="Go to step 3: Adjust as conditions change">3</button><span class="rail-label">Adjust as conditions change</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Choose one next action">4</button><span class="rail-label">Choose one next action</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Plan around what matters</h2>
+        <p class="panel-sub">Use self-awareness and clear goals to decide where your time and attention will have the greatest value.</p>
+        <div class="foundation-layout">
+          <div class="image-slot filled"><img src="module1-lesson-5-1.png" alt="Illustration of a planner and calendar with one clear priority highlighted."></div>
+          <div>
+            <div class="choice-grid" role="group" aria-label="Planning factors">
+              <button class="choice" type="button" data-feedback-title="Self-awareness" data-feedback-text="Notice your energy levels, peak productivity times, and work preferences so you can plan demanding work more intentionally."><strong>Self-awareness</strong></button>
+              <button class="choice" type="button" data-feedback-title="Goal clarity" data-feedback-text="Define short-term and long-term goals, then connect daily tasks to meaningful outcomes."><strong>Goal clarity</strong></button>
+              <button class="choice" type="button" data-feedback-title="Task prioritization" data-feedback-text="Distinguish urgent work from important work and begin with activities that have the greatest impact."><strong>Task prioritization</strong></button>
+              <button class="choice" type="button" data-feedback-title="Time tracking" data-feedback-text="Notice how long tasks actually take so you can improve estimates and identify opportunities to use technology."><strong>Time tracking</strong></button>
+            </div>
+            <div class="feedback-card" id="planFeedback" hidden aria-live="polite"><h3 id="planFeedbackTitle"></h3><p id="planFeedbackText"></p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Protect your capacity</h2>
+        <p class="panel-sub">Protect time and energy by making realistic commitments and deciding what you can carry.</p>
+        <p class="section-label">Select a factor</p>
+        <div class="choice-grid" role="group" aria-label="Capacity factors">
+          <button class="choice" type="button" data-feedback-title="Setting boundaries" data-feedback-text="Communicate work hours, availability, and protected focus time to reduce avoidable interruptions."><strong>Setting boundaries</strong></button>
+          <button class="choice" type="button" data-feedback-title="Delegation" data-feedback-text="Identify work another person can handle effectively or use as a useful development opportunity."><strong>Delegation</strong></button>
+          <button class="choice" type="button" data-feedback-title="Avoiding overcommitment" data-feedback-text="Assess workload realistically, practice saying no, and communicate your capacity when a request does not fit."><strong>Avoiding overcommitment</strong></button>
+          <button class="choice" type="button" data-feedback-title="Self-care and well-being" data-feedback-text="Protect mental and physical rest, including regular breaks from your workspace and screen."><strong>Self-care and well-being</strong></button>
+        </div>
+        <div class="feedback-card" id="capacityFeedback" hidden aria-live="polite"><h3 id="capacityFeedbackTitle"></h3><p id="capacityFeedbackText"></p></div>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Adjust as conditions change</h2>
+        <p class="panel-sub">A useful plan can change when circumstances, deadlines, or capacity change.</p>
+        <div class="workplace-layout">
+          <div class="image-slot filled"><img src="module1-lesson-5-2.png" alt="Illustration of a work plan adapting around an obstacle and continuing forward."></div>
+          <div>
+            <div class="choice-grid workplace-grid" role="group" aria-label="Adaptation factors">
+              <button class="choice" type="button" data-feedback-title="Flexibility and adaptability" data-feedback-text="Adjust your plan when unforeseen circumstances change what is realistic or most important."><strong>Flexibility</strong></button>
+              <button class="choice" type="button" data-feedback-title="Changing priorities" data-feedback-text="Review goals, deadlines, and available capacity regularly so your schedule reflects current needs."><strong>Changing priorities</strong></button>
+              <button class="choice" type="button" data-feedback-title="Continuous improvement" data-feedback-text="Reflect on what is working, identify an opportunity to improve, and make a deliberate adjustment."><strong>Continuous improvement</strong></button>
+              <button class="choice" type="button" data-feedback-title="Practice over perfection" data-feedback-text="Treat time management as a skill that develops through self-awareness and repeated practice."><strong>Practice over perfection</strong></button>
+            </div>
+            <div class="feedback-card" id="adaptFeedback" hidden aria-live="polite"><h3 id="adaptFeedbackTitle"></h3><p id="adaptFeedbackText"></p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="3" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Choose one next action</h2>
+        <p class="panel-sub">Small, consistent changes are more sustainable than redesigning your entire schedule at once.</p>
+        <p class="section-label">Select one action</p>
+        <div class="choice-grid audit-grid" role="group" aria-label="Next actions">
+          <button class="choice action-choice" type="button" data-feedback-title="Protect a peak-focus period" data-feedback-text="Reserve one recurring period for work that requires your clearest thinking and protect it from avoidable interruptions."><strong>Protect a peak-focus period</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Delegate one task" data-feedback-text="Choose one task that another person can handle effectively and clarify the expected result and timing."><strong>Delegate one task</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Communicate a clearer boundary" data-feedback-text="State when you are available and when you need protected focus time for priority work."><strong>Communicate a clearer boundary</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Track one recurring activity" data-feedback-text="Record the time spent on one recurring activity for a week, then use what you learn to improve your plan."><strong>Track one recurring activity</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Review priorities weekly" data-feedback-text="Set aside a short weekly review to reconnect tasks with current goals, deadlines, and capacity."><strong>Review priorities weekly</strong></button>
+        </div>
+        <div class="feedback-card" id="actionFeedback" hidden aria-live="polite"><h3 id="actionFeedbackTitle"></h3><p id="actionFeedbackText"></p></div>
+      </section>
+
+    </main>
+    <div class="nav-controls">
+        <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+        <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
+        <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      const choices = [...document.querySelectorAll('.choice')];
+      const actionChoices = [...document.querySelectorAll('.action-choice')];
+      const actionFeedback = document.getElementById('actionFeedback');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+
+      choices.filter(choice => !choice.classList.contains('action-choice')).forEach(choice => choice.addEventListener('click', () => {
+        const siblingChoices = [...choice.closest('.choice-grid').querySelectorAll('.choice')];
+        siblingChoices.forEach(item => item.classList.remove('selected'));
+        choice.classList.add('selected');
+        const panel = choice.closest('.panel');
+        const response = panel.querySelector('.feedback-card');
+        panel.querySelector('[id$="FeedbackTitle"]').textContent = choice.dataset.feedbackTitle;
+        panel.querySelector('[id$="FeedbackText"]').textContent = choice.dataset.feedbackText;
+        response.hidden = false;
+      }));
+
+      actionChoices.forEach(choice => choice.addEventListener('click', () => {
+        actionChoices.forEach(item => item.classList.remove('selected'));
+        choice.classList.add('selected');
+        document.getElementById('actionFeedbackTitle').textContent = choice.dataset.feedbackTitle;
+        document.getElementById('actionFeedbackText').textContent = choice.dataset.feedbackText;
+        actionFeedback.hidden = false;
+      }));
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 4: Time Wasters and Distractions</title>
+  <style>
+    :root {
+      --teal: #174A5B;
+      --seafoam: #77BFA3;
+      --tangerine: #F4A261;
+      --ivory: #FBF7F0;
+      --mist: #DDE8E5;
+      --charcoal: #263238;
+      --white: #FFFFFF;
+      --radius: 14px;
+      --shadow: 0 4px 18px #DDE8E5;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--charcoal);
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+    button { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible {
+      outline: 4px solid #000000;
+      outline-offset: 3px;
+    }
+
+    .app { min-height: 100vh; }
+    .lesson-header {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--white) 0%, var(--mist) 100%);
+      color: var(--teal);
+    }
+    .header-inner, .stage { max-width: 980px; margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 2px;
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.2; }
+    h1 { margin: 0; font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 22px; }
+    .header-sub { max-width: 680px; margin: 3px 0 0; color: var(--charcoal); font-size: 16px; }
+
+    .progress-rail {
+      display: flex;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0 0;
+      align-items: flex-start;
+    }
+    .rail-step { display: flex; min-width: 0; flex: 1; align-items: center; }
+    .rail-step:last-child { flex: 0 0 auto; }
+    .dot {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border: 2px solid var(--seafoam);
+      border-radius: 50%;
+      background: var(--mist);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .rail-step.active .dot, .rail-step.complete .dot {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: var(--white);
+    }
+    .rail-step.complete .dot::after { content: " ✓"; }
+    .rail-label { margin-left: 9px; color: var(--charcoal); font-size: 16px; font-weight: 700; }
+    .connector { height: 2px; min-width: 18px; flex: 1; margin: 0 12px; background: var(--mist); }
+
+    .stage { position: relative; height: 480px; overflow: hidden; padding: 26px 28px 0; }
+    .panel { position: absolute; inset: 26px 28px 0; display: none; animation: rise .3s ease-out; }
+    .panel.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .panel-title { margin: 0; color: var(--teal); font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 24px; }
+    .panel-sub { max-width: 720px; margin: 4px 0 14px; font-size: 17px; }
+
+    .definition-grid, .benefit-grid, .choice-grid { display: grid; gap: 12px; }
+    .foundation-layout, .practice-layout, .workplace-layout { display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: stretch; }
+    .workplace-layout .image-slot { min-height: 238px; }
+    .workplace-layout .image-slot img { min-height: 238px; }
+    .image-slot {
+      display: flex;
+      min-height: 180px;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      border: 2px solid var(--tangerine);
+      border-radius: var(--radius);
+      background: var(--ivory);
+      color: var(--teal);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      overflow: hidden;
+    }
+    .image-slot img { width: 100%; height: 100%; min-height: 180px; display: block; object-fit: cover; }
+    .image-slot.filled { padding: 0; }
+    .image-slot small { display: block; margin-top: 8px; font-size: 16px; font-weight: 400; }
+    .definition-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .workplace-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .audit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .energy-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card {
+      padding: 15px 16px;
+      border: 2px solid var(--mist);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0 0 5px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .card p { margin: 0; font-size: 16px; }
+    .definition-card { border-left: 7px solid var(--seafoam); }
+    .definition-card strong { color: var(--teal); }
+
+    .section-label {
+      margin: 18px 0 8px;
+      color: var(--teal);
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .benefit-card { border-left: 7px solid var(--seafoam); }
+    .benefit-card.team { border-left-color: var(--seafoam); }
+    .benefit-card h3 { font-size: 18px; }
+    .benefit-card p { font-size: 16px; }
+
+    .scenario {
+      padding: 16px 18px;
+      border-left: 7px solid var(--seafoam);
+      border-radius: 12px;
+      background: var(--mist);
+    }
+    .scenario h3 { margin: 0 0 4px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .scenario p { margin: 0; font-size: 16px; }
+    .choice {
+      min-height: 62px;
+      border: 2px solid var(--teal);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--teal);
+      text-align: left;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .choice:hover { transform: translateY(-2px); background: var(--mist); }
+    .choice.selected { border-color: var(--seafoam); background: var(--mist); }
+    .choice strong { display: block; padding: 16px; font-size: 18px; }
+    .choice span { display: none; }
+    .energy-grid .choice { min-height: 58px; }
+    .energy-grid .choice strong { padding: 13px 12px; font-size: 17px; }
+    .feedback {
+      min-height: 24px;
+      margin-top: 10px;
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .feedback-card {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border: 2px solid var(--tangerine);
+      border-radius: var(--radius);
+      background: var(--ivory);
+      color: var(--charcoal);
+    }
+    .feedback-card[hidden] { display: none; }
+    .feedback-card h3 { margin: 0 0 3px; color: var(--teal); font-family: Cambria, serif; font-size: 18px; }
+    .feedback-card p { margin: 0; font-size: 16px; }
+
+    .reflection-card {
+      border: 2px solid var(--teal);
+      border-radius: 14px;
+      background: var(--mist);
+      padding: 18px;
+    }
+    .reflection-card h3 { margin: 0 0 5px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .reflection-card p { margin: 0 0 10px; font-size: 16px; }
+    .action-choice { min-height: 58px; }
+    .action-choice strong { padding: 13px 14px; font-size: 17px; }
+    .action-feedback { min-height: 24px; margin: 10px 0 0; color: var(--teal); font-size: 16px; font-weight: 700; }
+
+    .nav-controls { display: flex; max-width: 980px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 28px 4px; border-top: 1px solid var(--mist); }
+    .btn {
+      min-width: 120px;
+      padding: 11px 22px;
+      border: 2px solid var(--teal);
+      border-radius: 9px;
+      background: var(--white);
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .btn:hover:not(:disabled) { background: var(--mist); }
+    .btn.primary { border-color: var(--teal); background: var(--teal); color: var(--white); }
+    .btn.primary:hover:not(:disabled) { border-color: var(--seafoam); background: var(--seafoam); color: var(--teal); }
+    .btn:disabled { cursor: not-allowed; opacity: .55; }
+    .step-counter { color: var(--teal); font-size: 16px; font-weight: 700; letter-spacing: .05em; }
+
+    @media (max-width: 700px) {
+      .definition-grid, .benefit-grid, .choice-grid, .foundation-layout, .practice-layout, .workplace-layout, .energy-grid, .workplace-grid, .audit-grid { grid-template-columns: 1fr; }
+      .stage { height: auto; min-height: 0; overflow: visible; }
+      .panel { position: static; }
+      .progress-rail { align-items: flex-start; }
+      .rail-label { display: none; }
+      .connector { margin: 19px 6px 0; }
+      .nav-controls { flex-wrap: wrap; padding: 18px 18px 4px; }
+      .step-counter { order: -1; width: 100%; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner">
+        <h1>Lesson 4: Time Wasters and Distractions</h1>
+      </div>
+      <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+        <div class="rail-step active" data-step="0"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: What is a time waster">1</button><span class="rail-label">What is a time waster</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="1"><button class="dot" type="button" aria-label="Go to step 2: Errand, habit, or task">2</button><span class="rail-label">Errand, habit, or task</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="2"><button class="dot" type="button" aria-label="Go to step 3: Workplace examples">3</button><span class="rail-label">Workplace examples</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Personal audit">4</button><span class="rail-label">Personal audit</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">What is a time waster?</h2>
+        <p class="panel-sub">A time waster drains valuable time without contributing meaningful returns to productivity, effectiveness, or fulfillment.</p>
+        <div class="foundation-layout">
+          <div class="image-slot filled"><img src="module1-lesson-4-1.png" alt="Illustration of a focused workday desk with a clear priority and scattered low-value distractions pulling attention away."></div>
+          <div class="reflection-card"><h3>Check the return</h3><p>Some activities are necessary but still deserve a time check. Ask whether the activity contributes meaningful progress and whether its value justifies the time it receives.</p></div>
+        </div>
+        <p class="section-label">Key idea</p>
+        <p class="panel-sub">Time wasters can hide inside ordinary errands, habits, and tasks. The next step is to recognize the pattern.</p>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Errand, habit, or task?</h2>
+        <p class="panel-sub">A time waster may appear as an errand, a habit, a task, or more than one category.</p>
+        <p class="section-label">Select a category</p>
+        <div class="choice-grid" role="group" aria-label="Time-waster categories">
+          <button class="choice" type="button" data-feedback-title="Errand" data-feedback-text="A minor, routine activity that takes time but may not directly contribute to your primary goals."><strong>Errand</strong></button>
+          <button class="choice" type="button" data-feedback-title="Habit" data-feedback-text="A repetitive behavior or routine that can become automatic, often occurring without conscious thought."><strong>Habit</strong></button>
+          <button class="choice" type="button" data-feedback-title="Task" data-feedback-text="A specific action or responsibility that requires time and effort but may not align with your priorities."><strong>Task</strong></button>
+          <button class="choice" type="button" data-feedback-title="More than one" data-feedback-text="The same activity may fit more than one category. Repeatedly checking email, for example, can be both a habit and a task."><strong>More than one</strong></button>
+        </div>
+        <div class="feedback-card" id="category2Feedback" hidden aria-live="polite"><h3 id="category2FeedbackTitle"></h3><p id="category2FeedbackText"></p></div>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Common workplace time wasters</h2>
+        <p class="panel-sub">Select a pattern to see what it looks like and one practical way to reduce it.</p>
+        <div class="workplace-layout">
+          <div class="image-slot filled"><img src="module1-lesson-4-2.png" alt="Illustration of a workplace desk surrounded by email, meeting, approval, and manual-work distractions."></div>
+          <div class="choice-grid workplace-grid" role="group" aria-label="Common workplace time wasters">
+            <button class="choice" type="button" data-feedback-title="Email overload" data-feedback-text="What it looks like: spending excessive time checking, reading, and responding to messages. Strategy: limit email checks, use filters, and prioritize urgent messages."><strong>Email overload</strong></button>
+            <button class="choice" type="button" data-feedback-title="Manual data entry" data-feedback-text="What it looks like: entering information into spreadsheets or reports by hand. Strategy: review the process and explore automated tools."><strong>Manual data entry</strong></button>
+            <button class="choice" type="button" data-feedback-title="Multiple signatures" data-feedback-text="What it looks like: requiring several approvals for routine decisions. Strategy: use approval thresholds and digitize approvals."><strong>Multiple signatures</strong></button>
+            <button class="choice" type="button" data-feedback-title="Meeting madness" data-feedback-text="What it looks like: meetings without a clear agenda, off-topic discussion, or extra time. Strategy: confirm attendance is necessary, use agendas, and protect meeting-free zones."><strong>Meeting madness</strong></button>
+            <button class="choice" type="button" data-feedback-title="Perfectionism trap" data-feedback-text="What it looks like: spending disproportionate time perfecting work that already meets the need. Strategy: prioritize progress over perfection and set realistic standards."><strong>Perfectionism trap</strong></button>
+          </div>
+        </div>
+        <div class="feedback-card" id="workplaceFeedback" hidden aria-live="polite"><h3 id="workplaceFeedbackTitle"></h3><p id="workplaceFeedbackText"></p></div>
+      </section>
+
+      <section class="panel" data-panel="3" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Personal time-waster audit</h2>
+        <p class="panel-sub">Choose one useful response for protecting time after you identify the pattern.</p>
+        <p class="section-label">Select one pattern</p>
+        <div class="choice-grid audit-grid" role="group" aria-label="Personal time-saving actions">
+          <button class="choice action-choice" type="button" data-feedback-title="Limit interruptions" data-feedback-text="Choose specific times to check messages and use filters or notification settings so urgent items stand out."><strong>Limit interruptions</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Simplify or automate" data-feedback-text="Review one repeated process and look for a tool, template, or automation that can reduce manual effort."><strong>Simplify or automate</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Protect focus time" data-feedback-text="Confirm that meetings are necessary, ask for an agenda, and protect meeting-free time for focused work."><strong>Protect focus time</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Set a realistic standard" data-feedback-text="Decide what “good enough” means before you begin. When the work meets its purpose, move forward."><strong>Set a realistic standard</strong></button>
+          <button class="choice action-choice" type="button" data-feedback-title="Delegate or remove" data-feedback-text="Question the return on a low-value activity. Consider whether someone else can own it or whether you can remove it."><strong>Delegate or remove</strong></button>
+        </div>
+        <div class="feedback-card" id="actionFeedback" hidden aria-live="polite"><h3 id="actionFeedbackTitle"></h3><p id="actionFeedbackText"></p></div>
+      </section>
+
+    </main>
+    <div class="nav-controls">
+        <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+        <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
+        <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      const choices = [...document.querySelectorAll('.choice')];
+      const actionChoices = [...document.querySelectorAll('.action-choice')];
+      const actionFeedback = document.getElementById('actionFeedback');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+
+      choices.filter(choice => !choice.classList.contains('action-choice')).forEach(choice => choice.addEventListener('click', () => {
+        const siblingChoices = [...choice.closest('.choice-grid').querySelectorAll('.choice')];
+        siblingChoices.forEach(item => item.classList.remove('selected'));
+        choice.classList.add('selected');
+        const panel = choice.closest('.panel');
+        const response = panel.querySelector('.feedback-card');
+        panel.querySelector('[id$="FeedbackTitle"]').textContent = choice.dataset.feedbackTitle;
+        panel.querySelector('[id$="FeedbackText"]').textContent = choice.dataset.feedbackText;
+        response.hidden = false;
+      }));
+
+      actionChoices.forEach(choice => choice.addEventListener('click', () => {
+        actionChoices.forEach(item => item.classList.remove('selected'));
+        choice.classList.add('selected');
+        document.getElementById('actionFeedbackTitle').textContent = choice.dataset.feedbackTitle;
+        document.getElementById('actionFeedbackText').textContent = choice.dataset.feedbackText;
+        actionFeedback.hidden = false;
+      }));
+    })();
+  </script>
+</body>
+</html>
