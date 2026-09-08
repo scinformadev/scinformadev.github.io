@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lesson 1: Time Management Foundations</title>
+  <title>Lesson 3: Focus and the Multitasking Myth</title>
   <style>
     :root {
       --teal: #174A5B;
@@ -112,6 +112,7 @@
     .definition-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .energy-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .card {
       padding: 15px 16px;
       border: 2px solid var(--mist);
@@ -144,7 +145,7 @@
     .scenario h3 { margin: 0 0 4px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
     .scenario p { margin: 0; font-size: 16px; }
     .choice {
-      min-height: 96px;
+      min-height: 62px;
       border: 2px solid var(--teal);
       border-radius: 12px;
       background: var(--white);
@@ -154,8 +155,10 @@
     }
     .choice:hover { transform: translateY(-2px); background: var(--mist); }
     .choice.selected { border-color: var(--seafoam); background: var(--mist); }
-    .choice strong { display: block; padding: 13px 16px 3px; font-size: 18px; }
-    .choice span { display: block; padding: 0 16px 13px; font-size: 16px; }
+    .choice strong { display: block; padding: 16px; font-size: 18px; }
+    .choice span { display: none; }
+    .energy-grid .choice { min-height: 58px; }
+    .energy-grid .choice strong { padding: 13px 12px; font-size: 17px; }
     .feedback {
       min-height: 24px;
       margin-top: 10px;
@@ -163,6 +166,17 @@
       font-size: 16px;
       font-weight: 700;
     }
+    .feedback-card {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border: 2px solid var(--tangerine);
+      border-radius: var(--radius);
+      background: var(--ivory);
+      color: var(--charcoal);
+    }
+    .feedback-card[hidden] { display: none; }
+    .feedback-card h3 { margin: 0 0 3px; color: var(--teal); font-family: Cambria, serif; font-size: 18px; }
+    .feedback-card p { margin: 0; font-size: 16px; }
 
     .reflection-card {
       border: 2px solid var(--teal);
@@ -172,9 +186,8 @@
     }
     .reflection-card h3 { margin: 0 0 5px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
     .reflection-card p { margin: 0 0 10px; font-size: 16px; }
-    .action-choice { min-height: 70px; }
-    .action-choice strong { padding: 11px 14px 3px; font-size: 17px; }
-    .action-choice span { padding: 0 14px 10px; }
+    .action-choice { min-height: 58px; }
+    .action-choice strong { padding: 13px 14px; font-size: 17px; }
     .action-feedback { min-height: 24px; margin: 10px 0 0; color: var(--teal); font-size: 16px; font-weight: 700; }
 
     .nav-controls { display: flex; max-width: 980px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 28px 4px; border-top: 1px solid var(--mist); }
@@ -195,7 +208,7 @@
     .step-counter { color: var(--teal); font-size: 16px; font-weight: 700; letter-spacing: .05em; }
 
     @media (max-width: 700px) {
-      .definition-grid, .benefit-grid, .choice-grid, .foundation-layout, .practice-layout { grid-template-columns: 1fr; }
+      .definition-grid, .benefit-grid, .choice-grid, .foundation-layout, .practice-layout, .energy-grid { grid-template-columns: 1fr; }
       .stage { height: auto; min-height: 0; overflow: visible; }
       .panel { position: static; }
       .progress-rail { align-items: flex-start; }
@@ -213,72 +226,75 @@
   <div class="app">
     <header class="lesson-header">
       <div class="header-inner">
-        <h1>Lesson 1: Time Management Foundations</h1>
+        <h1>Lesson 3: Focus and the Multitasking Myth</h1>
       </div>
       <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
-        <div class="rail-step active" data-step="0"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The foundation">1</button><span class="rail-label">The foundation</span><span class="connector"></span></div>
-        <div class="rail-step" data-step="1"><button class="dot" type="button" aria-label="Go to step 2: Why it matters">2</button><span class="rail-label">Why it matters</span><span class="connector"></span></div>
-        <div class="rail-step" data-step="2"><button class="dot" type="button" aria-label="Go to step 3: Put it into practice">3</button><span class="rail-label">In practice</span><span class="connector"></span></div>
-        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Your first action">4</button><span class="rail-label">Your action</span></div>
+        <div class="rail-step active" data-step="0"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The multitasking myth">1</button><span class="rail-label">The multitasking myth</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="1"><button class="dot" type="button" aria-label="Go to step 2: Focused work">2</button><span class="rail-label">Focused work</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="2"><button class="dot" type="button" aria-label="Go to step 3: Regular breaks">3</button><span class="rail-label">Regular breaks</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Apply the idea">4</button><span class="rail-label">Apply the idea</span></div>
       </nav>
     </header>
 
     <main class="stage" id="stage" tabindex="-1">
       <section class="panel active" data-panel="0" aria-labelledby="title-0">
-        <h2 class="panel-title" id="title-0">The foundation</h2>
-        <p class="panel-sub">Time management and prioritization work together.</p>
+        <h2 class="panel-title" id="title-0">The multitasking myth</h2>
+        <p class="panel-sub">The illusion of doing two or more tasks at once is usually rapid task switching.</p>
         <div class="foundation-layout">
-          <div class="image-slot filled"><img src="module1-lesson-1-1.png" alt="A calm desk with an analog clock, a calendar, and two priority cards."></div>
-          <div class="definition-grid">
-            <article class="card definition-card"><h3>Time Management</h3><p>The process of planning and exercising conscious control of time spent on specific activities, especially to increase effectiveness, efficiency, and productivity.</p></article>
-            <article class="card definition-card"><h3>Prioritization</h3><p>A decision-making process that determines the order and focus of your tasks and activities based on their relevance and urgency.</p></article>
+          <div class="image-slot filled"><img src="module1-lesson-3-1.png" alt="A single focused task card while other task cards wait."></div>
+          <div>
+            <div class="choice-grid" role="group" aria-label="Compare work approaches">
+              <button class="choice" type="button" data-feedback-title="Focused work" data-feedback-text="Devoting energy to one task gives that priority your full attention and supports a better outcome."><strong>Focused work</strong></button>
+              <button class="choice" type="button" data-feedback-title="Rapid task switching" data-feedback-text="Switching between tasks compounds errors and stress, and reduces the quality of attention given to each activity."><strong>Rapid task switching</strong></button>
+            </div>
+            <div class="feedback-card" id="mythFeedback" hidden aria-live="polite"><h3 id="mythFeedbackTitle"></h3><p id="mythFeedbackText"></p></div>
           </div>
         </div>
-        <p class="section-label">Opening reflection</p>
-        <div class="reflection-card"><h3>Icebreaker</h3><p>Pause and consider: What is your greatest challenge when balancing your workload?</p></div>
+        <p class="section-label">Truth moment</p>
+        <div class="reflection-card"><h3>One task at a time</h3><p>Organize your time so each priority receives focused attention.</p></div>
       </section>
 
       <section class="panel" data-panel="1" aria-labelledby="title-1">
-        <h2 class="panel-title" id="title-1">Why it matters</h2>
-        <p class="panel-sub">Effective time management and prioritization support leaders and teams.</p>
-        <p class="section-label">Benefits for leaders and teams</p>
-        <div class="benefit-grid">
-          <article class="card benefit-card"><h3>For leaders</h3><p>Increased productivity<br>Better decision-making<br>Reduced stress<br>Improved time allocation<br>Better work-life balance</p></article>
-          <article class="card benefit-card team"><h3>For teams</h3><p>Clear direction<br>Enhanced morale<br>Increased accountability<br>Improved collaboration</p></article>
+        <h2 class="panel-title" id="title-1">Focused work</h2>
+        <p class="panel-sub">When pressure rises, focused attention helps you stay effective.</p>
+        <p class="section-label">Which practice supports focus?</p>
+        <div class="choice-grid" role="group" aria-label="Focused work practices">
+          <button class="choice" type="button" data-feedback-title="Devote your energy" data-feedback-text="Give one task your full energy instead of sharing attention across several projects."><strong>Devote your energy</strong></button>
+          <button class="choice" type="button" data-feedback-title="Organize your time" data-feedback-text="Plan so each task receives the attention it needs, especially when it requires critical thinking."><strong>Organize your time</strong></button>
+          <button class="choice" type="button" data-feedback-title="Use a focus period" data-feedback-text="Protect a period of uninterrupted work for an important priority."><strong>Use a focus period</strong></button>
+          <button class="choice" type="button" data-feedback-title="Restore your energy" data-feedback-text="Use a break or energy-restoration practice when high-pressure work begins to reduce your effectiveness."><strong>Restore your energy</strong></button>
         </div>
+        <div class="feedback-card" id="focusFeedback" hidden aria-live="polite"><h3 id="focusFeedbackTitle"></h3><p id="focusFeedbackText"></p></div>
       </section>
 
       <section class="panel" data-panel="2" aria-labelledby="title-2">
-        <h2 class="panel-title" id="title-2">Put the distinction into practice</h2>
-        <p class="panel-sub">A busy schedule can still give time to low-value work. Prioritization helps you decide what should receive your attention.</p>
+        <h2 class="panel-title" id="title-2">Regular breaks</h2>
+        <p class="panel-sub">Breaks can increase concentration, protect mental energy, and reduce the risk of burnout.</p>
         <div class="practice-layout">
-          <div class="image-slot filled"><img src="module1-lesson-1-2.png" alt="Hands sorting colorful task cards into a focused short list."></div>
+          <div class="image-slot filled"><img src="module1-lesson-3-2.png" alt="A person stretching beside a desk during a restorative break."></div>
           <div>
-            <div class="scenario"><h3>Think about your own work</h3><p>Which task deserves your focused attention because it is most relevant or urgent?</p></div>
-            <p class="section-label">Choose the best starting point</p>
-            <div class="choice-grid" role="group" aria-label="Scenario choices">
-              <button class="choice" type="button" data-choice="priority"><strong>Highest-impact task</strong><span>Supports an important goal.</span></button>
-              <button class="choice" type="button" data-choice="inbox"><strong>Most visible task</strong><span>May be easy to notice but less important.</span></button>
+            <div class="scenario"><h3>A short reset</h3><p>You have been working continuously and your attention is fading. Which response is most helpful?</p></div>
+            <p class="section-label">Choose a response</p>
+            <div class="choice-grid" role="group" aria-label="Break choices">
+              <button class="choice" type="button" data-feedback-title="Step away" data-feedback-text="Detach from your desk and reset your mental energy before returning to the task."><strong>Step away</strong></button>
+              <button class="choice" type="button" data-feedback-title="Work through the pause" data-feedback-text="Skipping breaks can reduce performance and increase the likelihood of mistakes."><strong>Work through the pause</strong></button>
             </div>
           </div>
         </div>
-        <p class="feedback" id="feedback" aria-live="polite"></p>
+        <div class="feedback-card" id="breakFeedback" hidden aria-live="polite"><h3 id="breakFeedbackTitle"></h3><p id="breakFeedbackText"></p></div>
       </section>
 
       <section class="panel" data-panel="3" aria-labelledby="title-3">
-        <h2 class="panel-title" id="title-3">Choose your first action</h2>
-        <p class="panel-sub">Choose one action to apply after this lesson.</p>
-        <div class="reflection-card">
-          <h3>Take action</h3>
-          <p>Small, consistent changes are more sustainable than redesigning your entire schedule at once.</p>
-          <div class="choice-grid" role="group" aria-label="Possible first actions">
-            <button class="choice action-choice" type="button" data-action="focus"><strong>Protect a focus period</strong><span>Match priority work to peak energy.</span></button>
-            <button class="choice action-choice" type="button" data-action="breaks"><strong>Take regular breaks</strong><span>Detach and reset mental energy.</span></button>
-            <button class="choice action-choice" type="button" data-action="waster"><strong>Reduce a time waster</strong><span>Remove work with little value.</span></button>
-            <button class="choice action-choice" type="button" data-action="boundary"><strong>Set a boundary</strong><span>Clarify availability or delegate.</span></button>
-          </div>
-          <p class="action-feedback" id="actionFeedback" aria-live="polite"></p>
+        <h2 class="panel-title" id="title-3">Apply the idea</h2>
+        <p class="panel-sub">Choose one practical action for protecting your attention.</p>
+        <p class="section-label">Select one</p>
+        <div class="choice-grid" role="group" aria-label="Focus and break actions">
+          <button class="choice action-choice" type="button" data-action="priority" data-feedback-title="Work on one priority" data-feedback-text="Give one task your full attention before moving to another project."><strong>Work on one priority</strong></button>
+          <button class="choice action-choice" type="button" data-action="break" data-feedback-title="Schedule a short break" data-feedback-text="Plan a brief pause so you can return with renewed attention."><strong>Schedule a short break</strong></button>
+          <button class="choice action-choice" type="button" data-action="eyes" data-feedback-title="Use the 20-20-20 practice" data-feedback-text="Every 20 minutes, look at something about 20 feet away for 20 seconds."><strong>Use the 20-20-20 practice</strong></button>
+          <button class="choice action-choice" type="button" data-action="trigger" data-feedback-title="Reduce a switching trigger" data-feedback-text="Notice one recurring interruption and protect a period for focused work."><strong>Reduce a switching trigger</strong></button>
         </div>
+        <div class="feedback-card" id="actionFeedback" hidden aria-live="polite"><h3 id="actionFeedbackTitle"></h3><p id="actionFeedbackText"></p></div>
       </section>
 
     </main>
@@ -296,7 +312,6 @@
       const nextBtn = document.getElementById('nextBtn');
       const backBtn = document.getElementById('backBtn');
       const stepCounter = document.getElementById('stepCounter');
-      const feedback = document.getElementById('feedback');
       const choices = [...document.querySelectorAll('.choice')];
       const actionChoices = [...document.querySelectorAll('.action-choice')];
       const actionFeedback = document.getElementById('actionFeedback');
@@ -327,17 +342,22 @@
       backBtn.addEventListener('click', () => showStep(current - 1));
 
       choices.filter(choice => !choice.classList.contains('action-choice')).forEach(choice => choice.addEventListener('click', () => {
-        choices.forEach(item => item.classList.remove('selected'));
+        const siblingChoices = [...choice.closest('.choice-grid').querySelectorAll('.choice')];
+        siblingChoices.forEach(item => item.classList.remove('selected'));
         choice.classList.add('selected');
-        feedback.textContent = choice.dataset.choice === 'priority'
-          ? 'Good starting point: connect your time to the work with the greatest relevance or urgency.'
-          : 'Pause and check the task: visibility does not always make it the most relevant or urgent priority.';
+        const panel = choice.closest('.panel');
+        const response = panel.querySelector('.feedback-card');
+        panel.querySelector('[id$="FeedbackTitle"]').textContent = choice.dataset.feedbackTitle;
+        panel.querySelector('[id$="FeedbackText"]').textContent = choice.dataset.feedbackText;
+        response.hidden = false;
       }));
 
       actionChoices.forEach(choice => choice.addEventListener('click', () => {
         actionChoices.forEach(item => item.classList.remove('selected'));
         choice.classList.add('selected');
-        actionFeedback.textContent = 'Good choice. Select a small first step and begin today.';
+        document.getElementById('actionFeedbackTitle').textContent = choice.dataset.feedbackTitle;
+        document.getElementById('actionFeedbackText').textContent = choice.dataset.feedbackText;
+        actionFeedback.hidden = false;
       }));
     })();
   </script>
