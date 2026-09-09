@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 3: Stages of Burnout</title>
+  <style>
+    :root { --teal:#174A5B; --seafoam:#77BFA3; --tangerine:#F4A261; --ivory:#FBF7F0; --mist:#DDE8E5; --charcoal:#263238; --white:#FFFFFF; --radius:14px; --shadow:0 4px 18px #DDE8E5; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--white); color:var(--charcoal); font-family:'Calibri','Segoe UI',Arial,sans-serif; font-size:17px; line-height:1.5; }
+    button { font:inherit; cursor:pointer; }
+    button:focus-visible { outline:4px solid #000000; outline-offset:3px; }
+    .app { min-height:100vh; }
+    .lesson-header { padding:12px 28px; background:linear-gradient(135deg,var(--white) 0%,var(--mist) 100%); color:var(--teal); }
+    .header-inner,.stage { max-width:980px; margin:0 auto; }
+    h1,h2,h3 { line-height:1.2; }
+    h1 { margin:0; font-family:Cambria,'Times New Roman',Georgia,serif; font-size:22px; }
+    .progress-rail { display:flex; max-width:980px; margin:0 auto; padding:18px 0 0; align-items:flex-start; }
+    .rail-step { display:flex; min-width:0; flex:1; align-items:center; }
+    .rail-step:last-child { flex:0 0 auto; }
+    .dot { width:32px; height:32px; flex:0 0 32px; border:2px solid var(--seafoam); border-radius:50%; background:var(--mist); color:var(--teal); font-weight:700; font-size:16px; }
+    .rail-step.active .dot,.rail-step.complete .dot { border-color:var(--teal); background:var(--teal); color:var(--white); }
+    .rail-step.complete .dot::after { content:' ✓'; }
+    .rail-label { margin-left:9px; color:var(--charcoal); font-size:16px; font-weight:700; }
+    .connector { height:2px; min-width:18px; flex:1; margin:0 12px; background:var(--mist); }
+    .stage { position:relative; height:480px; overflow:hidden; padding:26px 28px 0; }
+    .panel { position:absolute; inset:26px 28px 0; display:none; animation:rise .3s ease-out; }
+    .panel.active { display:block; }
+    @keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    .panel-title { margin:0; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:24px; }
+    .panel-sub { max-width:760px; margin:4px 0 14px; font-size:17px; }
+    .instruction-row { display:flex; align-items:baseline; justify-content:space-between; gap:18px; }
+    .instruction-row .panel-sub { margin-bottom:10px; }
+    .foundation-layout,.practice-layout { display:grid; grid-template-columns:180px 1fr; gap:16px; align-items:stretch; }
+    .image-slot { display:flex; height:190px; align-items:center; justify-content:center; padding:0; border:2px solid var(--tangerine); border-radius:var(--radius); background:var(--ivory); color:var(--teal); text-align:center; font-size:16px; font-weight:700; overflow:hidden; }
+    .image-slot img { width:100%; height:100%; display:block; object-fit:cover; }
+    .image-slot .placeholder { padding:16px; }
+    .callout { margin-top:14px; padding:15px 18px; border-left:7px solid var(--seafoam); border-radius:12px; background:var(--mist); }
+    .callout.accent { border-left-color:var(--tangerine); background:var(--ivory); }
+    .callout h3 { margin:0 0 4px; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:20px; }
+    .callout p { margin:0; font-size:16px; }
+    .choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    .choice { min-height:58px; padding:13px 16px; border:2px solid var(--teal); border-radius:12px; background:var(--white); color:var(--teal); text-align:left; transition:transform .15s ease,background .15s ease; }
+    .choice:hover,.choice.selected { transform:translateY(-2px); background:var(--mist); border-color:var(--seafoam); }
+    .choice strong { display:block; padding:0; font-size:17px; }
+    .stage-choice { width:100%; min-height:52px; padding:9px 8px; border:2px solid var(--teal); border-radius:10px; background:var(--white); color:var(--teal); font-size:16px; font-weight:700; text-align:center; }
+    .stage-choice:hover,.stage-choice.selected { background:var(--mist); border-color:var(--seafoam); }
+    .feedback-card { margin-top:12px; padding:14px 16px; border:2px solid var(--tangerine); border-radius:var(--radius); background:var(--ivory); color:var(--charcoal); }
+    .feedback-card[hidden] { display:none; }
+    .feedback-card h3 { margin:0 0 3px; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:18px; }
+    .feedback-card p { margin:0; font-size:16px; }
+    .important-note { margin-top:14px; padding:13px 16px; border:2px solid var(--seafoam); border-radius:12px; background:var(--mist); font-size:16px; }
+    .important-note strong { color:var(--teal); }
+    .stage-sequence { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; }
+    .stage-item { min-width:0; padding:10px; border:2px solid var(--mist); border-radius:12px; background:var(--white); box-shadow:var(--shadow); }
+    .mini-visual { width:100%; aspect-ratio:1 / 1; display:flex; align-items:center; justify-content:center; margin-bottom:8px; border:2px solid var(--tangerine); border-radius:10px; background:var(--ivory); color:var(--teal); text-align:center; font-size:16px; font-weight:700; overflow:hidden; }
+    .mini-visual img { width:100%; height:100%; display:block; object-fit:cover; }
+    .stage-item h3 { margin:0; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:18px; }
+    .stage-feedback { margin-top:12px; }
+    .nav-controls { display:flex; max-width:980px; margin:0 auto; align-items:center; justify-content:space-between; gap:16px; padding:18px 28px 4px; border-top:1px solid var(--mist); }
+    .btn { min-width:120px; padding:11px 22px; border:2px solid var(--teal); border-radius:9px; background:var(--white); color:var(--teal); font-size:16px; font-weight:700; }
+    .btn:hover:not(:disabled) { background:var(--mist); }
+    .btn.primary { border-color:var(--teal); background:var(--teal); color:var(--white); }
+    .btn.primary:hover:not(:disabled) { border-color:var(--seafoam); background:var(--seafoam); color:var(--teal); }
+    .btn:disabled { cursor:not-allowed; opacity:.55; }
+    .step-counter { color:var(--teal); font-size:16px; font-weight:700; letter-spacing:.05em; }
+    @media (max-width:700px) {
+      .lesson-header { padding:12px 18px; }
+      .progress-rail { padding:18px 18px 0; }
+      .rail-label { display:none; }
+      .connector { margin:19px 6px 0; }
+      .instruction-row { flex-wrap:wrap; gap:0; }
+      .foundation-layout,.practice-layout,.choice-grid,.stage-sequence { grid-template-columns:1fr; }
+      .stage { height:auto; min-height:0; overflow:visible; padding:20px 18px; }
+      .panel { position:static; }
+      .nav-controls { flex-wrap:wrap; padding:18px 18px 4px; }
+      .step-counter { order:-1; width:100%; text-align:center; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header"><div class="header-inner"><h1>Lesson 3: Stages of Burnout</h1></div></header>
+    <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+      <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The progression">1</button><span class="rail-label">The progression</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Stages of burnout">2</button><span class="rail-label">Stages of burnout</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Different experiences">3</button><span class="rail-label">Different experiences</span></div>
+    </nav>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">The progression</h2>
+        <p class="panel-sub">Burnout may develop gradually and progress through several stages.</p>
+        <div class="callout accent"><h3>Stages of burnout</h3><p>The stages are the honeymoon phase, onset of stress, chronic stress, burnout, and chronic burnout.</p></div>
+        <div class="important-note">Not everyone experiences every stage, and the severity and duration of each stage can vary.</div>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Stages of burnout</h2>
+        <div class="instruction-row"><p class="panel-sub">Burnout may develop gradually and progress through several stages.</p><p class="panel-sub">Select a stage to see more.</p></div>
+        <div class="stage-sequence" role="list" aria-label="Stages of burnout">
+          <article class="stage-item" role="listitem"><div class="mini-visual"><img src="module3-lesson-3-1.png" alt="Paper-cut collage visual for the honeymoon phase of burnout."></div><button class="stage-choice" type="button" data-stage="honeymoon" aria-controls="feedback-honeymoon">Honeymoon phase</button></article>
+          <article class="stage-item" role="listitem"><div class="mini-visual"><img src="module3-lesson-3-2.png" alt="Paper-cut collage visual for the onset of stress."></div><button class="stage-choice" type="button" data-stage="onset" aria-controls="feedback-onset">Onset of stress</button></article>
+          <article class="stage-item" role="listitem"><div class="mini-visual"><img src="module3-lesson-3-3.png" alt="Paper-cut collage visual for chronic stress."></div><button class="stage-choice" type="button" data-stage="chronic-stress" aria-controls="feedback-chronic-stress">Chronic stress</button></article>
+          <article class="stage-item" role="listitem"><div class="mini-visual"><img src="module3-lesson-3-4.png" alt="Paper-cut collage visual for burnout."></div><button class="stage-choice" type="button" data-stage="burnout" aria-controls="feedback-burnout">Burnout</button></article>
+          <article class="stage-item" role="listitem"><div class="mini-visual"><img src="module3-lesson-3-5.png" alt="Paper-cut collage visual for chronic burnout."></div><button class="stage-choice" type="button" data-stage="chronic-burnout" aria-controls="feedback-chronic-burnout">Chronic burnout</button></article>
+        </div>
+        <div class="stage-feedback" aria-live="polite">
+          <div class="feedback-card" id="feedback-honeymoon" data-feedback="honeymoon" hidden><h3>Honeymoon phase</h3><p>A person feels motivated, energetic, and dedicated to their work.</p></div>
+          <div class="feedback-card" id="feedback-onset" data-feedback="onset" hidden><h3>Onset of stress</h3><p>The person begins feeling stress as work hours, responsibilities, or pressure increase.</p></div>
+          <div class="feedback-card" id="feedback-chronic-stress" data-feedback="chronic-stress" hidden><h3>Chronic stress</h3><p>Stress continues for a longer period. The person may feel overwhelmed and fatigued, and physical symptoms such as headaches or digestive issues may arise.</p></div>
+          <div class="feedback-card" id="feedback-burnout" data-feedback="burnout" hidden><h3>Burnout</h3><p>The person is physically, emotionally, and mentally exhausted. Interest and productivity may decline, and cynicism toward the job may increase.</p></div>
+          <div class="feedback-card" id="feedback-chronic-burnout" data-feedback="chronic-burnout" hidden><h3>Chronic burnout</h3><p>When burnout is not addressed, the person’s ability to function at work and home may become significantly impaired, and physical and mental health concerns may worsen.</p></div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Different experiences</h2>
+        <p class="panel-sub">The stages do not look the same for everyone.</p>
+        <div class="callout"><h3>What can vary</h3><p>Not everyone experiences every stage. The severity and duration of each stage can vary.</p></div>
+        <div class="important-note">Not everyone experiences every stage, and the severity and duration of each stage can vary.</div>
+      </section>
+    </main>
+    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
+  </div>
+  <script>
+    (() => {
+      const panels=[...document.querySelectorAll('.panel')],steps=[...document.querySelectorAll('.rail-step')],next=document.getElementById('nextBtn'),back=document.getElementById('backBtn'),counter=document.getElementById('stepCounter'),stage=document.getElementById('stage');
+      let current=0;
+      function showStep(index,moveFocus=true){current=Math.max(0,Math.min(index,panels.length-1));panels.forEach((panel,i)=>{panel.classList.toggle('active',i===current);panel.setAttribute('aria-hidden',i===current?'false':'true')});steps.forEach((step,i)=>{step.classList.toggle('active',i===current);step.classList.toggle('complete',i<current);const dot=step.querySelector('.dot');if(i===current)dot.setAttribute('aria-current','step');else dot.removeAttribute('aria-current')});back.disabled=current===0;next.disabled=current===panels.length-1;counter.textContent=`STEP ${current+1} OF ${panels.length}`;if(moveFocus)stage.focus({preventScroll:true});window.scrollTo({top:0,behavior:'smooth'})}
+      document.querySelectorAll('.stage-choice').forEach(choice=>choice.addEventListener('click',()=>{const key=choice.dataset.stage;document.querySelectorAll('.stage-choice').forEach(item=>item.classList.toggle('selected',item===choice));document.querySelectorAll('.stage-feedback .feedback-card').forEach(card=>{card.hidden=card.dataset.feedback!==key});}));
+      steps.forEach((step,i)=>step.querySelector('.dot').addEventListener('click',()=>showStep(i)));next.addEventListener('click',()=>showStep(current+1));back.addEventListener('click',()=>showStep(current-1));
+      showStep(0,false);
+    })();
+  </script>
+</body>
+</html>
