@@ -150,19 +150,35 @@
       background: var(--white);
       color: var(--teal);
       text-align: left;
-      transition: transform .15s ease, background .15s ease;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(38, 50, 56, 0.12);
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
     }
-    .choice:hover { transform: translateY(-2px); background: var(--mist); }
-    .choice.selected { border-color: var(--seafoam); background: var(--mist); }
+    .choice:hover { transform: translateY(-3px); background: var(--mist); box-shadow: 0 6px 14px rgba(38, 50, 56, 0.2); }
+    .choice:focus-visible { outline: 3px solid var(--tangerine); outline-offset: 3px; }
+    .choice.selected { border-color: var(--teal); background: var(--mist); box-shadow: 0 6px 14px rgba(38, 50, 56, 0.2); }
     .choice strong { display: block; padding: 13px 16px 3px; font-size: 18px; }
     .choice span { display: block; padding: 0 16px 13px; font-size: 16px; }
     .feedback {
-      min-height: 24px;
-      margin-top: 10px;
-      color: var(--teal);
-      font-size: 16px;
-      font-weight: 700;
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 2px solid var(--seafoam);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--charcoal);
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 400;
     }
+    .feedback.has-content { display: block; }
+    .feedback p { margin: 6px 0 8px; font-size: 17px; font-weight: 400; }
+    .feedback ul { margin: 0; padding-left: 22px; font-size: 17px; font-weight: 400; }
+    .feedback li + li { margin-top: 4px; }
+    .practice-instruction { max-width: none; }
+    .practice-feedback { width: 100%; box-sizing: border-box; }
+    .practice-layout { align-items: start; }
+    .practice-layout .image-slot { height: 180px; min-height: 180px; }
 
     .reflection-card {
       border: 2px solid var(--teal);
@@ -175,7 +191,22 @@
     .action-choice { min-height: 70px; }
     .action-choice strong { padding: 11px 14px 3px; font-size: 17px; }
     .action-choice span { padding: 0 14px 10px; }
-    .action-feedback { min-height: 24px; margin: 10px 0 0; color: var(--teal); font-size: 16px; font-weight: 700; }
+    .action-feedback {
+      display: none;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 16px 0 0;
+      padding: 14px 16px;
+      border: 2px solid var(--seafoam);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--charcoal);
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 400;
+    }
+    .action-feedback.has-content { display: block; }
+    .action-instruction { max-width: none; }
 
     .nav-controls { display: flex; max-width: 980px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 28px 4px; border-top: 1px solid var(--mist); }
     .btn {
@@ -219,7 +250,7 @@
         <div class="rail-step active" data-step="0"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The foundation">1</button><span class="rail-label">The foundation</span><span class="connector"></span></div>
         <div class="rail-step" data-step="1"><button class="dot" type="button" aria-label="Go to step 2: Why it matters">2</button><span class="rail-label">Why it matters</span><span class="connector"></span></div>
         <div class="rail-step" data-step="2"><button class="dot" type="button" aria-label="Go to step 3: Put it into practice">3</button><span class="rail-label">In practice</span><span class="connector"></span></div>
-        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Your first action">4</button><span class="rail-label">Your action</span></div>
+        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Explore a possible next step">4</button><span class="rail-label">Next step</span></div>
       </nav>
     </header>
 
@@ -234,8 +265,7 @@
             <article class="card definition-card"><h3>Prioritization</h3><p>A decision-making process that determines the order and focus of your tasks and activities based on their relevance and urgency.</p></article>
           </div>
         </div>
-        <p class="section-label">Opening reflection</p>
-        <div class="reflection-card"><h3>Icebreaker</h3><p>Pause and consider: What is your greatest challenge when balancing your workload?</p></div>
+        <div class="card" style="margin-top: 18px;"><h3>How they work together</h3><p>Time management helps you decide how to use your available time. Prioritization helps you decide what deserves that time and attention. Together, they help you focus your effort on what matters most.</p></div>
       </section>
 
       <section class="panel" data-panel="1" aria-labelledby="title-1">
@@ -250,35 +280,29 @@
 
       <section class="panel" data-panel="2" aria-labelledby="title-2">
         <h2 class="panel-title" id="title-2">Put the distinction into practice</h2>
-        <p class="panel-sub">A busy schedule can still give time to low-value work. Prioritization helps you decide what should receive your attention.</p>
+        <p class="panel-sub practice-instruction">Think about your own work and select the task that deserves focused attention because it is most relevant or urgent, even when your schedule includes lower-value work.</p>
         <div class="practice-layout">
           <div class="image-slot filled"><img src="module1-lesson-1-2.png" alt="Hands sorting colorful task cards into a focused short list."></div>
           <div>
-            <div class="scenario"><h3>Think about your own work</h3><p>Which task deserves your focused attention because it is most relevant or urgent?</p></div>
-            <p class="section-label">Choose the best starting point</p>
             <div class="choice-grid" role="group" aria-label="Scenario choices">
               <button class="choice" type="button" data-choice="priority"><strong>Highest-impact task</strong><span>Supports an important goal.</span></button>
               <button class="choice" type="button" data-choice="inbox"><strong>Most visible task</strong><span>May be easy to notice but less important.</span></button>
             </div>
+            <div class="feedback practice-feedback" id="feedback" aria-live="polite"></div>
           </div>
         </div>
-        <p class="feedback" id="feedback" aria-live="polite"></p>
       </section>
 
       <section class="panel" data-panel="3" aria-labelledby="title-3">
-        <h2 class="panel-title" id="title-3">Choose your first action</h2>
-        <p class="panel-sub">Choose one action to apply after this lesson.</p>
-        <div class="reflection-card">
-          <h3>Take action</h3>
-          <p>Small, consistent changes are more sustainable than redesigning your entire schedule at once.</p>
-          <div class="choice-grid" role="group" aria-label="Possible first actions">
-            <button class="choice action-choice" type="button" data-action="focus"><strong>Protect a focus period</strong><span>Match priority work to peak energy.</span></button>
-            <button class="choice action-choice" type="button" data-action="breaks"><strong>Take regular breaks</strong><span>Detach and reset mental energy.</span></button>
-            <button class="choice action-choice" type="button" data-action="waster"><strong>Reduce a time waster</strong><span>Remove work with little value.</span></button>
-            <button class="choice action-choice" type="button" data-action="boundary"><strong>Set a boundary</strong><span>Clarify availability or delegate.</span></button>
-          </div>
-          <p class="action-feedback" id="actionFeedback" aria-live="polite"></p>
+        <h2 class="panel-title" id="title-3">Explore a possible next step</h2>
+        <p class="panel-sub action-instruction">These strategies will be developed in later lessons. This is an introductory reflection, not a right-or-wrong question. Select an option to see what it could look like in practice.</p>
+        <div class="choice-grid" role="group" aria-label="Possible first actions">
+          <button class="choice action-choice" type="button" data-action="focus"><strong>Protect a focus period</strong><span>Match priority work to peak energy.</span></button>
+          <button class="choice action-choice" type="button" data-action="breaks"><strong>Take regular breaks</strong><span>Detach and reset mental energy.</span></button>
+          <button class="choice action-choice" type="button" data-action="waster"><strong>Reduce a time waster</strong><span>Remove work with little value.</span></button>
+          <button class="choice action-choice" type="button" data-action="boundary"><strong>Set a boundary</strong><span>Clarify availability or delegate.</span></button>
         </div>
+        <p class="action-feedback" id="actionFeedback" aria-live="polite"></p>
       </section>
 
     </main>
@@ -327,17 +351,25 @@
       backBtn.addEventListener('click', () => showStep(current - 1));
 
       choices.filter(choice => !choice.classList.contains('action-choice')).forEach(choice => choice.addEventListener('click', () => {
-        choices.forEach(item => item.classList.remove('selected'));
-        choice.classList.add('selected');
-        feedback.textContent = choice.dataset.choice === 'priority'
-          ? 'Good starting point: connect your time to the work with the greatest relevance or urgency.'
-          : 'Pause and check the task: visibility does not always make it the most relevant or urgent priority.';
+         choices.forEach(item => item.classList.remove('selected'));
+         choice.classList.add('selected');
+         feedback.classList.add('has-content');
+         feedback.innerHTML = choice.dataset.choice === 'priority'
+           ? '<strong>Good starting point.</strong><p>Prioritization connects your time to work that supports important goals or has meaningful consequences if delayed.</p><ul><li>A grant deadline due tomorrow may take priority over clearing a routine inbox.</li><li>A task that supports a major team goal may deserve attention before a highly visible but low-impact request.</li></ul>'
+           : '<strong>Reconsider the starting point.</strong><p>Visibility alone does not tell you what deserves focused attention. Check the task’s relevance, urgency, and impact first.</p><ul><li>A routine inbox message may be highly visible but less important than a grant deadline due tomorrow.</li><li>A low-impact request may be noticeable while a less visible task supports a major team goal.</li></ul>';
       }));
 
       actionChoices.forEach(choice => choice.addEventListener('click', () => {
         actionChoices.forEach(item => item.classList.remove('selected'));
         choice.classList.add('selected');
-        actionFeedback.textContent = 'Good choice. Select a small first step and begin today.';
+         const guidance = {
+           focus: 'A first step could be to notice when your energy and concentration are highest, then reserve that period for priority work.',
+           breaks: 'A first step could be to plan a short break before your attention fades so you can reset and return with more energy.',
+           waster: 'A first step could be to identify one recurring activity that consumes time without contributing meaningful progress.',
+           boundary: 'A first step could be to clarify your availability or capacity before accepting another request.'
+         };
+         actionFeedback.classList.add('has-content');
+         actionFeedback.textContent = guidance[choice.dataset.action];
       }));
     })();
   </script>
