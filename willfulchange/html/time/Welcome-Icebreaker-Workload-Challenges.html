@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opening Reflection</title>
+  <style>
+    :root {
+      --teal: #174A5B;
+      --seafoam: #77BFA3;
+      --tangerine: #F4A261;
+      --ivory: #FBF7F0;
+      --mist: #DDE8E5;
+      --charcoal: #263238;
+      --white: #FFFFFF;
+      --radius: 14px;
+      --shadow: 0 4px 18px #DDE8E5;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--charcoal);
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.5;
+    }
+    button { font: inherit; cursor: pointer; }
+    button:focus-visible { outline: 4px solid #000000; outline-offset: 3px; }
+    .lesson-header {
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--white) 0%, var(--mist) 100%);
+      color: var(--teal);
+    }
+    .header-inner, .stage { max-width: 980px; margin: 0 auto; }
+    h1, h2, h3 { line-height: 1.2; }
+    h1 { margin: 0; font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 22px; }
+    .progress-rail {
+      display: flex;
+      align-items: flex-start;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 0 0;
+      align-items: flex-start;
+    }
+    .rail-step { display: flex; min-width: 0; flex: 1; align-items: center; }
+    .rail-step:last-child { flex: 0 0 auto; }
+    .dot {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border: 2px solid var(--seafoam);
+      border-radius: 50%;
+      background: var(--mist);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .rail-step.active .dot, .rail-step.complete .dot {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: var(--white);
+    }
+    .rail-label { margin-left: 9px; color: var(--charcoal); font-size: 16px; font-weight: 700; }
+    .connector { height: 2px; min-width: 18px; flex: 1; margin: 0 12px; background: var(--mist); }
+    .stage { position: relative; height: 480px; overflow: hidden; padding: 26px 28px 0; }
+    .panel { position: absolute; inset: 26px 28px 0; display: none; animation: rise .3s ease-out; }
+    .panel.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .panel-title { margin: 0; color: var(--teal); font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 24px; }
+    .panel-sub { max-width: 720px; margin: 4px 0 14px; font-size: 17px; }
+    .response-instruction { max-width: none; }
+    .section-label { margin: 18px 0 8px; color: var(--teal); font-size: 17px; font-weight: 700; }
+    .reflection-card {
+      padding: 18px;
+      border: 2px solid var(--teal);
+      border-radius: var(--radius);
+      background: var(--mist);
+    }
+    .reflection-card h3 { margin: 0 0 5px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .reflection-card p { margin: 0 0 10px; font-size: 16px; }
+    .purpose-intro { margin-top: 18px; }
+    .question-card { background: var(--mist); }
+    .question-card p { margin: 0; font-size: 24px; line-height: 1.35; font-weight: 700; }
+    .response-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .purpose-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .purpose-grid .response-card { padding: 12px 14px; }
+    .purpose-grid .response-card h3 { font-size: 17px; }
+    .purpose-grid .response-card p { font-size: 15px; }
+    .response-card {
+      padding: 15px 16px;
+      border: 2px solid var(--mist);
+      border-left: 7px solid var(--seafoam);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .response-card h3 { margin: 0 0 5px; color: var(--teal); font-family: Cambria, serif; font-size: 18px; }
+    .response-card p { margin: 0; font-size: 16px; }
+    .nav-controls {
+      display: flex;
+      max-width: 980px;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 28px 4px;
+      border-top: 1px solid var(--mist);
+    }
+    .btn {
+      min-width: 120px;
+      padding: 11px 22px;
+      border: 2px solid var(--teal);
+      border-radius: 9px;
+      background: var(--white);
+      color: var(--teal);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .btn:hover:not(:disabled) { background: var(--mist); }
+    .btn.primary { border-color: var(--teal); background: var(--teal); color: var(--white); }
+    .btn.primary:hover:not(:disabled) { border-color: var(--seafoam); background: var(--seafoam); color: var(--teal); }
+    .btn:disabled { cursor: not-allowed; opacity: .55; }
+    .step-counter { color: var(--teal); font-size: 16px; font-weight: 700; letter-spacing: .05em; }
+
+    @media (max-width: 700px) {
+      .lesson-header { padding: 12px 18px; }
+      .progress-rail { align-items: flex-start; }
+      .rail-label { display: none; }
+      .connector { margin: 19px 6px 0; }
+      .stage { height: auto; min-height: 0; overflow: visible; }
+      .panel { position: static; }
+      .response-grid { grid-template-columns: 1fr; }
+      .question-card p { font-size: 24px; }
+      .nav-controls { flex-wrap: wrap; padding: 18px 18px 4px; }
+      .step-counter { order: -1; width: 100%; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="lesson-header">
+    <div class="header-inner">
+      <h1>Opening Reflection</h1>
+    </div>
+    <nav class="progress-rail" aria-label="Lesson progress">
+      <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Why reflect">1</button><span class="rail-label">Why reflect</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Reflection">2</button><span class="rail-label">Reflection</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Common challenges">3</button><span class="rail-label">Common challenges</span></div>
+    </nav>
+  </header>
+
+  <main class="stage" id="stage" tabindex="-1">
+    <section class="panel active" aria-labelledby="title-0">
+      <h2 class="panel-title" id="title-0">Your starting point</h2>
+      <div class="reflection-card purpose-intro">
+        <h3>Why begin with reflection?</h3>
+        <p>Your answer gives you a personal starting point. Keep it in mind as you move through the course: the modules that follow will help you understand the challenge, choose practical tools, and build a healthier way to manage your workload.</p>
+      </div>
+      <p class="section-label">The course journey</p>
+      <div class="response-grid purpose-grid">
+        <article class="response-card"><h3>Module 1: Foundations</h3><p>Understand how time management and prioritization work together, and recognize patterns that affect your focus and capacity.</p></article>
+        <article class="response-card"><h3>Module 2: Prioritization tools</h3><p>Apply practical tools to decide what deserves your time based on importance, urgency, and impact.</p></article>
+        <article class="response-card"><h3>Module 3: Sustainable workload</h3><p>Recognize the connection between workload, overcommitment, and burnout, then identify ways to protect your capacity.</p></article>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="title-1">
+      <h2 class="panel-title" id="title-1">Opening reflection</h2>
+      <p class="panel-sub">Pause and consider your own experience before moving on.</p>
+      <div class="reflection-card question-card">
+        <p>What would you say is your greatest challenge when trying to effectively manage your time while balancing your workload?</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="title-2">
+      <h2 class="panel-title" id="title-2">Common workload challenges</h2>
+      <p class="panel-sub response-instruction">You may have thought of something specific to your role. Here are a few challenges many people experience when balancing their workload.</p>
+      <div class="response-grid">
+        <article class="response-card"><h3>Task prioritization</h3><p>Deciding which tasks deserve your attention first when several responsibilities compete for your time.</p></article>
+        <article class="response-card"><h3>Setting boundaries</h3><p>Communicating your availability, capacity, and limits so your workload remains manageable.</p></article>
+        <article class="response-card"><h3>External factors: organizational culture</h3><p>Recognizing how workplace expectations, norms, and systems can influence workload and capacity.</p></article>
+        <article class="response-card"><h3>Saying no and taking regular breaks</h3><p>Declining requests that exceed your capacity and pausing to protect your focus and energy.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <div class="nav-controls">
+    <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+    <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 3</span>
+    <button class="btn primary" id="nextBtn" type="button">Next →</button>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+    })();
+  </script>
+</body>
+</html>
