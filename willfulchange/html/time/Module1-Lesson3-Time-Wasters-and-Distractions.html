@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 3: Time Wasters and Distractions</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/category-sorter.css">
+  <style>
+    /* Lesson-specific layout and interaction styling. */
+    .foundation-layout { display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: stretch; }
+    .feedback-card {
+      margin-top: 12px;
+      padding: 14px 16px;
+      border: 2px solid var(--tangerine);
+      border-radius: var(--radius);
+      background: var(--ivory);
+      color: var(--charcoal);
+    }
+    .feedback-card[hidden] { display: none; }
+    .feedback-card h3 { margin: 0 0 3px; color: var(--teal); font-family: Cambria, serif; font-size: 18px; }
+    .feedback-card p { margin: 0; font-size: 16px; }
+
+    .reflection-card { background: var(--pale-mist); }
+    .category-flip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .category-flip-grid tm-flip-card {
+      --tm-flip-card-height: 150px;
+      --tm-flip-card-padding: 14px;
+      --tm-flip-card-title-size: 18px;
+      --tm-flip-card-text-size: 15px;
+    }
+    .category-flip-grid .tm-flip-card__front .tm-flip-card__text { display: none; }
+    .category-card {
+      grid-column: 1 / -1;
+      min-height: 150px;
+      padding: 14px;
+    }
+    .category-card h3 { margin: 0 0 5px; font-size: 18px; }
+    .category-card p { margin: 0; font-size: 15px; }
+    .panel[data-panel="2"] { overflow-y: auto; padding-right: 6px; }
+    .strategy-flip-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .strategy-flip-grid tm-flip-card {
+      --tm-flip-card-height: 170px;
+      --tm-flip-card-padding: 14px;
+      --tm-flip-card-title-size: 18px;
+      --tm-flip-card-text-size: 15px;
+    }
+
+    @media (max-width: 700px) {
+      .foundation-layout, .category-flip-grid, .strategy-flip-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner">
+        <h1>Lesson 3: Time Wasters and Distractions</h1>
+      </div>
+      <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+        <div class="rail-step active" data-step="0"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: What is a time waster">1</button><span class="rail-label">What is a time waster?</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="1"><button class="dot" type="button" aria-label="Go to step 2: Errand, habit, or task">2</button><span class="rail-label">Errand, habit, or task</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="2"><button class="dot" type="button" aria-label="Go to step 3: Exercise">3</button><span class="rail-label">Exercise</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Strategies">4</button><span class="rail-label">Strategies</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">What is a time waster?</h2>
+        <p class="panel-sub">A time waster drains valuable time without contributing meaningful returns to productivity, effectiveness, or fulfillment.</p>
+        <div class="foundation-layout">
+          <div class="image-slot filled"><img src="images/module1-lesson-4-1.png" alt="Illustration of a focused workday desk with a clear priority and scattered low-value distractions pulling attention away."></div>
+          <div class="reflection-card"><h3>Check the return</h3><p>Some activities are necessary but still deserve a time check. Ask whether the activity contributes meaningful progress and whether its value justifies the time it receives.</p></div>
+        </div>
+        <p class="section-label">Key idea</p>
+        <p class="panel-sub">Time wasters can hide inside ordinary errands, habits, and tasks. The next step is to recognize the pattern.</p>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Errand, habit, or task?</h2>
+        <p class="panel-sub">A time waster may appear as an errand, a habit, a task, or more than one category.</p>
+        <p class="section-label">Click the flip cards to uncover what each category means</p>
+        <div class="category-flip-grid" role="group" aria-label="Time-waster category definitions">
+          <tm-flip-card
+            title="Errand"
+            guidance="A minor, routine activity that takes time but may not directly contribute to your primary goals.">
+          </tm-flip-card>
+          <tm-flip-card
+            title="Habit"
+            guidance="A repetitive behavior or routine that can become automatic, often occurring without conscious thought.">
+          </tm-flip-card>
+          <tm-flip-card
+            title="Task"
+            guidance="A specific action or responsibility that requires time and effort but may not align with your priorities.">
+          </tm-flip-card>
+          <article class="card definition-card category-card">
+            <h3>More than one</h3>
+            <p>The same activity may fit more than one category. Repeatedly checking email, for example, can be both a habit and a task.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Sort the time wasters</h2>
+        <p class="panel-sub">Drag each item into the category where it belongs. On a touch screen or keyboard, select an item and then choose a category.</p>
+        <div class="sorter-content">
+          <tm-category-sorter aria-label="Sort time wasters into categories">
+              <div class="category-sorter__items" data-category-sorter-items aria-label="Time-waster items">
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="emails" data-category="habit">
+                  <h3>Email Overload</h3>
+                  <p>Spending time checking, reading, and responding to emails.</p>
+                </article>
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="data-entry" data-category="task">
+                  <h3>Manual Data Entry</h3>
+                  <p>Spending time manually entering data into spreadsheets or reports.</p>
+                </article>
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="signatures" data-category="errand">
+                  <h3>Multiple Signatures for Routine Approvals</h3>
+                  <p>Requiring multiple managerial signatures for routine decisions.</p>
+                </article>
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="meetings" data-category="task habit">
+                  <h3>Meeting Madness</h3>
+                  <p>Unproductive or unnecessary meetings.</p>
+                </article>
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="perfectionism" data-category="habit">
+                  <h3>Perfectionism Trap</h3>
+                  <p>Spending time perfecting tasks.</p>
+                </article>
+              </div>
+              <div class="category-sorter__categories" data-category-sorter-categories role="group" aria-label="Time-waster categories">
+                <section class="category-sorter__category" data-category-sorter-category="errand" tabindex="0" aria-label="Errand category. Drop items here.">
+                  <h3>Errand</h3>
+                  <div class="category-sorter__category-items" data-category-sorter-category-items></div>
+                </section>
+                <section class="category-sorter__category" data-category-sorter-category="habit" tabindex="0" aria-label="Habit category. Drop items here.">
+                  <h3>Habit</h3>
+                  <div class="category-sorter__category-items" data-category-sorter-category-items></div>
+                </section>
+                <section class="category-sorter__category" data-category-sorter-category="task" tabindex="0" aria-label="Task category. Drop items here.">
+                  <h3>Task</h3>
+                  <div class="category-sorter__category-items" data-category-sorter-category-items></div>
+                </section>
+              </div>
+              <p class="category-sorter__status" data-category-sorter-status aria-live="polite">Start by sorting one time waster.</p>
+            </tm-category-sorter>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="3" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Why time wasters matter—and what to do</h2>
+        <p class="panel-sub">Understand why the time waster matters and learn how to address it effectively.</p>
+        <div class="strategy-flip-grid" role="group" aria-label="Time-waster strategies">
+          <tm-flip-card
+            title="Email Overload"
+            summary="Frequent checking fragments attention and interrupts focused work."
+            guidance="Reevaluate response expectations, limit email checks, use filters, and prioritize urgent messages.">
+          </tm-flip-card>
+          <tm-flip-card
+            title="Manual Data Entry"
+            summary="Repetitive manual work consumes time that could support higher-value responsibilities."
+            guidance="Review the process and explore automated tools that can reduce repetitive work.">
+          </tm-flip-card>
+          <tm-flip-card
+            title="Multiple Signatures for Routine Approvals"
+            summary="Extra approvals delay routine decisions and create unnecessary paperwork."
+            guidance="Use approval thresholds, digitize approvals, and support risk-based decisions.">
+          </tm-flip-card>
+          <tm-flip-card
+            title="Meeting Madness"
+            summary="Unproductive or unnecessary meetings take time away from meaningful work."
+            guidance="Confirm attendance is necessary, use a clear agenda, and protect meeting-free zones.">
+          </tm-flip-card>
+          <tm-flip-card
+            title="Perfectionism Trap"
+            summary="Perfecting work that already meets the need uses disproportionate time."
+            guidance="Prioritize progress over perfection and set a realistic standard for the task.">
+          </tm-flip-card>
+        </div>
+      </section>
+
+    </main>
+    <div class="nav-controls">
+        <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+        <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
+        <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+
+    })();
+  </script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/category-sorter.js" defer></script>
+</body>
+</html>

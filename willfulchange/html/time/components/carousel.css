@@ -1,0 +1,129 @@
+tm-carousel {
+  position: relative;
+  display: block;
+  min-width: 0;
+  padding: 0 50px 48px;
+  outline: none;
+}
+
+.tm-carousel__item {
+  min-height: var(--tm-carousel-height, 190px);
+  padding: var(--tm-carousel-padding, 20px);
+  border: 2px solid var(--teal);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--charcoal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.tm-carousel__item[hidden] {
+  display: none;
+}
+
+.tm-carousel__item h3 {
+  margin: 0 0 8px;
+  color: var(--teal);
+  font-family: Cambria, 'Times New Roman', Georgia, serif;
+  font-size: var(--tm-carousel-title-size, 21px);
+}
+
+.tm-carousel__item p {
+  margin: 0;
+  font-size: var(--tm-carousel-text-size, 16px);
+}
+
+.tm-carousel__controls {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 48px;
+  left: 0;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.tm-carousel__arrow,
+.tm-carousel__dot {
+  border: 2px solid var(--teal);
+  background: var(--white);
+  color: var(--teal);
+  cursor: pointer;
+}
+
+.tm-carousel__arrow {
+  width: 40px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1;
+  pointer-events: auto;
+}
+
+.tm-carousel__dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+.tm-carousel__dots {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 12px);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.tm-carousel__dot.is-active {
+  background: var(--pale-mist);
+  box-shadow: inset 0 0 0 3px var(--teal);
+}
+
+.tm-carousel__arrow:hover:not(:disabled),
+.tm-carousel__dot:hover {
+  background: var(--pale-mist);
+}
+
+.tm-carousel__arrow:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.tm-carousel__arrow:focus-visible,
+.tm-carousel__dot:focus-visible,
+tm-carousel:focus-visible {
+  outline: 3px solid var(--tangerine);
+  outline-offset: 3px;
+}
+
+.tm-carousel__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  tm-carousel { padding-right: 42px; padding-left: 42px; }
+  .tm-carousel__item { min-height: var(--tm-carousel-mobile-height, 170px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm-carousel__item { scroll-behavior: auto; }
+}
