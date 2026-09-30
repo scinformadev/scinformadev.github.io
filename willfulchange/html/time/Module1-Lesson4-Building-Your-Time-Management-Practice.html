@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 4: Building Your Time-Management Practice</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    .factor-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .factor-grid tm-flip-card {
+      --tm-flip-card-height: 220px;
+      --tm-flip-card-padding: 13px;
+      --tm-flip-card-title-size: 17px;
+      --tm-flip-card-text-size: 14px;
+    }
+    .factor-grid .tm-flip-card__front .tm-flip-card__text { display: none; }
+    .panel[data-panel="0"],
+    .panel[data-panel="1"],
+    .panel[data-panel="2"],
+    .panel[data-panel="3"] { overflow-y: auto; padding-right: 6px; }
+    @media (max-width: 860px) {
+      .factor-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px) {
+      .factor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner">
+        <h1>Lesson 4: Building Your Time-Management Practice</h1>
+      </div>
+      <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+        <div class="rail-step active" data-step="0"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Strategies 1 through 5">1</button><span class="rail-label">Strategies 1–5</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="1"><button class="dot" type="button" aria-label="Go to step 2: Strategies 6 through 10">2</button><span class="rail-label">Strategies 6–10</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="2"><button class="dot" type="button" aria-label="Go to step 3: Check strategies 1 through 5">3</button><span class="rail-label">Check strategies 1–5</span><span class="connector"></span></div>
+        <div class="rail-step" data-step="3"><button class="dot" type="button" aria-label="Go to step 4: Check strategies 6 through 10">4</button><span class="rail-label">Check strategies 6–10</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Strategies 1–5</h2>
+        <p class="panel-sub">Flip each card to explore five strategies for effective time management and prioritization.</p>
+        <div class="factor-grid" role="group" aria-label="Time-management strategies one through five">
+          <tm-flip-card title="Self-awareness" guidance="Notice your energy levels, peak productivity times, and preferences. Schedule complex work during your strongest hours when possible."></tm-flip-card>
+          <tm-flip-card title="Goal clarity" guidance="Define short- and long-term goals, then prioritize tasks that support them. For a research paper, make time for research, writing, and revision."></tm-flip-card>
+          <tm-flip-card title="Task prioritization" guidance="Distinguish urgent work from important work and categorize tasks accordingly. Give high-impact activities focused attention."></tm-flip-card>
+          <tm-flip-card title="Time tracking" guidance="Track how long recurring tasks take so you can improve estimates, notice patterns, and identify opportunities to use technology or automation."></tm-flip-card>
+          <tm-flip-card title="Setting boundaries" guidance="Define and communicate work hours, open office hours, and personal time. During protected focus time, reduce notifications and avoidable interruptions."></tm-flip-card>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Check strategies 1–5</h2>
+        <p class="panel-sub">Reorder the shuffled examples in the right column so they line up with the correct strategies.</p>
+        <tm-matching-exercise aria-label="Match the five time-management strategies with their examples">
+          <script type="application/json">
+            [
+              {"strategy":"Self-awareness","example":"A manager schedules a complex planning task during the morning when their energy and concentration are highest."},
+              {"strategy":"Goal clarity","example":"A team working toward a research report schedules time for research, writing, and revision instead of treating every task as equal."},
+              {"strategy":"Task prioritization","example":"A supervisor separates urgent requests from important work and starts with the high-impact task that most supports the team goal."},
+              {"strategy":"Time tracking","example":"An employee records how long manual email marketing takes and discovers that a tool could automate part of the process."},
+              {"strategy":"Setting boundaries","example":"A team lead blocks an afternoon focus period, communicates the availability window, and turns off avoidable notifications."}
+            ]
+          </script>
+        </tm-matching-exercise>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Strategies 6–10</h2>
+        <p class="panel-sub">Flip each card to explore five more strategies for building a sustainable time-management practice.</p>
+        <div class="factor-grid" role="group" aria-label="Time-management strategies six through ten">
+          <tm-flip-card title="Delegation" guidance="Review your responsibilities and ask whether someone else can complete a task effectively. Delegation can also create a useful development opportunity."></tm-flip-card>
+          <tm-flip-card title="Avoid overcommitment" guidance="Evaluate workload and commitments realistically. Practice saying no when needed and advocate clearly for your capacity with teammates or supervisors."></tm-flip-card>
+          <tm-flip-card title="Self-care and well-being" guidance="Build in intentional breaks from your workspace and screen. Rest supports sustainable attention and reduces the cost of carrying too much for too long."></tm-flip-card>
+          <tm-flip-card title="Flexibility and adaptability" guidance="Set realistic expectations and adjust plans when unforeseen circumstances change what is possible or most important."></tm-flip-card>
+          <tm-flip-card title="Continuous improvement" guidance="Review how your time-management approach is working, identify one area for improvement, and make a deliberate adjustment."></tm-flip-card>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="3" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Check strategies 6–10</h2>
+        <p class="panel-sub">Reorder the shuffled examples in the right column so they line up with the correct strategies.</p>
+        <tm-matching-exercise aria-label="Match strategies six through ten with their examples">
+          <script type="application/json">
+            [
+              {"strategy":"Delegation","example":"A manager gives an experienced employee a routine administrative task with a clear result and deadline so the manager can focus on higher-impact work."},
+              {"strategy":"Avoid overcommitment","example":"When a supervisor adds a new request, an employee explains what is already due and asks which commitment should move."},
+              {"strategy":"Self-care and well-being","example":"After sustained screen work, a team member takes a planned break away from the workspace before returning to the next task."},
+              {"strategy":"Flexibility and adaptability","example":"An unexpected deadline changes the plan, so the employee moves a lower-priority task and focuses on the new requirement."},
+              {"strategy":"Continuous improvement","example":"At the end of the week, a leader reviews what caused delays and changes the next week’s planning approach."}
+            ]
+          </script>
+        </tm-matching-exercise>
+      </section>
+    </main>
+
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')]
+        .sort((a, b) => Number(a.dataset.panel) - Number(b.dataset.panel));
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0);
+    })();
+  </script>
+</body>
+</html>
