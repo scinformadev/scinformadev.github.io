@@ -4,148 +4,188 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lesson 1: Burnout at a Glance</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
   <style>
-    :root { --teal:#174A5B; --seafoam:#77BFA3; --tangerine:#F4A261; --ivory:#FBF7F0; --mist:#DDE8E5; --charcoal:#263238; --white:#FFFFFF; --radius:14px; --shadow:0 4px 18px #DDE8E5; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--white); color:var(--charcoal); font-family:'Calibri','Segoe UI',Arial,sans-serif; font-size:17px; line-height:1.5; }
-    button { font:inherit; cursor:pointer; }
-    button:focus-visible { outline:4px solid #000000; outline-offset:3px; }
-    .app { min-height:100vh; }
-    .lesson-header { padding:12px 28px; background:linear-gradient(135deg,var(--white) 0%,var(--mist) 100%); color:var(--teal); }
-    .header-inner,.stage { max-width:980px; margin:0 auto; }
-    h1,h2,h3 { line-height:1.2; }
-    h1 { margin:0; font-family:Cambria,'Times New Roman',Georgia,serif; font-size:22px; }
-    .progress-rail { display:flex; max-width:980px; margin:0 auto; padding:18px 0 0; align-items:flex-start; }
-    .rail-step { display:flex; min-width:0; flex:1; align-items:center; }
-    .rail-step:last-child { flex:0 0 auto; }
-    .dot { width:32px; height:32px; flex:0 0 32px; border:2px solid var(--seafoam); border-radius:50%; background:var(--mist); color:var(--teal); font-weight:700; font-size:16px; }
-    .rail-step.active .dot,.rail-step.complete .dot { border-color:var(--teal); background:var(--teal); color:var(--white); }
-    .rail-step.complete .dot::after { content:' ✓'; }
-    .rail-label { margin-left:9px; color:var(--charcoal); font-size:16px; font-weight:700; }
-    .connector { height:2px; min-width:18px; flex:1; margin:0 12px; background:var(--mist); }
-    .stage { position:relative; height:480px; overflow:hidden; padding:26px 28px 0; }
-    .panel { position:absolute; inset:26px 28px 0; display:none; animation:rise .3s ease-out; }
-    .panel.active { display:block; }
-    @keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    .panel-title { margin:0; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:24px; }
-    .panel-sub { max-width:760px; margin:4px 0 14px; font-size:17px; }
-    .foundation-layout,.practice-layout { display:grid; grid-template-columns:180px 1fr; gap:16px; align-items:stretch; }
-    .image-slot { display:flex; height:190px; align-items:center; justify-content:center; padding:0; border:2px solid var(--tangerine); border-radius:var(--radius); background:var(--ivory); color:var(--teal); text-align:center; font-size:16px; font-weight:700; overflow:hidden; }
-    .image-slot img { width:100%; height:100%; display:block; object-fit:cover; }
-    .image-slot .placeholder { padding:16px; }
-    .callout { margin-top:14px; padding:15px 18px; border-left:7px solid var(--seafoam); border-radius:12px; background:var(--mist); }
-    .callout.accent { border-left-color:var(--tangerine); background:var(--ivory); }
-    .callout h3 { margin:0 0 4px; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:20px; }
-    .callout p { margin:0; font-size:16px; }
-    .choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-    .choice { min-height:58px; padding:13px 16px; border:2px solid var(--teal); border-radius:12px; background:var(--white); color:var(--teal); text-align:left; transition:transform .15s ease,background .15s ease; }
-    .choice:hover,.choice.selected { transform:translateY(-2px); background:var(--mist); border-color:var(--seafoam); }
-    .choice strong { display:block; padding:0; font-size:17px; }
-    .feedback-card { margin-top:12px; padding:14px 16px; border:2px solid var(--tangerine); border-radius:var(--radius); background:var(--ivory); color:var(--charcoal); }
-    .feedback-card[hidden] { display:none; }
-    .feedback-card h3 { margin:0 0 3px; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:18px; }
-    .feedback-card p { margin:0; font-size:16px; }
-    .group-heading { margin:0 0 8px; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:20px; }
-    .systemic-group { margin-top:14px; }
-    .important-note { margin-top:14px; padding:13px 16px; border:2px solid var(--tangerine); border-radius:12px; background:var(--ivory); font-size:16px; }
-    .important-note strong { color:var(--teal); }
-    .nav-controls { display:flex; max-width:980px; margin:0 auto; align-items:center; justify-content:space-between; gap:16px; padding:18px 28px 4px; border-top:1px solid var(--mist); }
-    .btn { min-width:120px; padding:11px 22px; border:2px solid var(--teal); border-radius:9px; background:var(--white); color:var(--teal); font-size:16px; font-weight:700; }
-    .btn:hover:not(:disabled) { background:var(--mist); }
-    .btn.primary { border-color:var(--teal); background:var(--teal); color:var(--white); }
-    .btn.primary:hover:not(:disabled) { border-color:var(--seafoam); background:var(--seafoam); color:var(--teal); }
-    .btn:disabled { cursor:not-allowed; opacity:.55; }
-    .step-counter { color:var(--teal); font-size:16px; font-weight:700; letter-spacing:.05em; }
-    @media (max-width:700px) {
-      .lesson-header { padding:12px 18px; }
-      .progress-rail { padding:18px 18px 0; }
-      .rail-label { display:none; }
-      .connector { margin:19px 6px 0; }
-      .foundation-layout,.practice-layout,.choice-grid { grid-template-columns:1fr; }
-      .stage { height:auto; min-height:0; overflow:visible; padding:20px 18px; }
-      .panel { position:static; }
-      .nav-controls { flex-wrap:wrap; padding:18px 18px 4px; }
-      .step-counter { order:-1; width:100%; text-align:center; }
+    .video-definition-layout { display: grid; grid-template-columns: 1fr 1fr; height: 238px; gap: 16px; align-items: stretch; }
+    .video-slot { position: relative; height: 238px; overflow: hidden; border: 2px solid var(--tangerine); border-radius: var(--radius); background: var(--ivory); text-align: center; }
+    .video-thumbnail { position: relative; height: 100%; }
+    .video-thumbnail img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .video-thumbnail::after { content: ''; position: absolute; inset: 0; background: rgba(23, 74, 91, .38); pointer-events: none; }
+    .video-overlay { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; color: var(--white); }
+    .video-overlay h3 { margin: 0 0 7px; font-family: Cambria, serif; font-size: 22px; }
+    .video-overlay p { margin: 0 0 14px; }
+    .video-link { display: inline-block; padding: 10px 16px; border-radius: 9px; background: var(--white); color: var(--teal); font-weight: 700; text-decoration: none; }
+    .video-link:hover { background: var(--seafoam); color: var(--teal); }
+    .video-link:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+    .definition-card { height: 238px; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: 17px 18px; }
+    .reason-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .reason-grid tm-flip-card { --tm-flip-card-height: 148px; --tm-flip-card-padding: 15px; --tm-flip-card-title-size: 18px; --tm-flip-card-text-size: 15px; }
+    .signs-panel { overflow-y: auto; padding-right: 6px; }
+    .signs-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .sign-group h3 { margin: 0 0 8px; color: var(--teal); font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 20px; }
+    .sign-list { margin: 0; padding: 14px 18px 14px 36px; border-left: 7px solid var(--seafoam); border-radius: 12px; background: var(--pale-mist); }
+    .sign-list li { padding: 5px 0; color: var(--charcoal); font-size: 17px; }
+    .sign-list li + li { border-top: 1px solid rgba(119, 191, 163, .35); }
+    .check-instruction { margin-bottom: 12px; }
+    .check-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .check-option { display: flex; min-height: 58px; align-items: center; gap: 10px; padding: 12px 14px; border: 2px solid var(--teal); border-radius: 12px; background: var(--white); color: var(--charcoal); cursor: pointer; }
+    .check-option:hover, .check-option:has(input:focus-visible) { background: var(--pale-mist); }
+    .check-option input { width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--teal); }
+    .check-option span { font-size: 16px; }
+    .check-actions { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+    .check-feedback { margin-top: 12px; padding: 13px 16px; border: 2px solid var(--seafoam); border-radius: var(--radius); background: var(--pale-mist); }
+    .check-feedback[hidden] { display: none; }
+    .check-feedback p { margin: 0; font-size: 16px; }
+    @media (max-width: 700px) {
+      .video-definition-layout, .reason-grid, .signs-layout, .check-grid { grid-template-columns: 1fr; }
+      .video-definition-layout { height: auto; }
+      .video-slot, .definition-card { height: auto; min-height: 238px; }
+      .signs-panel { overflow: visible; }
     }
-    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
   </style>
 </head>
 <body>
   <div class="app">
-    <header class="lesson-header"><div class="header-inner"><h1>Lesson 1: Burnout at a Glance</h1></div></header>
-    <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
-      <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The definition">1</button><span class="rail-label">The definition</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Common reasons">2</button><span class="rail-label">Common reasons</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Systemic contributors">3</button><span class="rail-label">Systemic contributors</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: A wider view">4</button><span class="rail-label">A wider view</span></div>
-    </nav>
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 1: Burnout at a Glance</h1></div>
+      <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Burnout at a glance">1</button><span class="rail-label">Burnout at a glance</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Common reasons">2</button><span class="rail-label">Common reasons</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Signs of burnout">3</button><span class="rail-label">Signs of burnout</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Learning check">4</button><span class="rail-label">Learning check</span></div>
+      </nav>
+    </header>
+
     <main class="stage" id="stage" tabindex="-1">
       <section class="panel active" data-panel="0" aria-labelledby="title-0">
-        <h2 class="panel-title" id="title-0">The definition</h2>
-        <p class="panel-sub">Burnout is commonly associated with chronic, unmanaged stress.</p>
-        <div class="foundation-layout">
-          <div class="image-slot"><img src="module3-lesson-1-1.png" alt="A desk with a calendar, clock, notebook, and three paper stacks showing workload increasing from manageable to overwhelming." onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true"><span class="placeholder">Image slot<br>module3-lesson-1-1.png</span></div>
-          <div class="callout accent"><h3>Burnout at a glance</h3><p>Burnout is complex and may result from a combination of internal and external factors. It does not always appear suddenly. Many people notice a gradual change in energy, motivation, health, and connection to their work.</p></div>
+        <h2 class="panel-title" id="title-0">Burnout at a glance</h2>
+        <p class="panel-sub">Watch the introductory video, then review the definition.</p>
+        <div class="video-definition-layout">
+          <div class="video-slot" aria-label="Watch the introduction to burnout">
+            <div class="video-thumbnail">
+              <img src="images/module3-lesson-1-1.png" alt="A desk with a calendar, clock, notebook, and paper stacks showing workload increasing from manageable to overwhelming.">
+              <div class="video-overlay">
+                <h3>Watch the video</h3>
+                <p>Introduction to burnout</p>
+                <a class="video-link" href="https://www.youtube.com/watch?v=3FMVECPf5is&amp;t=26s" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a>
+              </div>
+            </div>
+          </div>
+          <article class="card definition-card">
+            <h3>What is burnout?</h3>
+            <p>Burnout is commonly associated with chronic, unmanaged stress. It is complex and may result from a combination of internal and external factors. It does not always appear suddenly; many people notice a gradual change in energy, motivation, health, and connection to their work.</p>
+          </article>
         </div>
       </section>
 
       <section class="panel" data-panel="1" aria-labelledby="title-1">
-        <h2 class="panel-title" id="title-1">Common reasons</h2>
-        <p class="panel-sub">Select a card to see more.</p>
-        <div class="choice-grid" role="group" aria-label="Common reasons for burnout">
-          <button class="choice" type="button" data-feedback-id="work-stress"><strong>Chronic work-related stress</strong></button>
-          <button class="choice" type="button" data-feedback-id="culture"><strong>Toxic or unsupportive workplace culture</strong></button>
-          <button class="choice" type="button" data-feedback-id="unfulfilled"><strong>Feeling unfulfilled or dissatisfied</strong></button>
-          <button class="choice" type="button" data-feedback-id="inequities"><strong>Workplace inequities and trauma</strong></button>
-          <button class="choice" type="button" data-feedback-id="personal"><strong>Personal factors</strong></button>
+        <h2 class="panel-title" id="title-1">Common reasons for burnout</h2>
+        <p class="panel-sub">Flip each card to review examples of work-related, personal, and systemic contributors.</p>
+        <div class="reason-grid" role="group" aria-label="Common reasons for burnout">
+          <tm-flip-card title="Chronic work-related stress" summary="A heavy or unmanageable workload." guidance="Chronic work-related stress can result from a heavy or unmanageable workload."></tm-flip-card>
+          <tm-flip-card title="Workplace culture" summary="A toxic, inequitable, or unsupportive culture." guidance="A toxic, inequitable, or unsupportive workplace culture can contribute to burnout."></tm-flip-card>
+          <tm-flip-card title="Feeling unfulfilled" summary="Feeling dissatisfied with work or a career." guidance="Feeling unfulfilled or dissatisfied with work or a career can contribute to burnout."></tm-flip-card>
+          <tm-flip-card title="Workplace inequities" summary="Inequities and exposure to traumatic experiences." guidance="Workplace inequities and exposure to traumatic experiences can contribute to burnout."></tm-flip-card>
+          <tm-flip-card title="Systemic disparities" summary="Conditions that make advancement more difficult for some groups." guidance="Systemic or institutional disparities can make it more difficult for certain groups to advance."></tm-flip-card>
+          <tm-flip-card title="Personal factors" summary="Individual factors that can add pressure." guidance="Personal factors include perfectionism and poor work-life balance."></tm-flip-card>
         </div>
-        <div class="feedback-card" id="reasonsFeedback" hidden aria-live="polite"><h3 id="reasonsFeedbackTitle"></h3><p id="reasonsFeedbackText"></p></div>
       </section>
 
-      <section class="panel" data-panel="2" aria-labelledby="title-2">
-        <h2 class="panel-title" id="title-2">Systemic contributors</h2>
-        <p class="panel-sub">Select a card to see more.</p>
-        <div class="choice-grid" role="group" aria-label="Systemic contributors to burnout">
-          <button class="choice" type="button" data-feedback-id="promotion"><strong>Promotion barriers</strong></button>
-          <button class="choice" type="button" data-feedback-id="opportunities"><strong>Unequal access to opportunities</strong></button>
-          <button class="choice" type="button" data-feedback-id="bias"><strong>Implicit bias in hiring and evaluation</strong></button>
+      <section class="panel signs-panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Burnout at a glance</h2>
+        <p class="panel-sub">Burnout may include common and subtle signs. Flip each card to review the examples from the overview.</p>
+        <div class="signs-layout">
+          <section class="sign-group" aria-labelledby="common-signs-title">
+            <h3 id="common-signs-title">Signs of burnout</h3>
+            <ul class="sign-list">
+              <li>Cynicism</li>
+              <li>Irritability</li>
+              <li>Lack of motivation</li>
+              <li>Feeling ineffective</li>
+              <li>Isolation from coworkers, family, and friends</li>
+              <li>Physical illness</li>
+            </ul>
+          </section>
+          <section class="sign-group" aria-labelledby="subtle-signs-title">
+            <h3 id="subtle-signs-title">Subtle signs of burnout</h3>
+            <ul class="sign-list">
+              <li>Unending exhaustion</li>
+              <li>Trouble with sleep</li>
+              <li>Decreased productivity</li>
+              <li>Feeling detached</li>
+              <li>Neglecting self-care</li>
+              <li>Loss of joy</li>
+            </ul>
+          </section>
         </div>
-        <div class="feedback-card" id="systemicFeedback" hidden aria-live="polite"><h3 id="systemicFeedbackTitle"></h3><p id="systemicFeedbackText"></p></div>
       </section>
 
       <section class="panel" data-panel="3" aria-labelledby="title-3">
-        <h2 class="panel-title" id="title-3">A wider view</h2>
-        <p class="panel-sub">Burnout prevention also requires attention to conditions beyond individual resilience.</p>
-        <div class="practice-layout">
-          <div class="image-slot"><img src="module3-lesson-1-2.png" alt="A hand arranging blank planning cards beside a notebook, plant, cup, balance scale, and teal book." onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true"><span class="placeholder">Image slot<br>module3-lesson-1-2.png</span></div>
-          <div class="callout"><h3>Work that is sustainable</h3><p>Systemic disparities can create chronic pressure when people have less access to advancement, support, or meaningful opportunities.</p></div>
-        </div>
-        <div class="important-note"><strong>Important:</strong> Burnout should not be treated only as an individual failure to manage time. Personal practices matter, but workload, culture, fairness, resources, and organizational systems also influence whether work is sustainable.</div>
+        <h2 class="panel-title" id="title-3">Learning check</h2>
+        <p class="panel-sub check-instruction">Select the examples that were identified as common reasons for burnout.</p>
+        <form id="learningCheck">
+          <div class="check-grid">
+            <label class="check-option"><input type="checkbox" name="answer" value="stress"><span>Chronic work-related stress</span></label>
+            <label class="check-option"><input type="checkbox" name="answer" value="cynicism"><span>Cynicism</span></label>
+            <label class="check-option"><input type="checkbox" name="answer" value="culture"><span>Toxic or unsupportive workplace culture</span></label>
+            <label class="check-option"><input type="checkbox" name="answer" value="sleep"><span>Trouble with sleep</span></label>
+            <label class="check-option"><input type="checkbox" name="answer" value="systemic"><span>Systemic or institutional disparities</span></label>
+            <label class="check-option"><input type="checkbox" name="answer" value="personal"><span>Personal factors</span></label>
+          </div>
+          <div class="check-actions"><button class="btn primary" type="submit">Check answer</button><button class="btn" type="reset">Reset</button></div>
+          <div class="check-feedback" id="checkFeedback" hidden aria-live="polite"><p id="checkFeedbackText"></p></div>
+        </form>
       </section>
     </main>
+
     <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
   </div>
+
+  <script src="components/flip-card.js" defer></script>
   <script>
     (() => {
-      const panels=[...document.querySelectorAll('.panel')],steps=[...document.querySelectorAll('.rail-step')],next=document.getElementById('nextBtn'),back=document.getElementById('backBtn'),counter=document.getElementById('stepCounter'),stage=document.getElementById('stage');
-      const feedback={
-        'work-stress':['Chronic work-related stress','A heavy or unmanageable workload can contribute to burnout.'],
-        'culture':['Toxic or unsupportive workplace culture','A toxic, inequitable, or unsupportive workplace culture can contribute to burnout.'],
-        'unfulfilled':['Feeling unfulfilled or dissatisfied','Feeling unfulfilled or dissatisfied with work or a career can contribute to burnout.'],
-        'inequities':['Workplace inequities and trauma','Workplace inequities and exposure to traumatic experiences can contribute to burnout.'],
-        'personal':['Personal factors','Personal factors include perfectionism and poor work-life balance.'],
-        'promotion':['Promotion barriers','Biased promotion practices can hinder career progression, including limited representation of women and minorities in leadership positions.'],
-        'opportunities':['Unequal access to opportunities','Unequal access to high-impact projects, mentorship, and networking can limit growth and increase frustration.'],
-        'bias':['Implicit bias in hiring and evaluation','Unconscious bias can affect recruitment, performance evaluations, and promotions, including favoritism toward certain groups.']
-      };
-      let current=0;
-      function showStep(index,moveFocus=true){current=Math.max(0,Math.min(index,panels.length-1));panels.forEach((panel,i)=>{panel.classList.toggle('active',i===current);panel.setAttribute('aria-hidden',i===current?'false':'true')});steps.forEach((step,i)=>{step.classList.toggle('active',i===current);step.classList.toggle('complete',i<current);const dot=step.querySelector('.dot');if(i===current)dot.setAttribute('aria-current','step');else dot.removeAttribute('aria-current')});back.disabled=current===0;next.disabled=current===panels.length-1;counter.textContent=`STEP ${current+1} OF ${panels.length}`;if(moveFocus)stage.focus({preventScroll:true});window.scrollTo({top:0,behavior:'smooth'})}
-      function wire(selector,target,titleTarget,textTarget){document.querySelectorAll(selector).forEach(card=>card.addEventListener('click',()=>{document.querySelectorAll(selector).forEach(item=>item.classList.remove('selected'));card.classList.add('selected');const message=feedback[card.dataset.feedbackId]||['',''];titleTarget.textContent=message[0];textTarget.textContent=message[1];target.hidden=false}))}
-      steps.forEach((step,i)=>step.querySelector('.dot').addEventListener('click',()=>showStep(i)));next.addEventListener('click',()=>showStep(current+1));back.addEventListener('click',()=>showStep(current-1));
-      wire('.panel[data-panel="1"] .choice',document.getElementById('reasonsFeedback'),document.getElementById('reasonsFeedbackTitle'),document.getElementById('reasonsFeedbackText'));
-      wire('.panel[data-panel="2"] .choice',document.getElementById('systemicFeedback'),document.getElementById('systemicFeedbackTitle'),document.getElementById('systemicFeedbackText'));
-      showStep(0,false);
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      const stage = document.getElementById('stage');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => { panel.classList.toggle('active', i === current); panel.setAttribute('aria-hidden', i === current ? 'false' : 'true'); });
+        railSteps.forEach((step, i) => { step.classList.toggle('active', i === current); step.classList.toggle('complete', i < current); const dot = step.querySelector('.dot'); if (i === current) dot.setAttribute('aria-current', 'step'); else dot.removeAttribute('aria-current'); });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) stage.focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+
+      const learningCheck = document.getElementById('learningCheck');
+      const checkFeedback = document.getElementById('checkFeedback');
+      const checkFeedbackText = document.getElementById('checkFeedbackText');
+      const correctAnswers = new Set(['stress', 'culture', 'systemic', 'personal']);
+
+      learningCheck.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const selected = new Set([...learningCheck.querySelectorAll('input:checked')].map(input => input.value));
+        const correct = selected.size === correctAnswers.size && [...correctAnswers].every(answer => selected.has(answer));
+        checkFeedbackText.textContent = correct
+          ? 'Correct. Chronic work-related stress, workplace culture, systemic disparities, and personal factors are examples of common reasons for burnout.'
+          : 'Review the examples of common reasons and try again. Cynicism and trouble with sleep are signs of burnout, while chronic work-related stress, workplace culture, systemic disparities, and personal factors are common reasons.';
+        checkFeedback.hidden = false;
+      });
+
+      learningCheck.addEventListener('reset', () => { checkFeedback.hidden = true; checkFeedbackText.textContent = ''; });
+      showStep(0, false);
     })();
   </script>
 </body>

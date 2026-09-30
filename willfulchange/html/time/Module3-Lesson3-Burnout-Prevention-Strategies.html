@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 3: Burnout Prevention Strategies</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/true-false.css">
+  <style>
+    .strategy-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .strategy-grid tm-flip-card { --tm-flip-card-height: 240px; --tm-flip-card-padding: 18px; --tm-flip-card-title-size: 19px; --tm-flip-card-text-size: 15px; }
+    .strategy-grid .tm-flip-card__front .tm-flip-card__text { display: none; }
+    .visual-layout { display: grid; grid-template-columns: 190px 1fr; gap: 16px; align-items: stretch; }
+    .visual-layout .strategy-grid { align-content: start; }
+    .image-slot { height: 190px; min-height: 0; padding: 0; }
+    .panel-intro { max-width: 760px; }
+    .strategy-note { margin: 0 0 12px; padding: 12px 16px; border-left: 7px solid var(--seafoam); border-radius: 12px; background: var(--pale-mist); font-size: 16px; }
+    .strategy-note strong { color: var(--teal); }
+    .learning-check-grid { display: grid; gap: 10px; }
+    @media (max-width: 700px) {
+      .strategy-grid { grid-template-columns: 1fr; }
+      .visual-layout { grid-template-columns: 1fr; }
+      .image-slot { height: 190px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header"><div class="header-inner"><h1>Lesson 3: Burnout Prevention Strategies</h1></div></header>
+    <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+      <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Recognize stress and protect capacity">1</button><span class="rail-label">Protect capacity</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Sustain your energy">2</button><span class="rail-label">Sustain energy</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Learning check">3</button><span class="rail-label">Learning check</span></div>
+    </nav>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Recognize and respond to signs of stress</h2>
+        <p class="panel-sub panel-intro">Prevention involves recognizing stress early and responding with a strategy that supports your well-being.</p>
+        <div class="visual-layout">
+          <div class="image-slot"><img src="images/module3-lesson-4-1.png" alt="Paper-cut collage of a professional pausing at a desk and setting a healthy boundary."></div>
+          <div>
+            <div class="strategy-grid" role="group" aria-label="Strategies for recognizing stress and protecting capacity">
+              <tm-flip-card title="Recognize and respond to signs of stress" guidance="Stress may show up as an upset stomach, cold or clammy hands, headaches, clenched teeth, or tense muscles. Notice signals early and respond with a walk, journaling, mindfulness, or support."></tm-flip-card>
+              <tm-flip-card title="Set boundaries" guidance="Boundaries communicate what is acceptable, appropriate, and comfortable. Examples include work hours, focus time, response expectations, and asking for clarity when a request conflicts with existing priorities."></tm-flip-card>
+              <tm-flip-card title="Develop a work-life balance" guidance="Time outside of work can restore energy, support relationships, and improve motivation when you return to your responsibilities."></tm-flip-card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Sustain your energy</h2>
+        <p class="panel-sub">Open each strategy to review how it can support physical, mental, and social well-being.</p>
+        <div class="visual-layout">
+          <div class="image-slot"><img src="images/module3-lesson-4-2.png" alt="Paper-cut collage of colleagues taking a restorative break together and offering support."></div>
+          <div>
+            <div class="strategy-grid" role="group" aria-label="Strategies for sustaining energy">
+              <tm-flip-card title="Prioritize self-care" guidance="Self-care may include balanced meals, hydration, enough sleep, time with friends, reading, podcasts, or activities that bring joy and stimulate your mind. Make it a priority rather than an afterthought."></tm-flip-card>
+              <tm-flip-card title="Take regular breaks" guidance="Short breaks can help you relax, recharge, and create space for mindfulness. Longer breaks, personal leave, or vacation can help you return with a fresh perspective. Breaks support sustainable performance."></tm-flip-card>
+              <tm-flip-card title="Maintain a support network" guidance="A support network may include family, friends, coworkers, supervisors, mentors, or other trusted people. They can offer understanding, encouragement, perspective, and practical help."></tm-flip-card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Learning check</h2>
+        <p class="panel-sub">Decide whether each statement is true or false based on the prevention strategies.</p>
+        <div class="learning-check-grid" aria-label="Burnout prevention true or false questions">
+          <tm-true-false statement="Recognizing your body’s signals early can create an opportunity to respond with a useful strategy." answer="true" explanation="Early recognition can help you respond with a useful strategy, such as taking a walk, writing in a journal, practicing mindfulness, or asking for support."></tm-true-false>
+          <tm-true-false statement="Boundaries communicate what is acceptable, appropriate, and comfortable." answer="true" explanation="Boundaries are personal limits that help other people understand what you need and expect."></tm-true-false>
+          <tm-true-false statement="Taking breaks is evidence that you are avoiding work." answer="false" explanation="Breaks are part of sustainable performance and can help you relax, recharge, and return with a fresh perspective."></tm-true-false>
+          <tm-true-false statement="A support network can include only coworkers and supervisors." answer="false" explanation="A support network may include family members, friends, coworkers, supervisors, mentors, or other trusted people."></tm-true-false>
+        </div>
+      </section>
+    </main>
+
+    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 3</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
+  </div>
+
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/true-false.js" defer></script>
+  <script defer>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const steps = [...document.querySelectorAll('.rail-step')];
+      const next = document.getElementById('nextBtn');
+      const back = document.getElementById('backBtn');
+      const counter = document.getElementById('stepCounter');
+      const stage = document.getElementById('stage');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        steps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        back.disabled = current === 0;
+        next.disabled = current === panels.length - 1;
+        counter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        if (moveFocus) stage.focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      steps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      next.addEventListener('click', () => showStep(current + 1));
+      back.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+</body>
+</html>

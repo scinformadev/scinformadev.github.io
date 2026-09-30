@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 2: Stages of Burnout</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/true-false.css">
+  <style>
+    .instruction-row { display:flex; align-items:baseline; justify-content:space-between; gap:18px; }
+    .instruction-row .panel-sub { margin-bottom:10px; }
+    .callout { margin-top:14px; padding:15px 18px; border-left:7px solid var(--seafoam); border-radius:12px; background:var(--mist); }
+    .callout.accent { border-left-color:var(--tangerine); background:var(--ivory); }
+    .callout h3 { margin:0 0 4px; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:20px; }
+    .callout p { margin:0; font-size:16px; }
+    .important-note { margin-top:14px; padding:13px 16px; border:2px solid var(--seafoam); border-radius:12px; background:var(--pale-mist); font-size:16px; }
+    .important-note strong { color:var(--teal); }
+    .learning-check-grid { display:grid; gap:10px; }
+    tm-carousel { --tm-carousel-height:300px; --tm-carousel-padding:16px 28px; --tm-carousel-title-size:22px; }
+    .stage-visual { width:min(100%,180px); aspect-ratio:1 / 1; height:auto; margin:0 auto 10px; border:2px solid var(--tangerine); border-radius:10px; background:var(--ivory); overflow:hidden; }
+    .stage-visual img { width:100%; height:100%; display:block; object-fit:cover; }
+    @media (max-width:700px) {
+      .instruction-row { flex-wrap:wrap; gap:0; }
+      tm-carousel { --tm-carousel-height:245px; --tm-carousel-mobile-height:245px; --tm-carousel-padding:12px 16px; }
+      .stage-visual { width:min(100%,130px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header"><div class="header-inner"><h1>Lesson 2: Stages of Burnout</h1></div></header>
+    <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
+      <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The progression">1</button><span class="rail-label">The progression</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Stages of burnout">2</button><span class="rail-label">Stages of burnout</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Learning check">3</button><span class="rail-label">Learning check</span></div>
+    </nav>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">The progression</h2>
+        <p class="panel-sub">Burnout may develop gradually and progress through several stages. The stages are a framework for noticing patterns, not a prediction that every person will experience each one.</p>
+        <div class="callout accent"><h3>Stages of burnout</h3><p>The stages are the honeymoon phase, onset of stress, chronic stress, burnout, and chronic burnout.</p></div>
+        <div class="important-note">People may move through stages differently. Severity and duration can vary, and early awareness creates an opportunity to seek support and respond.</div>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Stages of burnout</h2>
+        <div class="instruction-row"><p class="panel-sub">Move through the stages to review how burnout may develop.</p></div>
+        <tm-carousel tabindex="0" aria-label="Stages of burnout">
+          <article data-carousel-item><div class="stage-visual"><img src="images/module3-lesson-3-1.png" alt="Paper-cut collage visual for the honeymoon phase of burnout."></div><h3>Honeymoon phase</h3><p>A person feels motivated, energetic, and dedicated to their work.</p></article>
+          <article data-carousel-item><div class="stage-visual"><img src="images/module3-lesson-3-2.png" alt="Paper-cut collage visual for the onset of stress."></div><h3>Onset of stress</h3><p>The person begins feeling stress as work hours, responsibilities, or pressure increase.</p></article>
+          <article data-carousel-item><div class="stage-visual"><img src="images/module3-lesson-3-3.png" alt="Paper-cut collage visual for chronic stress."></div><h3>Chronic stress</h3><p>Stress continues for a longer period. The person may feel overwhelmed and fatigued, and physical symptoms may arise.</p></article>
+          <article data-carousel-item><div class="stage-visual"><img src="images/module3-lesson-3-4.png" alt="Paper-cut collage visual for burnout."></div><h3>Burnout</h3><p>The person is physically, emotionally, and mentally exhausted. Interest and productivity may decline, and cynicism may increase.</p></article>
+          <article data-carousel-item><div class="stage-visual"><img src="images/module3-lesson-3-5.png" alt="Paper-cut collage visual for chronic burnout."></div><h3>Chronic burnout</h3><p>When burnout is not addressed, functioning at work and home may become significantly impaired, and health concerns may worsen.</p></article>
+        </tm-carousel>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Learning check</h2>
+        <p class="panel-sub">Check your understanding of how burnout can develop and why early awareness matters.</p>
+        <div class="learning-check-grid" aria-label="True or false questions">
+          <tm-true-false statement="Everyone experiences every stage of burnout in the same order and for the same amount of time." answer="false" explanation="People may experience different stages, and severity and duration can vary."></tm-true-false>
+          <tm-true-false statement="Chronic stress can continue over time and may include fatigue or physical symptoms." answer="true" explanation="Chronic stress can persist and may affect energy, well-being, and physical health."></tm-true-false>
+          <tm-true-false statement="Recognizing warning signs early can create an opportunity to respond before stress becomes more severe." answer="true" explanation="Early awareness can support a more timely and useful response."></tm-true-false>
+        </div>
+      </section>
+    </main>
+    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 3</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
+  </div>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/true-false.js" defer></script>
+  <script defer>
+    (() => {
+      const panels=[...document.querySelectorAll('.panel')],steps=[...document.querySelectorAll('.rail-step')],next=document.getElementById('nextBtn'),back=document.getElementById('backBtn'),counter=document.getElementById('stepCounter'),stage=document.getElementById('stage');
+      let current=0;
+      function showStep(index,moveFocus=true){current=Math.max(0,Math.min(index,panels.length-1));panels.forEach((panel,i)=>{panel.classList.toggle('active',i===current);panel.setAttribute('aria-hidden',i===current?'false':'true')});steps.forEach((step,i)=>{step.classList.toggle('active',i===current);step.classList.toggle('complete',i<current);const dot=step.querySelector('.dot');if(i===current)dot.setAttribute('aria-current','step');else dot.removeAttribute('aria-current')});back.disabled=current===0;next.disabled=current===panels.length-1;counter.textContent=`STEP ${current+1} OF ${panels.length}`;if(moveFocus)stage.focus({preventScroll:true});window.scrollTo({top:0,behavior:'smooth'})}
+      steps.forEach((step,i)=>step.querySelector('.dot').addEventListener('click',()=>showStep(i)));next.addEventListener('click',()=>showStep(current+1));back.addEventListener('click',()=>showStep(current-1));
+      showStep(0,false);
+    })();
+  </script>
+</body>
+</html>
