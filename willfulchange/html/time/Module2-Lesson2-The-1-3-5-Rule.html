@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="styles/theme.css">
   <link rel="stylesheet" href="styles/lesson.css">
   <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/flip-card.css">
   <script src="components/carousel.js" defer></script>
+  <script src="components/flip-card.js" defer></script>
   <style>
     .stage { height: 480px; }
     .video-layout { display: grid; grid-template-columns: 1fr 1fr; height: 238px; gap: 16px; align-items: stretch; }
@@ -51,12 +53,20 @@
     .answer.incorrect { border-color: var(--tangerine); background: var(--ivory); }
     .check-feedback { margin-top: 7px; padding: 8px 10px; border-radius: 9px; background: var(--mist); font-size: 14px; }
     .check-feedback[hidden] { display: none; }
+    .benefits-layout { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: start; }
+    .flip-card-category { padding: 8px 10px 10px; border: 2px solid var(--mist); border-radius: var(--radius); background: var(--white); }
+    .flip-card-category h3 { margin: 0 0 6px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .flip-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .flip-card-grid tm-flip-card { --tm-flip-card-height: 130px; --tm-flip-card-padding: 10px; --tm-flip-card-title-size: 18px; --tm-flip-card-text-size: 15px; }
+    .flip-card-grid tm-flip-card .tm-flip-card__front .tm-flip-card__text { display: none; }
+    .flip-card-category.avoid .flip-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     @media (max-width: 700px) {
       .stage { height: auto; }
       .video-layout, .rule-grid, .answer-grid { grid-template-columns: 1fr; }
       .video-layout { height: auto; }
       .video-slot, .overview-card { height: auto; min-height: 238px; }
       .application-carousel { --tm-carousel-height: 300px; }
+      .flip-card-grid, .flip-card-category.avoid .flip-card-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -69,7 +79,8 @@
     <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
       <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The 1-3-5 Rule">1</button><span class="rail-label">The 1-3-5 Rule</span><span class="connector"></span></div>
       <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: How to apply">2</button><span class="rail-label">How to apply</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Learning check">3</button><span class="rail-label">Learning check</span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Benefits and watch-outs">3</button><span class="rail-label">Benefits and watch-outs</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Learning check">4</button><span class="rail-label">Learning check</span></div>
     </nav>
 
     <main class="stage" id="stage" tabindex="-1">
@@ -130,7 +141,30 @@
       </section>
 
       <section class="panel" data-panel="2" aria-labelledby="title-2">
-        <h2 class="panel-title" id="title-2">Learning check</h2>
+        <h2 class="panel-title" id="title-2">Benefits and watch-outs</h2>
+        <p class="panel-sub">Flip each card to explore how to use the 1-3-5 Rule with care.</p>
+        <div class="benefits-layout">
+          <section class="flip-card-category" aria-labelledby="benefits-heading">
+            <h3 id="benefits-heading">Benefits</h3>
+            <div class="flip-card-grid" role="group" aria-label="1-3-5 Rule benefits">
+              <tm-flip-card title="Effective prioritization" summary="Focus on 1 big, 3 medium, and 5 small tasks." guidance="The structure helps you direct attention across different task sizes while keeping the list manageable."></tm-flip-card>
+              <tm-flip-card title="Realistic goal setting" summary="Prevent overestimation and disappointment." guidance="A defined limit encourages you to plan what can realistically fit instead of promising more than your available time allows."></tm-flip-card>
+              <tm-flip-card title="Reduced procrastination" summary="Use a manageable structure to minimize delays." guidance="Breaking the day or week into clear task sizes makes it easier to choose a starting point and keep moving."></tm-flip-card>
+            </div>
+          </section>
+          <section class="flip-card-category avoid" aria-labelledby="avoid-heading">
+            <h3 id="avoid-heading">Things to avoid</h3>
+            <div class="flip-card-grid" role="group" aria-label="1-3-5 Rule things to avoid">
+              <tm-flip-card title="Overloading" summary="Stick to the limit of nine tasks." guidance="The 1 + 3 + 5 structure is a guide for a realistic list. Adding more tasks without removing or moving something can recreate overload."></tm-flip-card>
+              <tm-flip-card title="Lack of adaptability" summary="Adjust when priorities change." guidance="Move tasks to another day or week, or reshape the list, when new information or changing priorities affect what is possible."></tm-flip-card>
+              <tm-flip-card title="Ignoring importance" summary="Balance small tasks with meaningful goals." guidance="Small tasks can create momentum, but make sure the list also protects work that supports important outcomes."></tm-flip-card>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="3" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Learning check</h2>
         <p class="panel-sub check-intro">Choose the best answer for each question.</p>
 
         <div class="question-card" data-question="structure">
@@ -156,7 +190,7 @@
       </section>
     </main>
 
-    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 3</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
+    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
   </div>
 
   <script>
