@@ -4,54 +4,168 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lesson 2: The 1-3-5 Rule</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <script src="components/carousel.js" defer></script>
   <style>
-    :root { --teal:#174A5B; --seafoam:#77BFA3; --tangerine:#F4A261; --ivory:#FBF7F0; --mist:#DDE8E5; --charcoal:#263238; --white:#FFFFFF; --radius:14px; --shadow:0 4px 18px #DDE8E5; }
-    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--white); color:var(--charcoal); font-family:'Calibri','Segoe UI',Arial,sans-serif; font-size:17px; line-height:1.5; }
-    button { font:inherit; cursor:pointer; } button:focus-visible { outline:4px solid #000000; outline-offset:3px; }
-    .app { min-height:100vh; } .lesson-header { padding:12px 28px; background:linear-gradient(135deg,var(--white) 0%,var(--mist) 100%); color:var(--teal); } .header-inner,.stage { max-width:980px; margin:0 auto; }
-    h1,h2,h3 { line-height:1.2; } h1 { margin:0; font-family:Cambria,'Times New Roman',Georgia,serif; font-size:22px; }
-    .progress-rail { display:flex; max-width:980px; margin:0 auto; padding:18px 0 0; align-items:flex-start; } .rail-step { display:flex; min-width:0; flex:1; align-items:center; } .rail-step:last-child { flex:0 0 auto; }
-    .dot { width:32px; height:32px; flex:0 0 32px; border:2px solid var(--seafoam); border-radius:50%; background:var(--mist); color:var(--teal); font-weight:700; font-size:16px; } .rail-step.active .dot,.rail-step.complete .dot { border-color:var(--teal); background:var(--teal); color:var(--white); } .rail-step.complete .dot::after { content:' ✓'; } .rail-label { margin-left:9px; color:var(--charcoal); font-size:16px; font-weight:700; } .connector { height:2px; min-width:18px; flex:1; margin:0 12px; background:var(--mist); }
-    .stage { position:relative; height:480px; overflow:hidden; padding:26px 28px 0; } .panel { position:absolute; inset:26px 28px 0; display:none; animation:rise .3s ease-out; } .panel.active { display:block; } @keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-    .panel-title { margin:0; color:var(--teal); font-family:Cambria,'Times New Roman',Georgia,serif; font-size:24px; } .panel-sub { max-width:720px; margin:4px 0 14px; font-size:17px; }
-    .section-label { margin:16px 0 8px; color:var(--teal); font-size:17px; font-weight:700; }
-    .foundation-layout,.practice-layout { display:grid; grid-template-columns:180px 1fr; gap:16px; align-items:stretch; } .image-slot { display:flex; height:190px; align-items:center; justify-content:center; padding:0; border:2px solid var(--tangerine); border-radius:var(--radius); background:var(--ivory); color:var(--teal); text-align:center; font-size:16px; font-weight:700; overflow:hidden; } .image-slot img { width:100%; height:100%; display:block; object-fit:cover; } .image-slot .placeholder { padding:16px; }
-    .definition-grid,.choice-grid,.size-grid { display:grid; gap:12px; } .definition-grid,.size-grid,.choice-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .card { padding:15px 16px; border:2px solid var(--mist); border-radius:var(--radius); background:var(--white); box-shadow:var(--shadow); } .card h3 { margin:0 0 5px; color:var(--teal); font-family:Cambria,serif; font-size:20px; } .card p { margin:0; font-size:16px; } .definition-card { border-left:7px solid var(--seafoam); } .definition-card.accent { border-left-color:var(--tangerine); }
-    .callout { margin-top:14px; padding:15px 18px; border-left:7px solid var(--seafoam); border-radius:12px; background:var(--mist); } .callout.accent { border-left-color:var(--tangerine); } .callout h3 { margin:0 0 4px; color:var(--teal); font-family:Cambria,serif; font-size:20px; } .callout p { margin:0; font-size:16px; }
-    .benefit-group,.avoid-group { padding:12px 14px; border:2px solid var(--mist); border-radius:12px; background:var(--white); } .benefit-group { border-top:6px solid var(--seafoam); } .avoid-group { margin-top:12px; border-top:6px solid var(--tangerine); } .group-heading { margin:0 0 8px; color:var(--teal); font-family:Cambria,serif; font-size:18px; } .benefit-group .choice-grid,.avoid-group .choice-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-    .choice { min-height:58px; padding:13px 16px; border:2px solid var(--teal); border-radius:12px; background:var(--white); color:var(--teal); text-align:left; transition:transform .15s ease,background .15s ease; } .choice:hover,.choice.selected { transform:translateY(-2px); background:var(--mist); border-color:var(--seafoam); } .choice strong { display:block; padding:0; font-size:17px; }
-    .feedback-card { margin-top:12px; padding:14px 16px; border:2px solid var(--tangerine); border-radius:var(--radius); background:var(--ivory); color:var(--charcoal); } .feedback-card[hidden] { display:none; } .feedback-card h3 { margin:0 0 3px; color:var(--teal); font-family:Cambria,serif; font-size:18px; } .feedback-card p { margin:0; font-size:16px; }
-    .build-layout { display:grid; grid-template-columns:180px 1fr; gap:16px; align-items:start; } .build-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; } .build-grid .choice { min-height:48px; padding:10px 12px; } .build-grid .choice strong { font-size:16px; }
-    .takeaway { margin-top:12px; padding:14px 16px; border:2px solid var(--teal); border-radius:12px; background:var(--mist); } .takeaway p { margin:0; font-size:16px; }
-    .nav-controls { display:flex; max-width:980px; margin:0 auto; align-items:center; justify-content:space-between; gap:16px; padding:18px 28px 4px; border-top:1px solid var(--mist); } .btn { min-width:120px; padding:11px 22px; border:2px solid var(--teal); border-radius:9px; background:var(--white); color:var(--teal); font-size:16px; font-weight:700; } .btn:hover:not(:disabled) { background:var(--mist); } .btn.primary { border-color:var(--teal); background:var(--teal); color:var(--white); } .btn.primary:hover:not(:disabled) { border-color:var(--seafoam); background:var(--seafoam); color:var(--teal); } .btn:disabled { cursor:not-allowed; opacity:.55; } .step-counter { color:var(--teal); font-size:16px; font-weight:700; letter-spacing:.05em; }
-    @media (max-width:700px) { .lesson-header { padding:12px 18px; } .progress-rail { padding:18px 18px 0; } .rail-label { display:none; } .connector { margin:19px 6px 0; } .foundation-layout,.practice-layout,.build-layout,.definition-grid,.size-grid,.choice-grid,.benefit-group .choice-grid,.avoid-group .choice-grid { grid-template-columns:1fr; } .stage { height:auto; min-height:0; overflow:visible; padding:20px 18px; } .panel { position:static; } .nav-controls { flex-wrap:wrap; padding:18px 18px 4px; } .step-counter { order:-1; width:100%; text-align:center; } } @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+    .stage { height: 480px; }
+    .video-layout { display: grid; grid-template-columns: 1fr 1fr; height: 238px; gap: 16px; align-items: stretch; }
+    .video-slot { position: relative; height: 238px; border: 2px solid var(--tangerine); border-radius: var(--radius); background: var(--ivory); overflow: hidden; text-align: center; }
+    .video-thumbnail { position: relative; height: 100%; }
+    .video-thumbnail img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .video-thumbnail::after { content: ''; position: absolute; inset: 0; background: rgba(23, 74, 91, .34); pointer-events: none; }
+    .video-overlay { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; color: var(--white); }
+    .video-overlay h3 { margin: 0 0 7px; font-family: Cambria, serif; font-size: 22px; }
+    .video-overlay p { margin: 0 0 14px; }
+    .video-link { display: inline-block; padding: 10px 16px; border-radius: 9px; background: var(--white); color: var(--teal); font-weight: 700; text-decoration: none; }
+    .video-link:hover { background: var(--seafoam); color: var(--teal); }
+    .overview-card { height: 238px; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start; padding: 17px 18px; }
+    .overview-card h3 { margin: 0 0 6px; color: var(--teal); font-family: Cambria, serif; font-size: 20px; }
+    .overview-card > p { margin: 0 0 11px; font-size: 15px; line-height: 1.35; }
+    .rule-grid { display: grid; width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .rule-card { min-width: 0; padding: 10px 9px; border-left: 5px solid var(--seafoam); border-radius: 10px; background: var(--pale-mist); }
+    .rule-card:nth-child(2) { border-left-color: var(--tangerine); }
+    .rule-card h4 { margin: 0 0 3px; color: var(--teal); font-family: Cambria, serif; font-size: 16px; }
+    .rule-card p { margin: 0; font-size: 14px; line-height: 1.3; }
+    .efficiency-callout { margin-top: 16px; padding: 13px 16px; border-left: 7px solid var(--tangerine); border-radius: 12px; background: var(--mist); }
+    .efficiency-callout p { margin: 0; font-weight: 700; }
+    .application-carousel { --tm-carousel-height: 245px; --tm-carousel-padding: 18px 24px; }
+    .application-carousel .tm-carousel__item { align-items: stretch; text-align: left; }
+    .application-carousel .tm-carousel__item h3 { font-size: 20px; }
+    .application-carousel .tm-carousel__item p { font-size: 16px; }
+    .application-carousel ul { margin: 10px 0 0; padding-left: 21px; }
+    .application-carousel li + li { margin-top: 7px; }
+    .task-size-list { display: grid; gap: 6px; margin-top: 11px; padding: 11px 14px; border-radius: 10px; background: var(--pale-mist); }
+    .task-size-list p { margin: 0; }
+    .tips-callout { margin-top: 7px; padding: 9px 14px; border-left: 7px solid var(--seafoam); border-radius: 12px; background: var(--pale-mist); }
+    .tips-callout h3 { margin: 0 0 3px; color: var(--teal); font-family: Cambria, serif; font-size: 18px; }
+    .tips-callout p { margin: 0; font-size: 15px; }
+    .check-intro { margin-bottom: 10px; }
+    .question-card { margin-top: 8px; padding: 11px 13px; border: 2px solid var(--mist); border-radius: 12px; background: var(--white); }
+    .question-card h3 { margin: 0 0 7px; color: var(--teal); font-family: Cambria, serif; font-size: 17px; }
+    .answer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+    .answer { min-height: 42px; padding: 8px 10px; border: 2px solid var(--teal); border-radius: 9px; background: var(--white); color: var(--teal); text-align: left; font-size: 14px; }
+    .answer:hover, .answer.selected { background: var(--mist); border-color: var(--seafoam); }
+    .answer.correct { border-color: var(--seafoam); background: var(--pale-mist); }
+    .answer.incorrect { border-color: var(--tangerine); background: var(--ivory); }
+    .check-feedback { margin-top: 7px; padding: 8px 10px; border-radius: 9px; background: var(--mist); font-size: 14px; }
+    .check-feedback[hidden] { display: none; }
+    @media (max-width: 700px) {
+      .stage { height: auto; }
+      .video-layout, .rule-grid, .answer-grid { grid-template-columns: 1fr; }
+      .video-layout { height: auto; }
+      .video-slot, .overview-card { height: auto; min-height: 238px; }
+      .application-carousel { --tm-carousel-height: 300px; }
+    }
   </style>
 </head>
 <body>
   <div class="app">
-    <header class="lesson-header"><div class="header-inner"><h1>Lesson 2: The 1-3-5 Rule</h1></div></header>
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 2: The 1-3-5 Rule</h1></div>
+    </header>
+
     <nav class="progress-rail" id="progressRail" aria-label="Lesson progress">
       <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: The 1-3-5 Rule">1</button><span class="rail-label">The 1-3-5 Rule</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Task size">2</button><span class="rail-label">Task size</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Energy and change">3</button><span class="rail-label">Energy and change</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Build a list">4</button><span class="rail-label">Build a list</span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: How to apply">2</button><span class="rail-label">How to apply</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Learning check">3</button><span class="rail-label">Learning check</span></div>
     </nav>
+
     <main class="stage" id="stage" tabindex="-1">
-      <section class="panel active" data-panel="0" aria-labelledby="title-0"><h2 class="panel-title" id="title-0">The 1-3-5 Rule</h2><p class="panel-sub">The 1-3-5 Rule is a prioritization tool for maximum productivity with minimal wasted time.</p><div class="foundation-layout"><div class="image-slot"><img src="module2-lesson-2-1.png" alt="A realistic workload arranged as one large task, three medium tasks, and five small tasks." onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true"><span class="placeholder">Image slot<br>module2-lesson-2-1.png</span></div><div class="definition-grid"><article class="card definition-card"><h3>1 big task</h3><p>Main focus for the day.</p></article><article class="card definition-card accent"><h3>3 medium tasks</h3><p>Additional tasks that support the main focus.</p></article><article class="card definition-card"><h3>5 small tasks</h3><p>Shorter tasks that fit around larger work.</p></article><article class="card definition-card accent"><h3>Step 1</h3><p>At the beginning of each week, list tasks you want to get done. Make them concrete and actionable.</p></article></div></div></section>
-      <section class="panel" data-panel="1" aria-labelledby="title-1"><h2 class="panel-title" id="title-1">Task size</h2><p class="panel-sub">Categorize each task as big, medium, or small.</p><div class="size-grid" role="group" aria-label="Task size categories"><button class="choice" type="button" data-feedback-id="big-task"><strong>Big task</strong></button><button class="choice" type="button" data-feedback-id="medium-task"><strong>Medium task</strong></button><button class="choice" type="button" data-feedback-id="small-task"><strong>Small task</strong></button><button class="choice" type="button" data-feedback-id="task-list"><strong>Task list</strong></button></div><div class="feedback-card" id="sizeFeedback" hidden aria-live="polite"><h3 id="sizeFeedbackTitle"></h3><p id="sizeFeedbackText"></p></div><div class="callout"><h3>Time as a guide</h3><p>A big task takes about 3–4 hours. Medium tasks take about 1–2 hours. Small tasks may take less than 30 minutes to an hour each.</p></div></section>
-      <section class="panel" data-panel="2" aria-labelledby="title-2"><h2 class="panel-title" id="title-2">Build the list</h2><p class="panel-sub">Plot the tasks into a daily or weekly 1-3-5 to-do list.</p><div class="choice-grid" role="group" aria-label="Ways to build and adapt the list"><button class="choice" type="button" data-feedback-id="daily-weekly"><strong>Daily or weekly list</strong></button><button class="choice" type="button" data-feedback-id="unexpected"><strong>Unexpected work</strong></button><button class="choice" type="button" data-feedback-id="biggest-first"><strong>Tackle the biggest task first</strong></button><button class="choice" type="button" data-feedback-id="energy-levels"><strong>Use energy levels</strong></button></div><div class="feedback-card" id="adaptFeedback" hidden aria-live="polite"><h3 id="adaptFeedbackTitle"></h3><p id="adaptFeedbackText"></p></div></section>
-      <section class="panel" data-panel="3" aria-labelledby="title-3"><h2 class="panel-title" id="title-3">Benefits and things to avoid</h2><p class="panel-sub">Select a card to see more.</p><div class="build-layout"><div class="image-slot"><img src="module2-lesson-2-2.png" alt="A person calmly organizing task cards into a manageable daily plan."></div><div><div class="benefit-group"><h3 class="group-heading">Benefits</h3><div class="choice-grid" role="group" aria-label="1-3-5 Rule benefits"><button class="choice" type="button" data-feedback-id="effective"><strong>Effective prioritization</strong></button><button class="choice" type="button" data-feedback-id="realistic"><strong>Realistic goal setting</strong></button><button class="choice" type="button" data-feedback-id="procrastination"><strong>Reduced procrastination</strong></button></div></div><div class="avoid-group"><h3 class="group-heading">Things to avoid</h3><div class="choice-grid" role="group" aria-label="1-3-5 Rule things to avoid"><button class="choice" type="button" data-feedback-id="overloading"><strong>Overloading</strong></button><button class="choice" type="button" data-feedback-id="adaptability"><strong>Lack of adaptability</strong></button><button class="choice" type="button" data-feedback-id="importance"><strong>Ignoring importance</strong></button></div></div></div></div><div class="feedback-card" id="buildFeedback" hidden aria-live="polite"><h3 id="buildFeedbackTitle"></h3><p id="buildFeedbackText"></p></div></section>
+      <section class="panel active" data-panel="0" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">The 1-3-5 Rule</h2>
+        <p class="panel-sub">Watch the short video, then review the structure of this prioritization tool.</p>
+        <div class="video-layout">
+          <div class="video-slot" aria-label="Watch the 1-3-5 Rule video">
+            <div class="video-thumbnail">
+              <img src="images/module2-lesson-2-1.png" alt="A realistic workload arranged as one large task, three medium tasks, and five small tasks.">
+              <div class="video-overlay">
+                <h3>Watch the video</h3>
+                <p>Learn how the 1-3-5 Rule supports practical prioritization.</p>
+                <a class="video-link" href="https://www.youtube.com/watch?v=FTOqNDzZ1wo" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube</a>
+              </div>
+            </div>
+          </div>
+          <article class="card overview-card">
+            <h3>A simple structure for your priorities</h3>
+            <p>The 1-3-5 Rule organizes your plan around one main task, three medium tasks, and five small tasks.</p>
+            <div class="rule-grid">
+              <div class="rule-card"><h4>1 big task</h4><p>Your main focus.</p></div>
+              <div class="rule-card"><h4>3 medium tasks</h4><p>Additional tasks that support the focus.</p></div>
+              <div class="rule-card"><h4>5 small tasks</h4><p>Shorter tasks that fit around larger work.</p></div>
+            </div>
+          </article>
+        </div>
+        <div class="efficiency-callout"><p>Main Focus: Efficiency — maximum productivity with minimal wasted time.</p></div>
+      </section>
+
+      <section class="panel" data-panel="1" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">How to apply the 1-3-5 Rule</h2>
+        <p class="panel-sub">Use these steps to build a daily or weekly 1-3-5 to-do list.</p>
+        <tm-carousel class="application-carousel" tabindex="0" aria-label="Steps for applying the 1-3-5 Rule">
+          <article data-carousel-item>
+            <h3>Step 1: List your tasks</h3>
+            <p>At the beginning of each week, list the tasks you want to get done. Include tasks carried over from last week and regular tasks. Make each task concrete and actionable.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 2: Categorize each task</h3>
+            <p>Categorize each task as big, medium, or small.</p>
+            <div class="task-size-list">
+              <p><strong>Big:</strong> about 3–4 hours</p>
+              <p><strong>Medium:</strong> about 1–2 hours</p>
+              <p><strong>Small:</strong> less than 30 minutes to 1 hour</p>
+            </div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 3: Plot your 1-3-5 list</h3>
+            <p>Plot the tasks into a daily 1-3-5 to-do list. Plan it the night before, in the morning, or create the list for the entire week in advance.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 4: Match the order to your energy</h3>
+            <p>Choose the order that fits your energy and focus. You can tackle the biggest task first when that works for you, or designate times for each task category based on your energy levels.</p>
+          </article>
+        </tm-carousel>
+        <div class="tips-callout"><h3>Additional tip: unexpected work</h3><p>Schedule unexpected work after completing the 1-3-5 list for the day, or move it to the next day or week as part of your 1-3-5 list.</p></div>
+      </section>
+
+      <section class="panel" data-panel="2" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Learning check</h2>
+        <p class="panel-sub check-intro">Choose the best answer for each question.</p>
+
+        <div class="question-card" data-question="structure">
+          <h3>1. Which plan follows the 1-3-5 Rule?</h3>
+          <div class="answer-grid" role="group" aria-label="Question 1 answers">
+            <button class="answer" type="button" data-correct="true">1 big, 3 medium, 5 small</button>
+            <button class="answer" type="button" data-correct="false">3 big, 5 medium, 1 small</button>
+            <button class="answer" type="button" data-correct="false">5 big, 1 medium, 3 small</button>
+          </div>
+          <div class="check-feedback" hidden aria-live="polite"></div>
+        </div>
+
+        <div class="question-card" data-question="energy">
+          <h3>2. Your energy is low in the morning and higher in the afternoon. What could you do?</h3>
+          <div class="answer-grid" role="group" aria-label="Question 2 answers">
+            <button class="answer" type="button" data-correct="false">Always start with the big task.</button>
+            <button class="answer" type="button" data-correct="true">Start with small tasks, then tackle the big task later.</button>
+            <button class="answer" type="button" data-correct="false">Skip the 1-3-5 list.</button>
+          </div>
+          <div class="check-feedback" hidden aria-live="polite"></div>
+        </div>
+
+      </section>
     </main>
-    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
+
+    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 3</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
   </div>
+
   <script>
     (()=>{
-      const panels=[...document.querySelectorAll('.panel')],steps=[...document.querySelectorAll('.rail-step')],next=document.getElementById('nextBtn'),back=document.getElementById('backBtn'),counter=document.getElementById('stepCounter'),stage=document.getElementById('stage');let current=0;
-      const feedback={'big-task':'<strong>Big task.</strong> A big task takes about 3–4 hours.','medium-task':'<strong>Medium tasks.</strong> Medium tasks take about 1–2 hours.','small-task':'<strong>Small tasks.</strong> Small tasks may take less than 30 minutes to an hour each.','task-list':'<strong>Task list.</strong> List tasks you want to get done, including tasks carried over from last week or regular tasks. Make them concrete and actionable.','daily-weekly':'<strong>Daily or weekly list.</strong> Plan the 1-3-5 to-do list each day, the night before or in the morning, or create one for the entire week in advance.','unexpected':'<strong>Unexpected work.</strong> Schedule it after you complete the 1-3-5 list for the day, or schedule it for the next day or week as part of your list.','biggest-first':'<strong>Tackle the biggest task first.</strong> The biggest task may be the hardest to accomplish.','energy-levels':'<strong>Use energy levels.</strong> Designate specific times to tackle each category of task based on your energy levels.','effective':'<strong>Effective prioritization.</strong> Focus on one big task, three medium tasks, and five small tasks.','realistic':'<strong>Realistic goal setting.</strong> Prevent overestimation and disappointment.','procrastination':'<strong>Reduced procrastination.</strong> A manageable structure minimizes delays.','overloading':'<strong>Overloading.</strong> Stick to the limit of nine tasks: 1 + 3 + 5.','adaptability':'<strong>Lack of adaptability.</strong> Adjust as needed based on changing priorities.','importance':'<strong>Ignoring importance.</strong> Balance small tasks with meaningful goals.'};
-      function showStep(index,moveFocus=true){current=Math.max(0,Math.min(index,panels.length-1));panels.forEach((panel,i)=>{panel.classList.toggle('active',i===current);panel.setAttribute('aria-hidden',i===current?'false':'true')});steps.forEach((step,i)=>{step.classList.toggle('active',i===current);step.classList.toggle('complete',i<current);const dot=step.querySelector('.dot');if(i===current)dot.setAttribute('aria-current','step');else dot.removeAttribute('aria-current')});back.disabled=current===0;next.disabled=current===panels.length-1;counter.textContent=`STEP ${current+1} OF ${panels.length}`;if(moveFocus)stage.focus({preventScroll:true});window.scrollTo({top:0,behavior:'smooth'})}
-      function wire(selector,target,titleTarget,textTarget){document.querySelectorAll(selector).forEach(card=>card.addEventListener('click',()=>{document.querySelectorAll(selector).forEach(item=>item.classList.remove('selected'));card.classList.add('selected');const message=feedback[card.dataset.feedbackId]||'';const parts=message.match(/^<strong>(.*?)<\/strong>\s*(.*)$/);titleTarget.textContent=parts?parts[1]:'';textTarget.textContent=parts?parts[2]:message;target.hidden=false}))}
-      wire('.size-grid .choice',document.getElementById('sizeFeedback'),document.getElementById('sizeFeedbackTitle'),document.getElementById('sizeFeedbackText'));wire('.panel[data-panel="2"] .choice',document.getElementById('adaptFeedback'),document.getElementById('adaptFeedbackTitle'),document.getElementById('adaptFeedbackText'));wire('.panel[data-panel="3"] .choice',document.getElementById('buildFeedback'),document.getElementById('buildFeedbackTitle'),document.getElementById('buildFeedbackText'));steps.forEach((step,i)=>step.querySelector('.dot').addEventListener('click',()=>showStep(i)));next.addEventListener('click',()=>showStep(current+1));back.addEventListener('click',()=>showStep(current-1));showStep(0,false);
+      const panels=[...document.querySelectorAll('.panel')],steps=[...document.querySelectorAll('.rail-step')],next=document.getElementById('nextBtn'),back=document.getElementById('backBtn'),counter=document.getElementById('stepCounter'),stage=document.getElementById('stage');
+      let current=0;
+      function showStep(index,moveFocus=true){current=Math.max(0,Math.min(index,panels.length-1));panels.forEach((panel,i)=>{panel.classList.toggle('active',i===current);panel.setAttribute('aria-hidden',i===current?'false':'true')});steps.forEach((step,i)=>{step.classList.toggle('active',i===current);step.classList.toggle('complete',i<current);const dot=step.querySelector('.dot');if(i===current)dot.setAttribute('aria-current','step');else dot.removeAttribute('aria-current')});back.disabled=current===0;next.disabled=current===panels.length-1;counter.textContent='STEP '+(current+1)+' OF '+panels.length;if(moveFocus)stage.focus({preventScroll:true});window.scrollTo({top:0,behavior:'smooth'})}
+      document.querySelectorAll('.question-card').forEach(card=>{const feedback=card.querySelector('.check-feedback');card.querySelectorAll('.answer').forEach(answer=>answer.addEventListener('click',()=>{card.querySelectorAll('.answer').forEach(item=>{item.classList.remove('selected','correct','incorrect');item.setAttribute('aria-pressed','false')});answer.classList.add('selected',answer.dataset.correct==='true'?'correct':'incorrect');answer.setAttribute('aria-pressed','true');feedback.hidden=false;feedback.textContent=answer.dataset.correct==='true'?'Correct. This choice follows the 1-3-5 guidance.':'Not quite. Review the 1-3-5 structure and the guidance about energy or unexpected work.'}))});
+      steps.forEach((step,i)=>step.querySelector('.dot').addEventListener('click',()=>showStep(i)));next.addEventListener('click',()=>showStep(current+1));back.addEventListener('click',()=>showStep(current-1));showStep(0,false);
     })();
   </script>
 </body>
