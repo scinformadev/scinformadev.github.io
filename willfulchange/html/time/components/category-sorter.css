@@ -120,14 +120,24 @@ tm-category-sorter {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 24px;
-  margin: 10px 0 0;
+  min-height: 52px;
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border: 2px solid var(--seafoam);
+  border-radius: var(--radius);
+  background: var(--pale-mist);
   color: var(--teal);
   font-size: 16px;
   font-weight: 700;
+  line-height: 1.4;
 }
 
 .category-sorter__status.is-success { color: var(--teal); }
+.category-sorter__status.is-error {
+  border-color: var(--tangerine);
+  background: var(--ivory);
+  color: var(--charcoal);
+}
 .category-sorter__status-icon {
   display: inline-flex;
   width: 22px;

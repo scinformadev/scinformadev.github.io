@@ -75,7 +75,11 @@
 
       if (!expectedCategories.includes(categoryName)) {
         this.returnItem(item);
-        this.setStatus('Not quite. This example is returning to the items list. Revisit the category definitions and try again.');
+        const correctCategories = expectedCategories.map(category => this.categoryLabel(category)).join(' or ');
+        this.setStatus(
+          `Not quite. ${this.itemTitle(item)} fits ${correctCategories} because ${item.dataset.rationale || 'it best matches the definition of that category'}. Try again.`,
+          'error',
+        );
         return;
       }
 
@@ -92,7 +96,7 @@
         remaining === 0
           ? 'Great work. You sorted every time waster. Notice the pattern, then consider which response would protect your time.'
           : `Correct. ${remaining} example${remaining === 1 ? '' : 's'} left to sort.`,
-        remaining === 0,
+        remaining === 0 ? 'success' : 'neutral',
       );
     }
 
@@ -119,12 +123,17 @@
       return item.querySelector('h3')?.textContent.trim() || 'Item';
     }
 
-    setStatus(message, success = false) {
+    categoryLabel(category) {
+      return category.charAt(0).toUpperCase() + category.slice(1);
+    }
+
+    setStatus(message, state = 'neutral') {
       if (!this.status) return;
-      this.status.classList.toggle('is-success', success);
+      this.status.classList.toggle('is-success', state === 'success');
+      this.status.classList.toggle('is-error', state === 'error');
       this.status.replaceChildren();
 
-      if (success) {
+      if (state === 'success') {
         const icon = document.createElement('span');
         icon.className = 'category-sorter__status-icon';
         icon.setAttribute('aria-hidden', 'true');
