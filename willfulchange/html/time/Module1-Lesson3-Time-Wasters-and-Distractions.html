@@ -112,26 +112,23 @@
         <p class="panel-sub">Drag each item into the category where it belongs. On a touch screen or keyboard, select an item and then choose a category.</p>
         <div class="sorter-content">
           <tm-category-sorter aria-label="Sort time wasters into categories">
+              <p class="category-sorter__status" data-category-sorter-status aria-live="polite">Start by sorting one time waster.</p>
               <div class="category-sorter__items" data-category-sorter-items aria-label="Time-waster items">
-                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="emails" data-category="habit">
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="emails" data-category="habit" data-rationale="repeatedly checking email is an automatic, repetitive behavior">
                   <h3>Email Overload</h3>
                   <p>Spending time checking, reading, and responding to emails.</p>
                 </article>
-                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="data-entry" data-category="task">
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="data-entry" data-category="task" data-rationale="manual data entry is a specific responsibility that requires time and effort">
                   <h3>Manual Data Entry</h3>
                   <p>Spending time manually entering data into spreadsheets or reports.</p>
                 </article>
-                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="signatures" data-category="errand">
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="signatures" data-category="errand" data-rationale="collecting routine approvals is a minor, procedural activity that can delay more meaningful work">
                   <h3>Multiple Signatures for Routine Approvals</h3>
                   <p>Requiring multiple managerial signatures for routine decisions.</p>
                 </article>
-                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="meetings" data-category="task habit">
+                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="meetings" data-category="task habit" data-rationale="meetings are scheduled responsibilities and can become repetitive routines when they are unproductive or unnecessary">
                   <h3>Meeting Madness</h3>
                   <p>Unproductive or unnecessary meetings.</p>
-                </article>
-                <article class="category-sorter__item" draggable="true" tabindex="0" data-category-sorter-item="perfectionism" data-category="habit">
-                  <h3>Perfectionism Trap</h3>
-                  <p>Spending time perfecting tasks.</p>
                 </article>
               </div>
               <div class="category-sorter__categories" data-category-sorter-categories role="group" aria-label="Time-waster categories">
@@ -148,7 +145,6 @@
                   <div class="category-sorter__category-items" data-category-sorter-category-items></div>
                 </section>
               </div>
-              <p class="category-sorter__status" data-category-sorter-status aria-live="polite">Start by sorting one time waster.</p>
             </tm-category-sorter>
         </div>
       </section>

@@ -36,6 +36,7 @@
     .check-option span { font-size: 16px; }
     .check-actions { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
     .check-feedback { margin-top: 12px; padding: 13px 16px; border: 2px solid var(--seafoam); border-radius: var(--radius); background: var(--pale-mist); }
+    .check-feedback.is-incorrect { border-color: var(--tangerine); background: var(--ivory); }
     .check-feedback[hidden] { display: none; }
     .check-feedback p { margin: 0; font-size: 16px; }
     @media (max-width: 700px) {
@@ -178,13 +179,14 @@
         event.preventDefault();
         const selected = new Set([...learningCheck.querySelectorAll('input:checked')].map(input => input.value));
         const correct = selected.size === correctAnswers.size && [...correctAnswers].every(answer => selected.has(answer));
+        checkFeedback.classList.toggle('is-incorrect', !correct);
         checkFeedbackText.textContent = correct
           ? 'Correct. Chronic work-related stress, workplace culture, systemic disparities, and personal factors are examples of common reasons for burnout.'
-          : 'Review the examples of common reasons and try again. Cynicism and trouble with sleep are signs of burnout, while chronic work-related stress, workplace culture, systemic disparities, and personal factors are common reasons.';
+          : 'Incorrect. Review the examples of common reasons and try again. Cynicism and trouble with sleep are signs of burnout, while chronic work-related stress, workplace culture, systemic disparities, and personal factors are common reasons.';
         checkFeedback.hidden = false;
       });
 
-      learningCheck.addEventListener('reset', () => { checkFeedback.hidden = true; checkFeedbackText.textContent = ''; });
+      learningCheck.addEventListener('reset', () => { checkFeedback.hidden = true; checkFeedback.classList.remove('is-incorrect'); checkFeedbackText.textContent = ''; });
       showStep(0, false);
     })();
   </script>
