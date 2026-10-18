@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 2, Lesson 1: Identifying and Assessing Leadership Potential</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/true-false.css">
+  <style>
+    /* Source mapping: Slides 20–25. The learning check uses only those slides. */
+    .panel-scroll { overflow-y: auto; padding-right: 6px; }
+    .fact-grid, .flip-card-grid, .assessment-grid { display: grid; gap: 14px; margin-top: 18px; }
+    .fact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fact-card {
+      min-height: 190px;
+      padding: 18px;
+      border: 2px solid var(--color-border);
+      border-left: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-text-inverse);
+      box-shadow: var(--shadow);
+    }
+    .fact-card h3 {
+      margin: 0 0 10px;
+      color: var(--color-primary);
+      font-family: Cambria, 'Times New Roman', Georgia, serif;
+      font-size: 20px;
+    }
+    .fact-card p { margin: 0; font-size: 17px; line-height: 1.45; }
+    .flip-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .flip-card-grid course-flip-card {
+      --course-flip-card-height: 320px;
+      --course-flip-card-padding: 16px;
+      --course-flip-card-title-size: 19px;
+      --course-flip-card-text-size: 15px;
+    }
+    .indicator-carousel {
+      --course-carousel-height: 315px;
+      --course-carousel-mobile-height: 460px;
+      --course-carousel-padding: 16px;
+    }
+    .indicator-carousel .course-carousel__item {
+      align-items: stretch;
+      justify-content: flex-start;
+      text-align: left;
+    }
+    .indicator-slide {
+      display: grid;
+      grid-template-columns: minmax(150px, .75fr) minmax(0, 1.25fr);
+      gap: 18px;
+      align-items: start;
+      width: 100%;
+      height: 100%;
+    }
+    .indicator-slide img {
+      width: 100%;
+      height: 250px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .indicator-copy h3, .indicator-copy h4 {
+      margin: 0 0 6px;
+      color: var(--color-primary);
+      font-family: Cambria, 'Times New Roman', Georgia, serif;
+    }
+    .indicator-copy h3 { font-size: 20px; }
+    .indicator-copy h4 { margin-top: 16px; font-size: 18px; }
+    .indicator-copy p { margin: 0 0 9px; font-size: 16px; line-height: 1.4; }
+    .indicator-copy .observation {
+      padding-left: 12px;
+      border-left: 4px solid var(--color-accent);
+    }
+    .indicator-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; width: 100%; }
+    .indicator-columns h3 { font-size: 18px; }
+    .indicator-columns ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.35; }
+    .indicator-columns li + li { margin-top: 4px; }
+    .assessment-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .assessment-grid course-flip-card {
+      --course-flip-card-height: 170px;
+      --course-flip-card-padding: 16px;
+      --course-flip-card-title-size: 18px;
+      --course-flip-card-text-size: 15px;
+    }
+    .assessment-grid .course-flip-card__front { align-items: center; text-align: center; }
+    .assessment-grid .course-flip-card__back { align-items: center; text-align: center; }
+    .learning-check-grid { display: grid; gap: 12px; margin-top: 18px; }
+
+    @media (max-width: 820px) {
+      .fact-grid, .flip-card-grid, .assessment-grid { grid-template-columns: 1fr; }
+      .fact-card { min-height: 0; }
+      .indicator-slide { grid-template-columns: 1fr; }
+      .indicator-slide img { height: 170px; }
+      .indicator-columns { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner">
+        <h1>Lesson 1: Identifying and Assessing Leadership Potential</h1>
+      </div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Implicit models">1</button><span class="rail-label">Implicit models</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Leadership potential">2</button><span class="rail-label">Potential</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Observable indicators">3</button><span class="rail-label">Indicators</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Formal assessment">4</button><span class="rail-label">Assessment</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 5: Learning check">5</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel panel-scroll active" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Identifying Leadership Potential in Team Members:</h2>
+        <p class="panel-sub">Review three facts about implicit models and bias when identifying high-potential employees.</p>
+        <div class="fact-grid" role="list" aria-label="Three facts about implicit models">
+          <article class="fact-card" role="listitem">
+            <h3>Fact 1:</h3>
+            <p>When focusing on leadership potential, most managers have an implicit model in their head as to what a high-potential employee looks like.</p>
+          </article>
+          <article class="fact-card" role="listitem">
+            <h3>Fact 2:</h3>
+            <p>Implicit models can be fraught with biases.</p>
+          </article>
+          <article class="fact-card" role="listitem">
+            <h3>Fact 3:</h3>
+            <p>Implicit models can be based on personal biases and/or incorrect beliefs and assumptions about what it takes to be a future leader.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">What is Leadership Potential?</h2>
+        <p class="panel-sub">Flip each card to review examples of general, leadership, and destination potential.</p>
+        <div class="flip-card-grid" role="group" aria-label="Three types of potential">
+          <course-flip-card
+            title="General Potential"
+            summary="Flip to review the examples."
+            back-heading="Examples:"
+            back-list="Innovative Thinking|Adaptability|Effective Communication Skills|Problem Solving Aptitude">
+          </course-flip-card>
+          <course-flip-card
+            title="Leadership Potential"
+            summary="Flip to review the examples."
+            back-heading="Examples:"
+            back-list="Making decisions aligned with org’s vision|Identifying and addressing issues w/o waiting for direction|Clearly articulating ideas|Supporting colleagues and promoting a positive team culture|Convincing others to adopt ideas">
+          </course-flip-card>
+          <course-flip-card
+            title="Destination Potential"
+            summary="Flip to review the examples."
+            back-heading="Examples:"
+            back-list="Exec Decision-Making &amp; Risk Management|Crisis Management &amp; Business Continuity|Financial &amp; Business Acumen|Corporate Social Responsibility|Change Management">
+          </course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">What Should We Look For to Identify Leadership Potential?</h2>
+        <p class="panel-sub">Use the carousel to review indicators covered in this module and the settings where they may be observed.</p>
+        <course-carousel class="indicator-carousel" aria-label="Observable indicators of leadership potential">
+          <article data-carousel-item>
+            <div class="indicator-slide">
+              <img src="images/module2-lesson1-slide22.jpeg" alt="A person looking through binoculars.">
+              <div class="indicator-copy">
+                <h3>Effective Interpersonal Skills</h3>
+                <p>Effectively manage and work with others.</p>
+                <p class="observation">Can be clearly seen across a variety of exchanges and team meetings.</p>
+                <h4>The ability to “Connect the Dots”</h4>
+                <p>Think broad and strategically about the business, as well as the external world around themselves.</p>
+                <p class="observation">Can be spotted in team meetings/brainstorming sessions, or when your staff is giving a presentation.</p>
+              </div>
+            </div>
+          </article>
+          <article data-carousel-item>
+            <div class="indicator-slide">
+              <img src="images/module2-lesson1-slide23.jpg" alt="Colleagues supporting one another during a team discussion.">
+              <div class="indicator-copy">
+                <h3>Ability to learn from experiences and apply those learnings to new situations</h3>
+                <p class="observation">This can be observed in action during daily work, presentations, operations and meetings.</p>
+                <h4>Ambition, motivation and drive to deliver great results and have an impact at more senior levels.</h4>
+                <p class="observation">This is demonstrated by staff taking on work above and beyond their current role and/or of those more senior to them.</p>
+              </div>
+            </div>
+          </article>
+          <article data-carousel-item>
+            <div class="indicator-slide">
+              <img src="images/module2-lesson1-slide24.jpg" alt="A person thinking through a strategic diagram.">
+              <div class="indicator-columns">
+                <div>
+                  <h3>Core leadership capabilities for success in the organization</h3>
+                  <ul>
+                    <li>Influence Skills</li>
+                    <li>Developing Others</li>
+                    <li>Collaboration</li>
+                    <li>Self-Awareness</li>
+                    <li>Team-Building</li>
+                    <li>Coaching</li>
+                    <li>Giving Feedback</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3>Key functional skills needed for future success in the organization</h3>
+                  <ul>
+                    <li>Digital Mindset</li>
+                    <li>Deep analytics skills</li>
+                    <li>Having a multi-functional background (sales, marketing, operations, finance, HR, etc.)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </course-carousel>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">How to Formally Assess for Leadership Potential</h2>
+        <p class="panel-sub">Flip each card to review the six assessment approaches covered in this lesson.</p>
+        <div class="assessment-grid" role="group" aria-label="Six formal assessment approaches">
+          <course-flip-card title="1: Training on Unconscious Bias" guidance="Provide training for managers on recognizing and mitigating unconscious biases."></course-flip-card>
+          <course-flip-card title="2: Diverse Evaluation Panels" guidance="Include diverse evaluators from different backgrounds and perspectives in the assessment process."></course-flip-card>
+          <course-flip-card title="3: Behavioral Assessment Tools" guidance="Utilize validated behavioral assessment tools to evaluate leadership potential objectively."></course-flip-card>
+          <course-flip-card title="4: Objective Performance Metrics" guidance="Establish clear and measurable performance metrics aligned with leadership competencies."></course-flip-card>
+          <course-flip-card title="5: 360 Degree Feedback" guidance="Gather feedback from peers, subordinates, and supervisors to provide a comprehensive view of an individual’s leadership capabilities."></course-flip-card>
+          <course-flip-card title="6: Structured Competency-Based Interviews" guidance="Develop a set of standardized, competency-based interview questions that focus on specific leadership traits and behaviors."></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-4">
+        <h2 class="panel-title" id="title-4">Learning Check</h2>
+        <p class="panel-sub">Answer each statement True or False, then review the explanation.</p>
+        <div class="learning-check-grid" role="group" aria-label="Leadership potential learning check">
+          <course-true-false statement="An implicit model is a manager’s idea of what a high-potential employee looks like." answer="true" explanation="Most managers have an implicit model in their head as to what a high-potential employee looks like."></course-true-false>
+          <course-true-false statement="General Potential, Leadership Potential, and Destination Potential are three categories covered in this lesson." answer="true" explanation="This lesson presents these three labels and gives examples for each."></course-true-false>
+          <course-true-false statement="Structured competency-based interviews should focus on general impressions instead of specific leadership traits and behaviors." answer="false" explanation="In this lesson, these interviews use standardized, competency-based questions focused on specific leadership traits and behaviors."></course-true-false>
+        </div>
+      </section>
+    </main>
+
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 5</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, focusStage = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (focusStage) document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/true-false.js" defer></script>
+</body>
+</html>

@@ -25,6 +25,7 @@
   --color-text: var(--charcoal);
   --color-text-inverse: var(--white);
   --color-border: var(--pale-sage);
+  --color-progress-line: #B7CDB8;
   --color-focus: var(--deep-charcoal);
   --color-shadow: rgba(48, 52, 55, 0.12);
 

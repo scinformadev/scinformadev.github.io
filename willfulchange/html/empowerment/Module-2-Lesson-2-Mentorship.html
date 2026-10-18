@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 2, Lesson 2: Mentorship and Nurturing Leadership Qualities</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <style>
+    /* Slides 26–30. Slide 29 uses four source-mapped image cards. */
+    .panel-scroll { overflow-y: auto; padding-right: 6px; }
+    .term-wrap { margin-top: 18px; }
+    .quote-card {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-surface-muted);
+    }
+    .quote-card p { margin: 0; font-size: 18px; font-style: italic; }
+    .quote-card cite { display: block; margin-top: 7px; font-size: 15px; font-style: normal; }
+    .mentorship-grid, .expectation-grid, .barrier-grid { display: grid; gap: 14px; margin-top: 18px; }
+    .mentorship-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .mentorship-card {
+      min-height: 210px;
+      padding: 17px 18px;
+      border: 2px solid var(--color-border);
+      border-top: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-text-inverse);
+      box-shadow: var(--shadow);
+    }
+    .mentorship-card h3 {
+      margin: 0 0 10px;
+      color: var(--color-primary);
+      font-family: Cambria, 'Times New Roman', Georgia, serif;
+      font-size: 20px;
+    }
+    .mentorship-card ul { margin: 0; padding-left: 22px; font-size: 17px; line-height: 1.45; }
+    .mentorship-card li + li { margin-top: 7px; }
+    .expectation-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .expectation-grid course-flip-card {
+      --course-flip-card-height: 170px;
+      --course-flip-card-padding: 16px;
+      --course-flip-card-title-size: 18px;
+      --course-flip-card-text-size: 15px;
+    }
+    .expectation-grid .course-flip-card__back { align-items: flex-start; text-align: left; }
+    .barrier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .barrier-card {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      min-height: 150px;
+      padding: 12px;
+      border: 2px solid var(--color-border);
+      border-left: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-text-inverse);
+      box-shadow: var(--shadow);
+    }
+    .barrier-card img { width: 128px; height: 128px; border-radius: 10px; object-fit: cover; }
+    .barrier-card h3 {
+      margin: 0 0 7px;
+      color: var(--color-primary);
+      font-family: Cambria, 'Times New Roman', Georgia, serif;
+      font-size: 19px;
+    }
+    .barrier-card p { margin: 0; font-size: 16px; line-height: 1.4; }
+    .barrier-card q { quotes: "“" "”"; }
+    .stage-carousel {
+      --course-carousel-height: 300px;
+      --course-carousel-mobile-height: 350px;
+      --course-carousel-padding: 18px;
+    }
+    .stage-carousel .course-carousel__item { text-align: left; align-items: flex-start; }
+    .stage-carousel .course-carousel__item h3 { font-size: 23px; }
+    .stage-carousel .course-carousel__item p { max-width: 720px; font-size: 18px; line-height: 1.5; }
+
+    @media (max-width: 820px) {
+      .mentorship-grid, .expectation-grid, .barrier-grid { grid-template-columns: 1fr; }
+      .mentorship-card { min-height: 0; }
+    }
+    @media (max-width: 560px) {
+      .barrier-card { grid-template-columns: 1fr; }
+      .barrier-card img { width: 100%; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner">
+        <h1>Lesson 2: Mentorship and Nurturing Leadership Qualities</h1>
+      </div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Mentorship definition and overview">1</button><span class="rail-label">Mentorship</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Mentorship expectations">2</button><span class="rail-label">Expectations</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Barriers to mentoring">3</button><span class="rail-label">Barriers</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Stages of a mentoring relationship">4</button><span class="rail-label">Stages</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel panel-scroll active" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Strategies for Nurturing Leadership Qualities</h2>
+        <div class="term-wrap">
+          <course-term header="DEFINITION" term="Mentorship">Mentorship is a dynamic and reciprocal relationship between an experienced and knowledgeable individual (mentor) and a less experienced or knowledgeable individual (mentee) aimed at fostering the mentee’s personal and professional growth.</course-term>
+        </div>
+        <div class="mentorship-grid" role="group" aria-label="Forms, settings, and expectations of mentorship">
+          <article class="mentorship-card">
+            <h3>Forms of Mentorship</h3>
+            <ul>
+              <li>Formal Arrangement</li>
+              <li>Informal Arrangement</li>
+            </ul>
+          </article>
+          <article class="mentorship-card">
+            <h3>Mentorship Settings</h3>
+            <ul>
+              <li>Workplace</li>
+              <li>Educational Institute</li>
+              <li>Professional Association</li>
+            </ul>
+          </article>
+          <article class="mentorship-card">
+            <h3>Mentorship Expectations</h3>
+            <ul>
+              <li>Guidance</li>
+              <li>Support</li>
+              <li>Advice</li>
+              <li>Knowledge Transfer</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Mentorship Expectations</h2>
+        <p class="panel-sub">Flip each card to review an expectation of the mentor–mentee relationship.</p>
+        <div class="expectation-grid" role="group" aria-label="Five mentorship expectations">
+          <course-flip-card title="1: Guidance &amp; Support" guidance="The mentor offers guidance and support to the mentee, sharing insights, perspectives, and practical advice based on their own experiences."></course-flip-card>
+          <course-flip-card title="2: Knowledge Transfer" guidance="Mentorship involves the transfer of knowledge, skills, and expertise from the mentor to the mentee, contributing to the mentee’s professional development."></course-flip-card>
+          <course-flip-card title="3: Goal Setting &amp; Development" guidance="Mentors help mentees identify and set goals, offering encouragement and constructive feedback to aid in their personal and professional development."></course-flip-card>
+          <course-flip-card title="4: Role Modeling" guidance="Mentors often serve as role models, exemplifying positive behaviors, leadership qualities, and ethical standards for the mentee to observe and emulate."></course-flip-card>
+          <course-flip-card title="5: Empowerment" guidance="Mentorship empowers mentees by fostering confidence, self-awareness, and a sense of direction, ultimately enabling them to overcome challenges and reach their full potential."></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Why Leaders Fail to Mentor Others?</h2>
+        <p class="panel-sub">Review four barriers named in this lesson.</p>
+        <div class="barrier-grid" role="list" aria-label="Four barriers to mentoring">
+          <article class="barrier-card" role="listitem">
+            <img src="images/module2-lesson2-slide29-01.jpeg" alt="A person overwhelmed by paperwork and a clock.">
+            <div><h3>Too Much Work</h3><p><q>Not enough time and too much on my plate as it is</q></p></div>
+          </article>
+          <article class="barrier-card" role="listitem">
+            <img src="images/module2-lesson2-slide29-02.jpeg" alt="A worried person biting their fingers.">
+            <div><h3>Personal Insecurities</h3><p><q>If I teach them what I know, they might do it better and take my job</q></p></div>
+          </article>
+          <article class="barrier-card" role="listitem">
+            <img src="images/module2-lesson2-slide29-03.jpeg" alt="A person gesturing toward themself.">
+            <div><h3>Ego</h3><p><q>They must be either the bride at a wedding or the corpse at a funeral</q></p></div>
+          </article>
+          <article class="barrier-card" role="listitem">
+            <img src="images/module2-lesson2-slide29-04.jpeg" alt="A person considering many possible directions.">
+            <div><h3>Inability to discern people’s success seed</h3><p><q>I don’t know what to look for let alone help someone else find what I can’t</q></p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">5 Stages of a Mentoring Relationship</h2>
+        <p class="panel-sub">Move through the carousel to review each stage.</p>
+        <course-carousel class="stage-carousel" aria-label="Five stages of a mentoring relationship">
+          <article data-carousel-item>
+            <h3>Stage 1: Initiation/Introduction</h3>
+            <p>This is the initial phase where the mentor and mentee get to know each other and establish the foundation for their mentoring relationship.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Stage 2: Cultivation/Relationship Building</h3>
+            <p>This stage focuses on building rapport, trust, and a strong relationship between the mentor and mentee.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Stage 3: Agreement/Goal Setting</h3>
+            <p>In this stage, the mentor and mentee collaborate to set specific goals and objectives for the mentoring relationship.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Stage 4: Implementation/Action</h3>
+            <p>This stage involves actively working toward the established goals and implementing the strategies outlined in the goal-setting stage.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Stage 5: Closure/Transition</h3>
+            <p>The closure stage marks the end of the formal mentoring relationship. It involves reflection on achievements, lessons learned, and potential next steps.</p>
+          </article>
+        </course-carousel>
+      </section>
+    </main>
+
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, focusStage = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (focusStage) document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+  <script src="components/term.js" defer></script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+</body>
+</html>

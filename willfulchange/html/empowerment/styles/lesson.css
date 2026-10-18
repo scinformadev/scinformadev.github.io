@@ -43,7 +43,7 @@ h1 { margin: 0; font-size: 22px; }
 }
 .rail-step.complete .dot::after { content: " ✓"; }
 .rail-label { margin-left: 9px; color: var(--charcoal); font-size: 16px; font-weight: 700; }
-.connector { height: 2px; min-width: 18px; flex: 1; margin: 0 12px; background: var(--mist); }
+.connector { height: 2px; min-width: 18px; flex: 1; margin: 0 12px; background: var(--color-progress-line); }
 
 .stage { position: relative; height: 480px; overflow: hidden; padding: 26px 28px 0; }
 .panel { position: absolute; inset: 26px 28px 0; display: none; animation: rise .3s ease-out; }
