@@ -10,27 +10,52 @@
       const title = this.getAttribute('title') || '';
       const summary = this.getAttribute('summary') || '';
       const guidance = this.getAttribute('guidance') || '';
+      const frontItems = this.getListAttribute('front-list');
+      const backItems = this.getListAttribute('back-list');
+      const backHeading = this.getAttribute('back-heading') || '';
+      const backPrefix = this.getAttribute('back-prefix') || '';
       const label = this.getAttribute('label') || `Show guidance for ${title}`;
 
       this.innerHTML = `
         <button class="course-flip-card__button" type="button" aria-expanded="false" aria-label="${this.escapeAttribute(label)}">
           <span class="course-flip-card__face course-flip-card__front" aria-hidden="false">
             <strong class="course-flip-card__title"></strong>
-            <span class="course-flip-card__text"></span>
+            <${frontItems.length ? 'ul' : 'span'} class="course-flip-card__text"></${frontItems.length ? 'ul' : 'span'}>
             ${this.flipIcon()}
           </span>
           <span class="course-flip-card__face course-flip-card__back" aria-hidden="true">
-            <span class="course-flip-card__text"></span>
+            ${backHeading ? '<strong class="course-flip-card__back-heading"></strong>' : ''}
+            ${backPrefix ? '<strong class="course-flip-card__back-prefix"></strong>' : ''}
+            <${backItems.length ? 'ul' : 'span'} class="course-flip-card__text"></${backItems.length ? 'ul' : 'span'}>
             ${this.flipIcon()}
           </span>
         </button>`;
 
       const frontTitle = this.querySelector('.course-flip-card__front .course-flip-card__title');
+      const backHeadingElement = this.querySelector('.course-flip-card__back-heading');
+      const backPrefixElement = this.querySelector('.course-flip-card__back-prefix');
       const backText = this.querySelector('.course-flip-card__back .course-flip-card__text');
       const frontText = this.querySelector('.course-flip-card__front .course-flip-card__text');
       frontTitle.textContent = title;
-      frontText.textContent = summary;
-      backText.textContent = guidance;
+      if (backHeadingElement) backHeadingElement.textContent = backHeading;
+      if (backPrefixElement) backPrefixElement.textContent = backPrefix;
+      if (frontItems.length) this.populateList(frontText, frontItems);
+      else frontText.textContent = summary;
+      if (backItems.length) this.populateList(backText, backItems);
+      else backText.textContent = guidance;
+    }
+
+    getListAttribute(name) {
+      const value = this.getAttribute(name);
+      return value ? value.split('|').map((item) => item.trim()).filter(Boolean) : [];
+    }
+
+    populateList(element, items) {
+      items.forEach((item) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item;
+        element.appendChild(listItem);
+      });
     }
 
     flipIcon() {

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 3: Principles 7–9</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    .panel-scroll { overflow-y: auto; padding-right: 6px; }
+    .important-card {
+      margin-top: 18px;
+      padding: 24px;
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius);
+      background: var(--color-surface-muted);
+    }
+    .important-card h3 { margin: 0 0 8px; color: var(--color-primary); font-family: Cambria, serif; font-size: 22px; }
+    .important-card p { margin: 0; font-size: 19px; line-height: 1.45; }
+    .quote-card {
+      margin-top: 16px;
+      padding: 18px;
+      border-left: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-surface-muted);
+    }
+    .quote-card p { margin: 0; font-size: 18px; font-style: italic; }
+    .feedback-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .feedback-grid course-flip-card {
+      --course-flip-card-height: 320px;
+      --course-flip-card-padding: 18px;
+      --course-flip-card-title-size: 22px;
+      --course-flip-card-text-size: 16px;
+    }
+    .feedback-grid .course-flip-card__front { align-items: center; text-align: center; }
+    .feedback-grid .course-flip-card__front .course-flip-card__text { display: none; }
+    .feedback-grid .course-flip-card__back { align-items: flex-start; text-align: left; }
+    .recognition-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 18px; align-items: start; margin-top: 18px; }
+    .recognition-layout .image-slot { width: 200px; height: 200px; min-height: 200px; padding: 0; }
+    .recognition-layout .image-slot img { width: 200px; height: 200px; min-height: 200px; object-fit: cover; }
+    .recognition-layout .recognition-card { margin-top: 0; }
+    .recognition-card {
+      margin-top: 18px;
+      padding: 24px;
+      border-left: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-surface-muted);
+    }
+    .recognition-card h3 { margin: 0 0 8px; color: var(--color-primary); font-family: Cambria, serif; font-size: 22px; }
+    .recognition-card p { margin: 0; font-size: 19px; line-height: 1.45; }
+    .reflection-card { margin-top: 16px; padding: 18px; border: 2px solid var(--color-border); border-radius: var(--radius); background: var(--color-text-inverse); }
+    .reflection-card h3 { margin: 0 0 6px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
+    .reflection-card p { margin: 0; font-size: 17px; }
+    .check-intro { margin-bottom: 16px; }
+    @media (max-width: 700px) {
+      .feedback-grid { grid-template-columns: 1fr; }
+      .recognition-layout { grid-template-columns: 1fr; }
+      .recognition-layout .image-slot { justify-self: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 3: Principles 7–9</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Be Patient">1</button><span class="rail-label">Be Patient</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Deliver and ask for Feedback">2</button><span class="rail-label">Feedback</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Give Credit Where It’s Due">3</button><span class="rail-label">Give Credit</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Check Principles 7–9">4</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel panel-scroll active" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">7) Be Patient</h2>
+        <div class="important-card">
+          <h3>IMPORTANT</h3>
+          <p>You might be tempted to refrain from delegating certain tasks knowing that you can get them done faster, but be patient with your employees.</p>
+        </div>
+        <div class="quote-card">
+          <p>“Patience is not passive waiting. Patience is active acceptance of the process required to attain your goals and dreams.”</p>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">8) Deliver (and ask for) Feedback</h2>
+        <p class="panel-sub">Flip each card to review how to give feedback and how to ask for feedback.</p>
+        <div class="feedback-grid" role="group" aria-label="Giving and asking for feedback">
+          <course-flip-card title="Give Feedback" guidance="If a task wasn't completed as assigned, don't be afraid to offer constructive criticism. Your employees can take this feedback and make changes the next time a similar task is assigned. Remember to provide positive feedback and show your appreciation when a task was done well."></course-flip-card>
+          <course-flip-card title="Ask Feedback" guidance="Ask your team for feedback. Ask your employees if you provided clear instructions and determine if there's anything you can do to better delegate in the future."></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">9) Give Credit Where It’s Due</h2>
+        <div class="recognition-layout">
+          <div class="image-slot filled">
+            <img src="images/module1-lesson3-slide3.png" alt="A leader recognizes an employee's contribution after the employee completes delegated project work.">
+          </div>
+          <div>
+            <div class="recognition-card">
+              <h3>IMPORTANT</h3>
+              <p>After you've delegated tasks and they've been seen through to completion, credit those who achieved the work. The more you thank and credit those you've delegated work to, the more likely it is they will want to help you on other projects in the future.</p>
+            </div>
+            <div class="reflection-card">
+              <h3>Reflection</h3>
+              <p>Consider how recognizing another person's contribution can affect their willingness to help with future projects.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Check Principles 7–9</h2>
+        <p class="panel-sub check-intro">Reorder the examples so they line up with the correct delegation principle.</p>
+        <course-matching-exercise aria-label="Match Principles 7 through 9 with their examples">
+          <script type="application/json">
+            [
+              {"strategy":"7) Be Patient","example":"A leader gives an employee time to complete a task and develop capability instead of taking the task back because the leader could finish it faster."},
+              {"strategy":"8) Deliver (and ask for) Feedback","example":"A manager offers constructive and positive feedback, then asks whether the instructions and support made the assignment clear."},
+              {"strategy":"9) Give Credit Where It’s Due","example":"After a project is completed, a leader publicly recognizes the employee who completed the work and thanks them for the contribution."}
+            ]
+          </script>
+        </course-matching-exercise>
+      </section>
+    </main>
+
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0);
+    })();
+  </script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+</body>
+</html>

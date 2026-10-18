@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 4: Delegation Barriers and Costs</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/true-false.css">
+  <style>
+    .panel-scroll { overflow-y: auto; padding-right: 6px; }
+    .mistake-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .mistake-card {
+      min-height: 245px;
+      padding: 18px;
+      border-left: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-surface-muted);
+    }
+    .mistake-card h3 { margin: 0 0 10px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
+    .mistake-card p { margin: 0; font-size: 17px; line-height: 1.45; }
+    .barrier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .barrier-grid course-flip-card {
+      --course-flip-card-height: 315px;
+      --course-flip-card-padding: 17px;
+      --course-flip-card-title-size: 20px;
+      --course-flip-card-text-size: 16px;
+    }
+    .barrier-grid .course-flip-card__front { align-items: center; text-align: center; }
+    .barrier-grid .course-flip-card__front .course-flip-card__text { display: none; }
+    .barrier-grid .course-flip-card__back { align-items: flex-start; text-align: left; }
+    .chart-layout { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(280px, 1fr); gap: 18px; align-items: start; margin-top: 18px; }
+    .chart-layout .image-slot { height: 320px; min-height: 320px; padding: 0; }
+    .chart-layout .image-slot img { width: 100%; height: 320px; min-height: 320px; object-fit: contain; background: var(--color-text-inverse); }
+    .chart-notes { display: grid; gap: 12px; }
+    .chart-notes .content-card { margin-top: 0; }
+    .data-table-wrap { overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; background: var(--color-text-inverse); font-size: 15px; }
+    .data-table caption { margin-bottom: 8px; color: var(--color-primary); font-family: Cambria, serif; font-size: 19px; font-weight: 700; text-align: left; }
+    .data-table th, .data-table td { padding: 9px 10px; border: 1px solid var(--color-border); text-align: left; }
+    .data-table th { background: var(--color-surface-muted); color: var(--color-primary); }
+    .quote-card { margin-top: 16px; padding: 18px; border-left: 7px solid var(--color-accent); border-radius: var(--radius); background: var(--color-surface-muted); }
+    .quote-card p { margin: 0; font-size: 18px; font-style: italic; }
+    .source-note { margin: 0; font-size: 14px; }
+    .learning-check-grid { display: grid; gap: 12px; margin-top: 18px; }
+    @media (max-width: 820px) {
+      .mistake-grid, .barrier-grid { grid-template-columns: 1fr; }
+      .mistake-card { min-height: 0; }
+      .chart-layout { grid-template-columns: 1fr; }
+      .chart-layout .image-slot { height: 260px; min-height: 260px; }
+      .chart-layout .image-slot img { height: 260px; min-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 4: Delegation Barriers and Costs</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Mistakes to Avoid">1</button><span class="rail-label">Mistakes to Avoid</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: What Holds Leaders Back From Delegating?">2</button><span class="rail-label">Barriers 1–3</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: What Holds Leaders Back From Delegating? Continued">3</button><span class="rail-label">Barriers 4–6</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Cost of Not Delegating">4</button><span class="rail-label">Cost of Not Delegating</span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 5: Learning Check">5</button><span class="rail-label">Learning Check</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel panel-scroll active" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Mistakes to Avoid</h2>
+        <p class="panel-sub">Review three delegation mistakes that can limit employee growth and satisfaction.</p>
+        <div class="mistake-grid" role="list" aria-label="Three delegation mistakes to avoid">
+          <article class="mistake-card" role="listitem">
+            <h3>Number 1</h3>
+            <p>Failure to express confidence and empower their people.</p>
+          </article>
+          <article class="mistake-card" role="listitem">
+            <h3>Number 2</h3>
+            <p>Failure to establish a plan for monitoring and ensuring progress is made.</p>
+          </article>
+          <article class="mistake-card" role="listitem">
+            <h3>Number 3</h3>
+            <p>Delegating only administrative tasks and never assigning more challenging work to help employees grow and feel satisfied in their work.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">What Holds Leaders Back From Delegating?</h2>
+        <p class="panel-sub">Flip each card to review a common barrier and a strategy to overcome it.</p>
+        <div class="barrier-grid" role="group" aria-label="The first three barriers to delegating">
+          <course-flip-card title="Supervising former peers" back-heading="Strategy to overcome:" guidance="Leverage your established relationships to help former peers see how they contribute to the big picture and that every task assigned is a contribution toward their growth and development."></course-flip-card>
+          <course-flip-card title="Accustomed to being the workhorse" back-heading="Strategy to overcome:" guidance="Focus on the big picture. If you're spending your time completing tasks, you won't have time to provide leadership."></course-flip-card>
+          <course-flip-card title="Lack of trust in team" back-heading="Strategy to overcome:" guidance="Recognize that perfection may not be necessary for every task. Clearly communicate expectations, focus on outcomes, and allow team members to use their skills and creativity in the process."></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">What Holds Leaders Back From Delegating? CONT.</h2>
+        <p class="panel-sub">Flip each card to review three more barriers and strategies to overcome them.</p>
+        <div class="barrier-grid" role="group" aria-label="The second three barriers to delegating">
+          <course-flip-card title="Struggling with vulnerability" back-heading="Strategy to overcome:" guidance="Embrace vulnerability. Research shows that vulnerability builds trust."></course-flip-card>
+          <course-flip-card title="Time training &gt; Time saved" back-heading="Strategy to overcome:" guidance="Consider the long-term benefits, provide focused training as needed, and emphasize the time saved in the future as team members become more proficient."></course-flip-card>
+          <course-flip-card title="Seeking personal recognition" back-heading="Strategy to overcome:" guidance="Foster a culture of team success and shared achievements. Acknowledge and celebrate team accomplishments, emphasizing that leadership involves empowering others."></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Cost of Not Delegating</h2>
+        <div class="chart-layout">
+          <div class="image-slot filled">
+            <img src="images/module1-lesson4-slide4.png" alt="Bar chart showing the percentage of leaders feeling burnout by age group, comparing all leaders, women, and minority leaders.">
+          </div>
+          <div class="chart-notes">
+            <div class="content-card">
+              <p>When leaders take on more work, they can become overwhelmed and stressed. They may burn out completely and leave.</p>
+              <p>DDI's Global Leadership Forecast 2023 found that 70% of leaders under age 35 report feeling used up at the end of every day, with rates even higher among women and minority leaders.</p>
+            </div>
+            <div class="quote-card">
+              <p>“Never confuse the cost of something with its value.” — Robin Hobbs</p>
+            </div>
+            <p class="source-note">Chart source: Development Dimensions International, Inc. 2023.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-4">
+        <h2 class="panel-title" id="title-4">Learning Check</h2>
+        <p class="panel-sub">Answer each statement True or False, then review the explanation.</p>
+        <div class="learning-check-grid" role="group" aria-label="Three-question delegation learning check">
+          <course-true-false
+            statement="Leaders should provide the training, resources, and authority employees need to complete delegated work."
+            answer="true"
+            explanation="Providing the right resources and level of authority helps employees complete the assigned project without unnecessary micromanagement.">
+          </course-true-false>
+          <course-true-false
+            statement="Allowing for failure means giving employees a task without support or expectations."
+            answer="false"
+            explanation="Allowing for failure creates room for experimentation while the leader still provides clear expectations, communication, and support.">
+          </course-true-false>
+          <course-true-false
+            statement="Giving credit to employees who complete delegated work can increase their willingness to help with future projects."
+            answer="true"
+            explanation="The presentation connects recognition and appreciation with employees' future willingness to contribute.">
+          </course-true-false>
+        </div>
+      </section>
+    </main>
+
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 5</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0);
+    })();
+  </script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/true-false.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lesson 2: Principles 4–6</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    .panel-scroll { overflow-y: auto; padding-right: 6px; }
+    .principle-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .principle-grid course-flip-card {
+      --course-flip-card-height: 166px;
+      --course-flip-card-padding: 14px;
+      --course-flip-card-title-size: 18px;
+      --course-flip-card-text-size: 15px;
+    }
+    .principle-grid .course-flip-card__front .course-flip-card__text { display: none; }
+    .three-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .three-card-grid course-flip-card { --course-flip-card-height: 330px; }
+    .important-card {
+      margin-top: 18px;
+      padding: 24px;
+      border: 2px solid var(--color-primary);
+      border-radius: var(--radius);
+      background: var(--color-surface-muted);
+    }
+    .important-card h3 { margin: 0 0 8px; color: var(--color-primary); font-family: Cambria, serif; font-size: 22px; }
+    .important-card p { margin: 0; font-size: 19px; line-height: 1.45; }
+    .failure-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 18px; align-items: start; margin-top: 18px; }
+    .failure-layout .image-slot { width: 200px; height: 200px; min-height: 200px; padding: 0; }
+    .failure-layout .image-slot img { width: 200px; height: 200px; min-height: 200px; object-fit: cover; }
+    .failure-layout .important-card { margin-top: 0; }
+    .reflection-card {
+      margin-top: 16px;
+      padding: 18px;
+      border-left: 7px solid var(--color-accent);
+      border-radius: var(--radius);
+      background: var(--color-surface-muted);
+    }
+    .reflection-card h3 { margin: 0 0 5px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
+    .reflection-card p { margin: 0; font-size: 17px; }
+    .check-intro { margin-bottom: 16px; }
+    @media (max-width: 700px) {
+      .principle-grid, .three-card-grid { grid-template-columns: 1fr; }
+      .failure-layout { grid-template-columns: 1fr; }
+      .failure-layout .image-slot { justify-self: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 2: Principles 4–6</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Provide the Right Resources and Level of Authority">1</button><span class="rail-label">Resources and Authority</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Establish Clear Communication Channels">2</button><span class="rail-label">Communication Channels</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Allow for Failure">3</button><span class="rail-label">Allow for Failure</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Check Principles 4–6">4</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel panel-scroll active" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">4) Provide the Right Resources and Level of Authority</h2>
+        <p class="panel-sub">Avoid micromanagement by focusing on:</p>
+        <div class="principle-grid three-card-grid" role="group" aria-label="Resources and authority considerations">
+          <course-flip-card title="What the desired end goal is" guidance="Keep the desired end goal clear so the employee understands what they are working toward."></course-flip-card>
+          <course-flip-card title="Why the task is important" guidance="Provide proper context and explain how the task connects to the organization's goals."></course-flip-card>
+          <course-flip-card title="Helping to address any gaps between the outcome and their current skill set" guidance="As a leader, it is your responsibility to ensure that proper training, resources, and authority are accessible or provided for the assigned project."></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">5) Establish Clear Communication Channels</h2>
+        <p class="panel-sub">You may want to consider the following:</p>
+        <div class="principle-grid three-card-grid" role="group" aria-label="Clear communication channels">
+          <course-flip-card title="Regular check-in meetings (1-on-1)" guidance="The communication channel should make the person you're delegating to feel comfortable asking questions and providing progress updates."></course-flip-card>
+          <course-flip-card title="Progress updates via email, virtual, or in-person" back-prefix="Example:" guidance="Status update, next steps, expected completion date."></course-flip-card>
+          <course-flip-card title="Establish a frequency for communication" back-prefix="Example:" guidance="Weekly, biweekly, etc."></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">6) Allow for Failure</h2>
+        <div class="failure-layout">
+          <div class="image-slot filled">
+            <img src="images/module1-lesson2-slide3.png" alt="A supportive manager helps an employee review and improve a first attempt at a project, illustrating experimentation and learning from failure.">
+          </div>
+          <div>
+            <div class="important-card">
+              <h3>IMPORTANT</h3>
+              <p>You need to allow for failure, not because your employees might fail, but because it will enable experimentation and empower the people you're assigning tasks to take a new approach.</p>
+            </div>
+            <div class="reflection-card">
+              <h3>Agree or Disagree and Why?</h3>
+              <p>Consider how allowing room for failure can support experimentation and empower employees to take a new approach.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel-scroll" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Check Principles 4–6</h2>
+        <p class="panel-sub check-intro">Reorder the examples so they line up with the correct delegation principle.</p>
+        <course-matching-exercise aria-label="Match Principles 4 through 6 with their examples">
+          <script type="application/json">
+            [
+              {"strategy":"4) Provide the Right Resources and Level of Authority","example":"A leader explains the desired end goal and why the task is important, then provides the training, resources, and authority needed for the project."},
+              {"strategy":"5) Establish Clear Communication Channels","example":"A manager agrees on regular check-ins, progress updates, and a communication frequency so the employee can ask questions and share status."},
+              {"strategy":"6) Allow for Failure","example":"A leader gives an employee room to experiment and try a new approach, while treating mistakes as opportunities for learning and improvement."}
+            ]
+          </script>
+        </course-matching-exercise>
+      </section>
+    </main>
+
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('active', i === current);
+          panel.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0);
+    })();
+  </script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+</body>
+</html>

@@ -42,6 +42,36 @@ course-flip-card.is-flipped .course-flip-card__button {
   padding-bottom: 22px;
 }
 
+.course-flip-card__face > ul.course-flip-card__text {
+  align-self: stretch;
+  margin: 0;
+  padding: 0 0 22px 20px;
+  text-align: left;
+}
+
+.course-flip-card__face > ul.course-flip-card__text li + li {
+  margin-top: 5px;
+}
+
+.course-flip-card__back-heading {
+  align-self: stretch;
+  margin: 0 0 8px;
+  color: var(--teal);
+  font-family: Cambria, 'Times New Roman', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.course-flip-card__back-prefix {
+  align-self: stretch;
+  margin: 0 0 4px;
+  color: var(--teal);
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: left;
+}
+
 .course-flip-card__front {
   background: var(--white);
   align-items: center;
