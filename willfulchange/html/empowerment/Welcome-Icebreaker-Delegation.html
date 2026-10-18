@@ -130,14 +130,14 @@
       const backBtn = document.getElementById('backBtn');
       const stepCounter = document.getElementById('stepCounter');
       let current = 0;
-      function showStep(index) {
+      function showStep(index, focusStage = true) {
         current = Math.max(0, Math.min(index, panels.length - 1));
         panels.forEach((panel, i) => { panel.classList.toggle('active', i === current); panel.setAttribute('aria-hidden', i === current ? 'false' : 'true'); });
         railSteps.forEach((step, i) => { step.classList.toggle('active', i === current); step.classList.toggle('complete', i < current); const dot = step.querySelector('.dot'); if (i === current) dot.setAttribute('aria-current', 'step'); else dot.removeAttribute('aria-current'); });
         backBtn.disabled = current === 0;
         nextBtn.disabled = current === panels.length - 1;
         stepCounter.textContent = `STEP ${current + 1} OF ${panels.length}`;
-        document.getElementById('stage').focus({ preventScroll: true });
+        if (focusStage) document.getElementById('stage').focus({ preventScroll: true });
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
