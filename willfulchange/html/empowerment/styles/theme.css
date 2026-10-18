@@ -1,0 +1,59 @@
+:root {
+  /* Slide 29-inspired course palette */
+  --deep-charcoal: #2F3437;
+  --sage-green: #4E805D;
+  --coral-rose: #E07870;
+  --charcoal: #35413B;
+  --warm-cream: #FFFDF9;
+  --pale-sage: #EEF7EE;
+  --white: #FFFFFF;
+
+  /* Backward-compatible component tokens for existing reusable components. */
+  --teal: var(--deep-charcoal);
+  --seafoam: var(--sage-green);
+  --tangerine: var(--coral-rose);
+  --ivory: var(--warm-cream);
+  --mist: var(--pale-sage);
+  --pale-mist: #F3F7F3;
+
+  /* Functional tokens: use these in lessons and new components. */
+  --color-primary: var(--deep-charcoal);
+  --color-accent: var(--sage-green);
+  --color-accent-warm: var(--coral-rose);
+  --color-surface: var(--warm-cream);
+  --color-surface-muted: var(--pale-sage);
+  --color-text: var(--charcoal);
+  --color-text-inverse: var(--white);
+  --color-border: var(--pale-sage);
+  --color-focus: var(--deep-charcoal);
+  --color-shadow: rgba(48, 52, 55, 0.12);
+
+  --radius: 14px;
+  --shadow: 0 4px 18px rgba(48, 52, 55, 0.12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+button { font: inherit; cursor: pointer; }
+button:focus-visible {
+  outline: 4px solid var(--color-focus);
+  outline-offset: 3px;
+}
+h1, h2, h3 { line-height: 1.2; }
+h1 { font-family: Cambria, 'Times New Roman', Georgia, serif; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
