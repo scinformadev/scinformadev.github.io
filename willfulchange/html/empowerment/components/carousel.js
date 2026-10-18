@@ -113,7 +113,7 @@
     }
 
     itemTitle(item) {
-      return item.querySelector('h3')?.textContent.trim() || 'Carousel item';
+      return item.dataset.title || item.querySelector('h3')?.textContent.trim() || 'Carousel item';
     }
   }
 

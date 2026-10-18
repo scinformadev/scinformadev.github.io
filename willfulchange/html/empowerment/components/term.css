@@ -1,0 +1,39 @@
+course-term {
+  display: block;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-text-inverse);
+  color: var(--color-text);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.course-term__header {
+  padding: 9px 16px;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.course-term__body {
+  padding: 14px 16px;
+}
+
+.course-term__term {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--color-primary);
+  font-family: Cambria, 'Times New Roman', Georgia, serif;
+  font-size: 20px;
+}
+
+.course-term__definition {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.course-term__definition p {
+  margin: 0;
+}

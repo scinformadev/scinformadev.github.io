@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Opening Reflection</title>
   <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/term.css">
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -44,6 +46,9 @@
     .response-card { padding: 15px 16px; border: 2px solid var(--color-border); border-left: 7px solid var(--color-accent); border-radius: var(--radius); background: var(--color-text-inverse); box-shadow: 0 4px 18px var(--color-shadow); }
     .response-card h3 { margin: 0 0 5px; color: var(--color-primary); font-family: Cambria, serif; font-size: 18px; }
     .response-card p { margin: 0; font-size: 16px; }
+    .importance-panel { overflow-y: auto; padding-right: 6px; }
+    .benefit-carousel { margin-top: 16px; --course-carousel-height: 125px; --course-carousel-padding: 14px; }
+    .benefit-carousel .course-carousel__item p { font-size: 20px; line-height: 1.35; }
     .nav-controls { display: flex; max-width: 980px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 28px 4px; border-top: 1px solid var(--color-border); }
     .btn { min-width: 120px; padding: 11px 22px; border: 2px solid var(--color-primary); border-radius: 9px; background: var(--color-text-inverse); color: var(--color-primary); font-size: 16px; font-weight: 700; }
     .btn:hover:not(:disabled) { background: var(--color-surface-muted); }
@@ -61,7 +66,8 @@
     <nav class="progress-rail" aria-label="Lesson progress">
       <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Why reflect">1</button><span class="rail-label">Why reflect</span><span class="connector"></span></div>
       <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Reflection">2</button><span class="rail-label">Reflection</span><span class="connector"></span></div>
-      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Delegation considerations">3</button><span class="rail-label">Delegation considerations</span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Importance of delegation">3</button><span class="rail-label">Importance</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Delegation considerations">4</button><span class="rail-label">Considerations</span></div>
     </nav>
   </header>
   <main class="stage" id="stage" tabindex="-1">
@@ -85,8 +91,23 @@
         <p>Imagine you’re facing a challenging project, and you need to delegate tasks to your team. What factors would you consider in deciding which tasks to delegate and to whom?</p>
       </div>
     </section>
-    <section class="panel" aria-labelledby="title-2">
-      <h2 class="panel-title" id="title-2">Delegation considerations</h2>
+    <section class="panel importance-panel" aria-labelledby="title-2">
+      <h2 class="panel-title" id="title-2">Delegation defined</h2>
+      <p class="panel-sub">Learn the definition and benefits of delegation.</p>
+	  <course-term term="Delegation">The process of distributing and entrusting work to another person. In leadership, it involves a manager aiming to efficiently distribute work, decision-making, and responsibility to subordinate workers in an organization.</course-term>
+      <p class="section-label">Benefits of delegation</p>
+      <course-carousel class="benefit-carousel" aria-label="Benefits of delegation">
+        <article data-carousel-item data-title="Free up time to focus on higher-value activities"><p>Free up time to focus on higher-value activities</p></article>
+        <article data-carousel-item data-title="Keeps employees engaged with greater autonomy"><p>Keeps employees engaged with greater autonomy</p></article>
+        <article data-carousel-item data-title="It enhances creativity and innovation by leveraging diverse skills"><p>It enhances creativity and innovation by leveraging diverse skills</p></article>
+        <article data-carousel-item data-title="Boosts morale &amp; motivation"><p>Boosts morale &amp; motivation</p></article>
+        <article data-carousel-item data-title="Increases Productivity"><p>Increases Productivity</p></article>
+        <article data-carousel-item data-title="Reduce Employee Turnover"><p>Reduce Employee Turnover</p></article>
+        <article data-carousel-item data-title="Improves trust &amp; communication"><p>Improves trust &amp; communication</p></article>
+      </course-carousel>
+    </section>
+    <section class="panel" aria-labelledby="title-3">
+      <h2 class="panel-title" id="title-3">Delegation considerations</h2>
       <p class="panel-sub response-instruction">You may have thought of something specific to your role. Here are a few factors to consider when deciding which tasks to delegate and to whom.</p>
       <div class="response-grid">
         <article class="response-card"><h3>Current skills</h3><p>Consider whether the task aligns with the team member’s current skills.</p></article>
@@ -98,7 +119,7 @@
   </main>
   <div class="nav-controls">
     <button class="btn" id="backBtn" type="button" disabled>← Back</button>
-    <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 3</span>
+    <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 4</span>
     <button class="btn primary" id="nextBtn" type="button">Next →</button>
   </div>
   <script>
@@ -124,5 +145,7 @@
       backBtn.addEventListener('click', () => showStep(current - 1));
     })();
   </script>
+  <script src="components/term.js" defer></script>
+  <script src="components/carousel.js" defer></script>
 </body>
 </html>
