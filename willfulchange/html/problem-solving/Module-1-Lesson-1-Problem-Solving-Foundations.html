@@ -39,13 +39,17 @@
       --course-flip-card-height: 350px;
       --course-flip-card-padding: 16px;
       --course-flip-card-title-size: 19px;
+      --course-flip-card-image-height: 110px;
       --course-flip-card-text-size: 15px;
     }
     .flip-card-grid .course-flip-card__front, .flip-card-grid .course-flip-card__back { align-items: stretch; text-align: left; }
     .framework-check .category-sorter__items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .framework-check .category-sorter__item { padding: 10px 12px; }
-    .framework-check .category-sorter__item h3 { margin: 0; padding-right: 12px; }
+    .framework-check .category-sorter__item h3 { margin: 0; padding-right: 12px; font-weight: 400; }
     .framework-check .category-sorter__status { margin-bottom: 12px; }
+    @media (min-width: 701px) and (max-width: 850px) {
+      .flip-card-grid course-flip-card { --course-flip-card-image-height: 80px; }
+    }
     @media (max-width: 700px) {
       .framework-check .category-sorter__items { grid-template-columns: 1fr; }
       .foundation-layout, .flip-card-grid, .technique-grid { grid-template-columns: 1fr; }
@@ -105,6 +109,8 @@
         <div class="flip-card-grid" role="group" aria-label="Main components of problem-solving frameworks">
           <course-flip-card
             title="Identify/Define"
+            front-image="images/module1-lesson1-identify.png"
+            front-image-alt="A figure examines the word Problem through a magnifying glass."
             summary="Clearly identify and define the problem. Ensure that you understand the context and scope of the problem."
             back-heading="Example"
             guidance="If the problem is a decrease in sales, the definition could include specifics like the timeframe of the decrease, the affected products or services, and any known contributing factors."
@@ -112,6 +118,8 @@
           </course-flip-card>
           <course-flip-card
             title="Analyze"
+            front-image="images/module1-lesson1-analyze.jpeg"
+            front-image-alt="Questions about where, when, why, what, who, and how surround a question mark."
             summary="Gather relevant data and information related to the problem. Analyze the causes and effects, and consider the impact on stakeholders."
             back-heading="Example"
             guidance="For the sales decrease, you might analyze sales trends, market conditions, customer feedback, and competitor actions to identify potential reasons for the decline."
@@ -119,6 +127,8 @@
           </course-flip-card>
           <course-flip-card
             title="Solve"
+            front-image="images/module1-lesson1-solve.jpeg"
+            front-image-alt="A problem branches into three possible solutions."
             summary="Use a structured approach to develop and implement solutions. Break down the problem into smaller parts, generate possible solutions, evaluate them, and select the best one."
             back-heading="Example"
             guidance="For the sales decrease, potential solutions could include launching a new marketing campaign, offering promotions, improving product quality, or expanding into new markets. Evaluate each option based on feasibility, cost, and potential impact before making a decision."
