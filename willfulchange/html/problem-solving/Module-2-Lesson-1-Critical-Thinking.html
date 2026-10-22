@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="16–17">
+  <meta name="source-slide-count" content="2">
+  <title>Module 2, Lesson 1: Critical thinking</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    /* Three fixed-height panels; source slides 16–17 and presenter notes. */
+    .panel[hidden] { display: none; }
+    .intro-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 18px; align-items: stretch; margin-top: 18px; }
+    .image-slot.thinking-image { position: relative; min-height: 340px; background: var(--color-surface); }
+    .image-slot.thinking-image img { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; object-fit: cover; }
+    .importance-card { margin-top: 12px; border-left: 7px solid var(--color-accent); background: var(--color-surface-muted); }
+    .importance-card h3 { font-size: 18px; }
+    .thinking-steps { --course-carousel-height: 330px; --course-carousel-mobile-height: 360px; --course-carousel-padding: 24px; margin-top: 16px; }
+    .thinking-steps .course-carousel__item { align-items: stretch; text-align: left; }
+    .step-example { margin-top: 20px; padding: 14px 16px; border-left: 5px solid var(--color-accent); border-radius: 10px; background: var(--color-surface-muted); }
+    .step-example h4 { margin: 0 0 6px; font-size: 18px; }
+    .steps-match .course-matching-exercise__strategy-list,
+    .steps-match .course-matching-exercise__example-list { gap: 6px; }
+    .steps-match .course-matching-exercise__strategy { min-height: 44px; padding: 4px 10px; }
+    .steps-match .course-matching-exercise__example { min-height: 44px; padding: 4px 10px 4px 32px; }
+    .steps-match .course-matching-exercise__check { margin-top: 6px; padding: 6px 16px; }
+    .steps-match .course-matching-exercise__status { margin-top: 6px; }
+    @media (min-width: 701px) {
+      .steps-match .course-matching-exercise__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+    }
+    @media (min-width: 701px) and (max-width: 900px) {
+      .intro-layout { grid-template-columns: 140px minmax(0, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .intro-layout { grid-template-columns: 1fr; }
+      .image-slot.thinking-image { width: 240px; min-height: 240px; justify-self: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Source: Developing your problem solving and critical thinking skills-Shortened Version.pptx.
+       Course objective 2. Source slides 16–17. Carousel descriptions and examples use
+       slide 17 presenter notes. “Date Relevance” corrected to “data relevance” per those notes. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 1: Critical thinking</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Critical thinking">1</button><span class="rail-label">Critical thinking</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Steps">2</button><span class="rail-label">Steps</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Learning check">3</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="16" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Critical thinking</h2>
+        <div class="intro-layout">
+          <div class="image-slot filled thinking-image"><img src="images/module2-lesson1-critical-thinking.png" alt="Four head silhouettes show a question mark, gears, a light bulb, and a checkmark along a rising path."></div>
+          <div>
+            <course-term header="Definition">
+              <p>An analytical approach to problem solving and decision-making. Leaders who learn critical thinking can rise above biases and assumptions that often hinder decision-making by recognizing assumptions, evaluating arguments, and drawing informed conclusions, which enhance their decision-making ability.</p>
+            </course-term>
+            <article class="card importance-card">
+              <h3>Importance</h3>
+              <p>It involves assessing current skills, fostering self-awareness and emotional intelligence, and guiding leaders toward improvement. Ultimately, critical thinking allows leaders to eliminate distractions and make well-informed decisions, benefiting both the organization and its employees.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="17" aria-labelledby="title-1" hidden>
+        <h2 class="panel-title" id="title-1">Five-step critical thinking process</h2>
+        <course-carousel class="thinking-steps" aria-label="Five steps of critical thinking">
+          <article data-carousel-item>
+            <h3>Step 1: Identify the problem</h3>
+            <p>Before diving into critical thinking, leaders must clearly define the problem they’re solving. Consider different perspectives and ask questions like, “What’s happening?”</p>
+            <div class="step-example"><h4>Example</h4><p>A project manager faces declining customer satisfaction. They identify the problem as inefficient customer support processes.</p></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 2: Research</h3>
+            <p>Gather relevant information from various sources. Explore data, research papers, case studies, and expert opinions related to the problem.</p>
+            <div class="step-example"><h4>Example</h4><p>A sales director researches industry trends, competitor strategies, and customer preferences to improve sales performance.</p></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 3: Determine data relevance</h3>
+            <p>Filter out irrelevant or biased information. Focus on data that directly impacts the problem.</p>
+            <div class="step-example"><h4>Example</h4><p>An HR manager evaluates employee engagement survey results, emphasizing areas directly linked to retention and productivity.</p></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 4: Ask questions</h3>
+            <p>Curiosity drives critical thinking. Leaders should ask probing questions, challenge assumptions, and seek deeper insights.</p>
+            <div class="step-example"><h4>Example</h4><p>A team leader asks, “Why are our project timelines consistently delayed?” to uncover underlying issues.</p></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 5: Identify the best solution</h3>
+            <p>Consider all available information and generate potential solutions. Evaluate each option based on data, feasibility, and impact.</p>
+            <div class="step-example"><h4>Example</h4><p>A product manager weighs the pros and cons of launching a new feature versus improving existing functionality.</p></div>
+          </article>
+        </course-carousel>
+      </section>
+      <section class="panel" data-source-slides="17" aria-labelledby="title-2" hidden>
+        <h2 class="panel-title" id="title-2">Learning check</h2>
+        <p class="panel-sub">Reorder the actions to match the steps. Drag them, or use the Up and Down arrow keys.</p>
+        <course-matching-exercise class="steps-match" left-label="Steps" right-label="Actions — reorder to match" item-label="action" aria-label="Put the five critical thinking steps in order">
+          <script type="application/json">
+[
+            {
+                        "strategy": "Step 1",
+                        "example": "Identify the problem"
+            },
+            {
+                        "strategy": "Step 2",
+                        "example": "Research"
+            },
+            {
+                        "strategy": "Step 3",
+                        "example": "Determine data relevance"
+            },
+            {
+                        "strategy": "Step 4",
+                        "example": "Ask questions"
+            },
+            {
+                        "strategy": "Step 5",
+                        "example": "Identify the best solution"
+            }
+]
+          </script>
+        </course-matching-exercise>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 3</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/term.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.hidden = i !== current;
+          panel.classList.toggle('active', i === current);
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          panels[current].scrollTop = 0;
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+</body>
+</html>
+
