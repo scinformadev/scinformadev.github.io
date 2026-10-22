@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="12–14">
+  <meta name="source-slide-count" content="3">
+  <title>Module 1, Lesson 3: Root cause analysis technique</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    /* Three fixed-height panels; source slides 12–14 and presenter notes. */
+    .panel[hidden] { display: none; }
+    .intro-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 18px; align-items: stretch; margin-top: 18px; }
+    .image-slot.rca-image { position: relative; min-height: 290px; }
+    .image-slot.rca-image img { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; object-fit: cover; }
+    .problem-statement { margin-top: 12px; padding: 12px 16px; border-left: 7px solid var(--color-accent); border-radius: 12px; background: var(--color-surface-muted); }
+    .problem-statement h3 { margin: 0 0 6px; font-size: 18px; }
+    .problem-statement p { margin: 0; font-size: 16px; line-height: 1.5; }
+    .rca-steps {
+      --course-carousel-height: 330px;
+      --course-carousel-mobile-height: 360px;
+      --course-carousel-padding: 18px;
+      margin-top: 16px;
+    }
+    .rca-steps .course-carousel__item { align-items: stretch; text-align: left; }
+    .step-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 18px; align-items: center; width: 100%; }
+    .step-image { display: block; width: 100%; height: 220px; margin: 0 auto; object-fit: contain; }
+    .step-copy p { font-size: 16px; line-height: 1.5; }
+    .rca-match .course-matching-exercise__strategy-list,
+    .rca-match .course-matching-exercise__example-list { gap: 6px; }
+    .rca-match .course-matching-exercise__strategy { min-height: 44px; padding: 4px 10px; }
+    .rca-match .course-matching-exercise__example { min-height: 44px; padding: 4px 10px 4px 32px; }
+    .rca-match .course-matching-exercise__check { margin-top: 6px; padding: 6px 16px; }
+    .rca-match .course-matching-exercise__status { margin-top: 6px; }
+    @media (min-width: 701px) {
+      .rca-match .course-matching-exercise__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+    }
+    @media (max-width: 700px) {
+      .intro-layout, .step-layout { grid-template-columns: 1fr; }
+      .step-image { height: 150px; }
+      .image-slot.rca-image { width: 240px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Source: Developing your problem solving and critical thinking skills-Shortened Version.pptx.
+       Course objective 1. Source slides 12–14. Step descriptions use source slide text
+       and concise presenter-note content. No closing questions are included. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 3: Root cause analysis technique</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Root cause analysis">1</button><span class="rail-label">Root cause analysis</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Steps">2</button><span class="rail-label">Steps</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Learning check">3</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="12–13" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Root cause analysis (RCA)</h2>
+        <p class="panel-sub">A versatile problem-solving technique that can be used in a professional or personal setting.</p>
+        <div class="intro-layout">
+          <div class="image-slot filled rca-image"><img src="images/module1-lesson3-slide12.jpeg" width="598" height="720" alt="A tree diagram labels the canopy Problem, the trunk Cause, and the roots Root Causes."></div>
+          <div>
+            <course-term header="Definition" term="Root cause analysis">
+              <p>A method that helps you understand the primary cause of a problem or why a problem occurred in the first place.</p>
+            </course-term>
+            <article class="problem-statement">
+              <h3>Example: Problem statement</h3>
+              <p>The current process for onboarding new employees is inefficient, leading to delays and errors in paperwork completion.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-source-slides="13–14" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">How to conduct a root cause analysis</h2>
+        <course-carousel class="rca-steps" aria-label="Five steps of root cause analysis">
+          <article data-carousel-item>
+            <h3>Step 1: Define the problem</h3>
+            <div class="step-layout"><img class="step-image" src="images/module1-lesson3-step1.jpg" alt=""><div class="step-copy"><p>Define the problem, gather data and relevant evidence, and create a problem statement including its actual and potential impact.</p></div></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 2: Determine the factors</h3>
+            <div class="step-layout"><img class="step-image" src="images/module1-lesson3-step2.png" alt="A 5 Whys diagram follows repeated Why questions to a root cause."><div class="step-copy"><p>Determine the factors that caused the problem. With the team, brainstorm the possible factors by asking “Why?” Use a 5 Whys diagram.</p></div></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 3: Identify the root cause</h3>
+            <div class="step-layout"><img class="step-image" src="images/module1-lesson3-step3.jpeg" alt="A figure uses a magnifying glass to investigate."><div class="step-copy"><p>Continue asking why beyond the first layer of causal factors until you discover the fundamental cause.</p></div></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 4: Decide corrective actions</h3>
+            <div class="step-layout"><img class="step-image" src="images/module1-lesson3-step4.jpeg" alt="A notebook labeled CAPA: Corrective and Preventive Action."><div class="step-copy"><p>Decide the corrective actions needed to eliminate the problem and prevent recurrence. Clearly communicate them to the people involved.</p></div></div>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 5: Review and evaluate</h3>
+            <div class="step-layout"><img class="step-image" src="images/module1-lesson3-step5.jpeg" alt="A group discussion with the word Review overlaid."><div class="step-copy"><p>Review and evaluate the impact of the corrective actions. Make improvements as necessary.</p></div></div>
+          </article>
+        </course-carousel>
+      </section>
+
+      <section class="panel" data-source-slides="13–14" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Learning check</h2>
+        <p class="panel-sub">Reorder the actions to match the steps. Drag them, or use the Up and Down arrow keys.</p>
+        <course-matching-exercise class="rca-match" left-label="Steps" right-label="Actions — reorder to match" item-label="action" aria-label="Match the five root cause analysis steps with their actions">
+          <script type="application/json">
+[
+            {
+                        "strategy": "Step 1",
+                        "example": "Define the problem and gather evidence."
+            },
+            {
+                        "strategy": "Step 2",
+                        "example": "Determine the contributing factors."
+            },
+            {
+                        "strategy": "Step 3",
+                        "example": "Find the fundamental cause."
+            },
+            {
+                        "strategy": "Step 4",
+                        "example": "Select and communicate corrective actions."
+            },
+            {
+                        "strategy": "Step 5",
+                        "example": "Evaluate results and make improvements."
+            }
+]
+          </script>
+        </course-matching-exercise>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 3</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/term.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+  <script>
+
+
+
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.hidden = i !== current;
+          panel.classList.toggle('active', i === current);
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          panels[current].scrollTop = 0;
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  
+  
+  
+  </script>
+</body>
+</html>
