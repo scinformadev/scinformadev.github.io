@@ -1,0 +1,82 @@
+/* Problem Solving: light adaptation of the presentation's Circuit theme. */
+:root {
+  color-scheme: light;
+  --color-canvas: #F7FAFB;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #EEF4F6;
+  --color-surface-accent: #EAF8F1;
+  --color-surface-info: #EAF6FB;
+  --color-primary: #252C36;
+  --color-text: #364854;
+  --color-text-muted: #526975;
+  --color-text-inverse: #FFFFFF;
+  --color-accent: #18764F;
+  --color-accent-warm: #146B86;
+  --color-highlight: #4FD093;
+  --color-highlight-secondary: #54BCDF;
+  --color-border: #CFDCE2;
+  --color-border-control: #718793;
+  --color-progress-line: var(--color-border);
+  --color-focus: #146B86;
+  --color-shadow: rgba(37, 44, 54, 0.10);
+
+  --font-family: 'Segoe UI', 'Calibri', Arial, sans-serif;
+  --radius: 14px;
+  --shadow: 0 4px 18px var(--color-shadow);
+  --shadow-raised: 0 6px 14px var(--color-shadow);
+
+  /* Compatibility aliases for reference samples and existing lesson markup. */
+  --deep-charcoal: var(--color-primary);
+  --sage-green: var(--color-accent);
+  --coral-rose: var(--color-accent-warm);
+  --charcoal: var(--color-text);
+  --warm-cream: var(--color-surface);
+  --pale-sage: var(--color-surface-muted);
+  --white: var(--color-text-inverse);
+  --teal: var(--color-primary);
+  --seafoam: var(--color-accent);
+  --tangerine: var(--color-accent-warm);
+  --ivory: var(--color-surface);
+  --mist: var(--color-surface-muted);
+  --pale-mist: var(--color-surface-accent);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 17px;
+  line-height: 1.5;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+input, select, textarea { accent-color: var(--color-accent); }
+input:not([type="radio"]):not([type="checkbox"]), select, textarea {
+  border: 2px solid var(--color-border-control);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+a { color: var(--color-accent); text-underline-offset: .15em; }
+a:hover { color: var(--color-primary); }
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--color-surface);
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  font-family: var(--font-family);
+  line-height: 1.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

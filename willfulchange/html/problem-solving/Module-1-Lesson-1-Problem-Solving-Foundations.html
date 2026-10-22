@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Problem-solving definitions, leadership benefits, and the Identify/Define, Analyze, Solve framework.">
+  <meta name="source-slides" content="4–7">
+  <meta name="source-slide-count" content="4">
+  <title>Module 1, Lesson 1: Problem-solving Frameworks &amp; Techniques</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/category-sorter.css">
+  <style>
+
+    /* Inherit the Empowerment reference's 480px desktop stage and positioned panels.
+       Source content is paginated rather than placed in scrolling panels or card faces. */
+    .panel[hidden] { display: none; }
+    .foundation-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 18px; align-items: stretch; margin-top: 16px; }
+    .image-slot.foundation-image { position: relative; min-height: 180px; }
+    .image-slot.foundation-image img { position: absolute; inset: 0; width: 100%; min-height: 0; height: 100%; object-fit: cover; }
+    .flip-card-grid, .technique-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .framework-definition { margin-top: 12px; }
+    .importance-carousel {
+      --course-carousel-height: 220px;
+      --course-carousel-mobile-height: 240px;
+      --course-carousel-padding: 16px;
+      --course-carousel-title-size: 21px;
+      --course-carousel-text-size: 16px;
+      margin-top: 16px;
+    }
+    .content-card { margin-top: 16px; padding: 15px 16px; border-left: 7px solid var(--color-accent); border-radius: 12px; background: var(--color-surface-muted); }
+    .content-card h3 { margin: 0 0 6px; color: var(--color-primary); font-size: 19px; }
+    .content-card p { margin: 0; font-size: 16px; line-height: 1.5; }
+    .flip-card-grid, .technique-grid { display: grid; gap: 12px; margin-top: 16px; }
+    .flip-card-grid course-flip-card {
+      --course-flip-card-height: 350px;
+      --course-flip-card-padding: 16px;
+      --course-flip-card-title-size: 19px;
+      --course-flip-card-text-size: 15px;
+    }
+    .flip-card-grid .course-flip-card__front, .flip-card-grid .course-flip-card__back { align-items: stretch; text-align: left; }
+    .framework-check .category-sorter__items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .framework-check .category-sorter__item { padding: 10px 12px; }
+    .framework-check .category-sorter__item h3 { margin: 0; padding-right: 12px; }
+    .framework-check .category-sorter__status { margin-bottom: 12px; }
+    @media (max-width: 700px) {
+      .framework-check .category-sorter__items { grid-template-columns: 1fr; }
+      .foundation-layout, .flip-card-grid, .technique-grid { grid-template-columns: 1fr; }
+      .image-slot.foundation-image { max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Source slides 4–7 and presenter notes, with a user-authorized DMAIC expansion
+       and component learning check, excluding the questions and transition
+       explicitly removed by the user. Only grammatical
+       corrections and interface/accessibility labels are added. Source slide 4 supplies
+       the image on the first panel; four source slides become five lesson panels. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 1: Problem-solving Frameworks &amp; Techniques</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Foundations">1</button><span class="rail-label">Foundations</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Importance">2</button><span class="rail-label">Importance</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Components">3</button><span class="rail-label">Components</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Techniques">4</button><span class="rail-label">Techniques</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 5: Learning check">5</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="4–6" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Problem-solving</h2>
+        <div class="foundation-layout">
+          <div class="image-slot filled foundation-image"><img src="images/module1-lesson1-slide4.jpeg" width="474" height="266" alt="A person faces a wall of intersecting paths, arrows, and question marks."></div>
+          <course-term header="Definition" term="Problem-solving">
+            <p>The process of finding solutions to difficult or complex issues. It involves identifying the problem, gathering relevant information, analyzing the situation, and developing and implementing effective solutions.</p>
+          </course-term>
+        </div>
+        <div class="framework-definition">
+          <course-term header="Definition" term="Problem-solving framework">
+            <p>Problem-solving frameworks are structured approaches that help individuals and teams tackle challenges in an organized manner. These frameworks guide the process of identifying/defining, analyzing, and addressing problems effectively.</p>
+          </course-term>
+        </div>
+      </section>
+
+      <section class="panel" data-source-slides="5" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">Importance</h2>
+        <p class="panel-sub">As a leader, you’ll encounter various challenges and obstacles that require quick and efficient solutions. Problem-solving matters for effective leaders for the following reasons:</p>
+        <course-carousel class="importance-carousel" aria-label="Importance of problem-solving">
+          <article data-carousel-item><h3>Anticipating and overcoming challenges</h3><p>Leaders who excel at problem-solving can anticipate potential issues and address them proactively. By identifying problems early, they can prevent them from escalating into larger crises.</p></article>
+          <article data-carousel-item><h3>Improving efficiency</h3><p>Effective problem-solving streamlines processes, reduces inefficiencies, and optimizes resource allocation.</p></article>
+          <article data-carousel-item><h3>Building trust</h3><p>When leaders consistently solve problems effectively, they build trust with their teams and stakeholders. Trust is crucial for collaboration, open communication, and successful teamwork.</p></article>
+          <article data-carousel-item><h3>Facilitating collaboration</h3><p>Problem-solving often involves collaboration. Leaders who can bring diverse perspectives together to tackle complex issues create a positive work environment and foster teamwork.</p></article>
+          <article data-carousel-item><h3>Managing risk</h3><p>Leaders must make decisions in uncertain situations. Strong problem-solving skills help them assess risks, weigh options, and make informed choices.</p></article>
+          <article data-carousel-item><h3>Summary</h3><p>Influential leaders with solid problem-solving abilities can analyze and solve problems efficiently, ultimately increasing team productivity and job satisfaction.</p></article>
+        </course-carousel>
+      </section>
+
+      <section class="panel" data-source-slides="7" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Main components of problem-solving frameworks</h2>
+
+        <div class="flip-card-grid" role="group" aria-label="Main components of problem-solving frameworks">
+          <course-flip-card
+            title="Identify/Define"
+            summary="Clearly identify and define the problem. Ensure that you understand the context and scope of the problem."
+            back-heading="Example"
+            guidance="If the problem is a decrease in sales, the definition could include specifics like the timeframe of the decrease, the affected products or services, and any known contributing factors."
+            label="Identify/Define: explanation and example">
+          </course-flip-card>
+          <course-flip-card
+            title="Analyze"
+            summary="Gather relevant data and information related to the problem. Analyze the causes and effects, and consider the impact on stakeholders."
+            back-heading="Example"
+            guidance="For the sales decrease, you might analyze sales trends, market conditions, customer feedback, and competitor actions to identify potential reasons for the decline."
+            label="Analyze: explanation and example">
+          </course-flip-card>
+          <course-flip-card
+            title="Solve"
+            summary="Use a structured approach to develop and implement solutions. Break down the problem into smaller parts, generate possible solutions, evaluate them, and select the best one."
+            back-heading="Example"
+            guidance="For the sales decrease, potential solutions could include launching a new marketing campaign, offering promotions, improving product quality, or expanding into new markets. Evaluate each option based on feasibility, cost, and potential impact before making a decision."
+            label="Solve: explanation and example">
+          </course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel" data-source-slides="7" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Techniques</h2>
+
+        <div class="technique-grid">
+          <article class="card"><h3>Root cause analysis</h3><p>Enables problem solvers to get to the bottom of the problem and find the main reason why the problem occurs.</p></article>
+          <article class="card"><h3>CIRCLES Method</h3><p>The process consists of seven steps that help you take stock of the situation, identify user needs, prioritize them, and produce and assess solutions.</p></article>
+          <!-- User-authorized researched expansion; ASQ confirms Improve as the fourth phase. -->
+          <article class="card"><h3><a href="https://asq.org/quality-resources/dmaic" target="_blank" rel="noopener noreferrer">DMAIC</a></h3><p>A five-phase method for improving existing processes: Define the problem, Measure current performance, Analyze root causes, Improve the process, and Control performance to sustain results.</p></article>
+        </div>
+        <article class="content-card"><h3>Closing thoughts</h3><p>All problem-solving frameworks share certain processes: identifying and understanding the problem, brainstorming solutions, choosing and implementing the solutions, and monitoring their effectiveness.</p></article>
+      </section>
+
+
+      <section class="panel" data-source-slides="7" aria-labelledby="title-4">
+        <h2 class="panel-title" id="title-4">Learning check</h2>
+        <p class="panel-sub">Classify each action by its problem-solving component. Drag an action to a category, or select an action and then select a category using a mouse, touch, or Enter/Space.</p>
+        <course-category-sorter class="framework-check" item-type="action" completion-message="Correct. You classified all three actions: Identify/Define clarifies the problem, Analyze examines its causes, and Solve selects and implements solutions." aria-label="Classify problem-solving actions">
+          <p class="category-sorter__status" data-category-sorter-status role="status" aria-live="polite">Select an action, then choose its category.</p>
+          <div class="category-sorter__items" data-category-sorter-items aria-label="Actions to classify">
+            <article class="category-sorter__item" draggable="true" data-category-sorter-item="sales-evidence" data-category="Analyze" data-rationale="it investigates the causes of the sales decline">
+              <h3>Use sales trends and customer feedback to determine why sales have declined.</h3>
+            </article>
+            <article class="category-sorter__item" draggable="true" data-category-sorter-item="sales-options" data-category="Solve" data-rationale="it selects and implements a solution to address the sales decline">
+              <h3>Choose a marketing campaign to address declining sales and put it into action.</h3>
+            </article>
+            <article class="category-sorter__item" draggable="true" data-category-sorter-item="sales-scope" data-category="Identify/Define" data-rationale="it clarifies the context and scope of the problem">
+              <h3>Specify when sales declined, which products were affected, and the scope of the problem.</h3>
+            </article>
+          </div>
+          <div class="category-sorter__categories" data-category-sorter-categories role="group" aria-label="Problem-solving components">
+            <div class="category-sorter__category" data-category-sorter-category="Identify/Define" tabindex="0" role="button" aria-label="Identify/Define. Place the selected action here.">
+              <h3>Identify/Define</h3>
+              <div class="category-sorter__category-items" data-category-sorter-category-items></div>
+            </div>
+            <div class="category-sorter__category" data-category-sorter-category="Analyze" tabindex="0" role="button" aria-label="Analyze. Place the selected action here.">
+              <h3>Analyze</h3>
+              <div class="category-sorter__category-items" data-category-sorter-category-items></div>
+            </div>
+            <div class="category-sorter__category" data-category-sorter-category="Solve" tabindex="0" role="button" aria-label="Solve. Place the selected action here.">
+              <h3>Solve</h3>
+              <div class="category-sorter__category-items" data-category-sorter-category-items></div>
+            </div>
+          </div>
+        </course-category-sorter>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button">← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 5</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/term.js" defer></script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/category-sorter.js" defer></script>
+  <script>
+
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.hidden = i !== current;
+          panel.classList.toggle('active', i === current);
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          panels[current].scrollTop = 0;
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  
+  </script>
+</body>
+</html>
