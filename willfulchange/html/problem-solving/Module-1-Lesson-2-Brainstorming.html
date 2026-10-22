@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="8–10">
+  <meta name="source-slide-count" content="3">
+  <title>Module 1, Lesson 2: Brainstorming technique</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    /* Source slides 8–10 and presenter notes; four fixed-height lesson panels. */
+    .panel[hidden] { display: none; }
+    .intro-layout { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.2fr); gap: 18px; align-items: stretch; margin-top: 18px; }
+    .image-slot.brainstorm-image { position: relative; min-height: 230px; }
+    .image-slot.brainstorm-image img { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; object-fit: cover; }
+    .steps-carousel { --course-carousel-height: 270px; --course-carousel-mobile-height: 270px; --course-carousel-padding: 18px; margin-top: 18px; }
+    .steps-carousel ul { margin: 10px 0 0; padding-left: 22px; font-size: 16px; line-height: 1.5; text-align: left; }
+    .steps-carousel .course-carousel__item p + p { margin-top: 10px; }
+    .factor-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+    .factor-grid course-flip-card {
+      --course-flip-card-height: 155px;
+      --course-flip-card-padding: 12px;
+      --course-flip-card-title-size: 18px;
+      --course-flip-card-text-size: 15px;
+    }
+    .factor-grid .course-flip-card__back .course-flip-card__text { font-weight: 400; }
+    .brainstorm-match .course-matching-exercise__strategy-list,
+    .brainstorm-match .course-matching-exercise__example-list { gap: 8px; }
+    .brainstorm-match .course-matching-exercise__strategy { min-height: 54px; padding: 6px 10px; }
+    .brainstorm-match .course-matching-exercise__example { min-height: 54px; padding: 6px 10px 6px 32px; }
+    .brainstorm-match .course-matching-exercise__check { margin-top: 8px; padding: 8px 16px; }
+    .brainstorm-match .course-matching-exercise__status { margin-top: 8px; }
+    @media (min-width: 701px) {
+      .brainstorm-match .course-matching-exercise__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+    }
+    @media (max-width: 700px) {
+      .intro-layout, .factor-grid { grid-template-columns: 1fr; }
+      .image-slot.brainstorm-image { min-height: 210px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Lesson source: Developing your problem solving and critical thinking skills-Shortened Version.pptx.
+       Course objective 1. Source slides 8–10; image from slide 9.
+       Matching actions check the four brainstorming steps from source slides 9–10. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 2: Brainstorming technique</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Brainstorming">1</button><span class="rail-label">Brainstorming</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Steps">2</button><span class="rail-label">Steps</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Group diversity factors">3</button><span class="rail-label">Group diversity factors</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Learning check">4</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="8–9" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Brainstorming</h2>
+        <p class="panel-sub">Brainstorming is mostly used in the ideation phase of problem-solving.</p>
+        <div class="intro-layout">
+          <div class="image-slot filled brainstorm-image"><img src="images/module1-lesson2-slide9.jpeg" width="2560" height="1707" alt="A group listens as a colleague presents ideas at a flip chart."></div>
+          <course-term header="Definition" term="Brainstorming">
+            <p>Brainstorming is a design method that teams use to generate ideas to solve clearly defined problems. In controlled conditions and a free-thinking environment, teams approach a problem through questions such as “How might we…?” They produce a vast array of ideas and draw links between them to find potential solutions.</p>
+          </course-term>
+        </div>
+      </section>
+
+      <section class="panel" data-source-slides="9–10" aria-labelledby="title-1">
+        <h2 class="panel-title" id="title-1">How to use brainstorming</h2>
+        <course-carousel class="steps-carousel" aria-label="Four steps for using brainstorming">
+          <article data-carousel-item>
+            <h3>Step 1</h3>
+            <p>Clearly outline the problem or objective and define your desired goal.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 2</h3>
+            <p>Create a diverse group.</p>
+            <ul><li>Diverse representation</li><li>Inclusive environment</li><li>Equitable participation</li><li>Cultural sensitivity</li></ul>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 3</h3>
+            <p>Set a time limit. Depending on the complexity of the problem, 15–60 minutes is a good place to start.</p>
+          </article>
+          <article data-carousel-item>
+            <h3>Step 4</h3>
+            <p>Begin the session with thought-provoking questions related to the problem you want to solve.</p>
+            <ul><li>How might we…?</li><li>If we could solve…</li><li>If you could change…</li></ul>
+          </article>
+        </course-carousel>
+      </section>
+
+      <section class="panel" data-source-slides="9" aria-labelledby="title-2">
+        <h2 class="panel-title" id="title-2">Group diversity factors to consider</h2>
+        <p class="panel-sub">When the goal is to bring together a diverse group to ensure varied perspectives, consider the following factors when selecting group members:</p>
+        <div class="factor-grid" role="group" aria-label="Group diversity factors">
+          <course-flip-card title="Diverse representation" guidance="Ensure that participants come from different backgrounds, including race, gender, age, experience level, and functional area within the organization." label="Diverse representation: explanation"></course-flip-card>
+          <course-flip-card title="Inclusive environment" guidance="Create a safe and inclusive space where everyone feels comfortable sharing their ideas and perspectives." label="Inclusive environment: explanation"></course-flip-card>
+          <course-flip-card title="Equitable participation" guidance="Encourage equal participation by all attendees, ensuring that everyone has a chance to speak and contribute." label="Equitable participation: explanation"></course-flip-card>
+          <course-flip-card title="Cultural sensitivity" guidance="Be mindful of cultural differences and ensure that the session respects and values diverse cultural perspectives." label="Cultural sensitivity: explanation"></course-flip-card>
+        </div>
+      </section>
+
+      <section class="panel" data-source-slides="9–10" aria-labelledby="title-3">
+        <h2 class="panel-title" id="title-3">Learning check</h2>
+        <p class="panel-sub">Reorder the actions to match the brainstorming steps. Drag them, or use the Up and Down arrow keys.</p>
+        <course-matching-exercise class="brainstorm-match" left-label="Steps" right-label="Actions — reorder to match" item-label="action" aria-label="Match the four brainstorming steps with their actions">
+          <script type="application/json">
+[
+            {
+                        "strategy": "Step 1",
+                        "example": "Clearly outline the problem and define the desired goal."
+            },
+            {
+                        "strategy": "Step 2",
+                        "example": "Create a diverse group."
+            },
+            {
+                        "strategy": "Step 3",
+                        "example": "Set a time limit of 15–60 minutes, depending on complexity."
+            },
+            {
+                        "strategy": "Step 4",
+                        "example": "Begin with thought-provoking questions about the problem."
+            }
+]
+          </script>
+        </course-matching-exercise>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 4</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/term.js" defer></script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+  <script>
+
+
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.hidden = i !== current;
+          panel.classList.toggle('active', i === current);
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          panels[current].scrollTop = 0;
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  
+  
+  </script>
+</body>
+</html>
