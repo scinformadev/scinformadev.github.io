@@ -19,7 +19,7 @@ course-true-false {
   margin: 0;
   color: var(--color-text);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .course-true-false__options {
@@ -34,7 +34,7 @@ course-true-false {
   gap: 5px;
   color: var(--color-primary);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 400;
   white-space: nowrap;
 }
 
@@ -49,13 +49,23 @@ course-true-false {
   margin: 0;
   color: var(--color-primary);
   font-size: 15px;
+  font-weight: 400;
   grid-column: 1 / -1;
 }
 
 .course-true-false__feedback[hidden] { display: none; }
 
-course-true-false.is-correct .course-true-false__card { border-color: var(--color-accent); }
-course-true-false.is-incorrect .course-true-false__card { border-color: var(--color-accent-warm); }
+course-true-false.is-correct .course-true-false__card {
+  border-color: var(--color-feedback-correct, var(--color-accent));
+  background: var(--color-feedback-correct-surface, var(--color-surface-accent));
+}
+course-true-false.is-incorrect .course-true-false__card {
+  border-color: var(--color-feedback-incorrect, var(--color-accent-warm));
+  background: var(--color-feedback-incorrect-surface, var(--color-surface-info));
+}
+course-true-false.is-correct .course-true-false__feedback { color: var(--color-feedback-correct, var(--color-accent)); }
+course-true-false.is-incorrect .course-true-false__feedback { color: var(--color-feedback-incorrect, var(--color-accent-warm)); }
+.course-true-false__result { font-weight: 700; }
 
 @media (max-width: 520px) {
   .course-true-false__card { grid-template-columns: 1fr; }

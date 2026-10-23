@@ -34,7 +34,10 @@
       const correct = selected === this.answer;
       this.classList.toggle('is-correct', correct);
       this.classList.toggle('is-incorrect', !correct);
-      this.feedback.textContent = correct ? `Correct. ${this.explanation}` : `Not quite. ${this.explanation}`;
+      const result = document.createElement('strong');
+      result.className = 'course-true-false__result';
+      result.textContent = correct ? 'Correct.' : 'Incorrect.';
+      this.feedback.replaceChildren(result, document.createTextNode(this.explanation ? ` ${this.explanation}` : ''));
       this.feedback.hidden = false;
     }
   }

@@ -129,3 +129,15 @@ course-flip-card.is-flipped .course-flip-card__button {
 @media (prefers-reduced-motion: reduce) {
   .course-flip-card__button { transition: none; }
 }
+
+
+.course-flip-card__image {
+  display: block;
+  align-self: center;
+  flex-shrink: 0;
+  width: auto;
+  max-width: 100%;
+  height: var(--course-flip-card-image-height, 110px);
+  margin: 0 auto 8px;
+  object-fit: contain;
+}

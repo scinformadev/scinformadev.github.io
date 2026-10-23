@@ -37,6 +37,15 @@
       const backText = this.querySelector('.course-flip-card__back .course-flip-card__text');
       const frontText = this.querySelector('.course-flip-card__front .course-flip-card__text');
       frontTitle.textContent = title;
+      const frontImageSource = this.getAttribute('front-image');
+      if (frontImageSource) {
+        const frontImage = document.createElement('img');
+        frontImage.className = 'course-flip-card__image';
+        frontImage.setAttribute('src', frontImageSource);
+        frontImage.setAttribute('alt', this.getAttribute('front-image-alt') || '');
+        frontImage.decoding = 'async';
+        frontText.parentNode.insertBefore(frontImage, frontText);
+      }
       if (backHeadingElement) backHeadingElement.textContent = backHeading;
       if (backPrefixElement) backPrefixElement.textContent = backPrefix;
       if (frontItems.length) this.populateList(frontText, frontItems);

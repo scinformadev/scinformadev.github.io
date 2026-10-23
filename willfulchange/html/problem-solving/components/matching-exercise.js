@@ -26,7 +26,7 @@
       const strategyColumn = document.createElement('section');
       const strategyTitle = document.createElement('h3');
       strategyTitle.className = 'course-matching-exercise__column-title';
-      strategyTitle.textContent = 'Strategies';
+      strategyTitle.textContent = this.getAttribute('left-label') || 'Strategies';
       strategyColumn.appendChild(strategyTitle);
 
       const strategyList = document.createElement('div');
@@ -43,12 +43,12 @@
       const exampleColumn = document.createElement('section');
       const exampleTitle = document.createElement('h3');
       exampleTitle.className = 'course-matching-exercise__column-title';
-      exampleTitle.textContent = 'Examples — reorder to match';
+      exampleTitle.textContent = this.getAttribute('right-label') || 'Examples — reorder to match';
       exampleColumn.appendChild(exampleTitle);
 
       const exampleList = document.createElement('div');
       exampleList.className = 'course-matching-exercise__example-list';
-      exampleList.setAttribute('aria-label', 'Shuffled examples. Drag items up or down to reorder them.');
+      exampleList.setAttribute('aria-label', 'Shuffled ' + this.itemLabel + 's. Drag items up or down to reorder them.');
 
       shuffled.forEach((pair) => {
         const example = document.createElement('div');
@@ -58,7 +58,7 @@
         example.dataset.answerIndex = String(pair.index);
         example.textContent = pair.example;
         example.setAttribute('role', 'listitem');
-        example.setAttribute('aria-label', 'Example: ' + pair.example);
+        example.setAttribute('aria-label', this.itemLabel + ': ' + pair.example);
 
         example.addEventListener('dragstart', (event) => {
           example.classList.add('is-dragging');
@@ -106,16 +106,20 @@
       this.status = document.createElement('p');
       this.status.className = 'course-matching-exercise__status';
       this.status.setAttribute('aria-live', 'polite');
-      this.status.textContent = 'Reorder the examples, then check your order.';
+      this.status.textContent = 'Reorder the ' + this.itemLabel + 's, then check your order.';
 
       this.append(layout, checkButton, this.status);
+    }
+
+    get itemLabel() {
+      return this.getAttribute('item-label') || 'example';
     }
 
     clearFeedback() {
       this.querySelectorAll('.is-correct, .is-incorrect').forEach((item) => {
         item.classList.remove('is-correct', 'is-incorrect');
       });
-      if (this.status) this.status.textContent = 'Reorder the examples, then check your order.';
+      if (this.status) this.status.textContent = 'Reorder the ' + this.itemLabel + 's, then check your order.';
     }
 
     checkOrder(strategyList, exampleList) {
@@ -133,7 +137,7 @@
       });
 
       this.status.textContent = correct === this.pairs.length
-        ? 'Complete — all ' + this.pairs.length + ' examples are in the correct order.'
+        ? 'Complete — all ' + this.pairs.length + ' ' + this.itemLabel + 's are in the correct order.'
         : correct + ' of ' + this.pairs.length + ' are in the correct position. Keep reordering and try again.';
     }
   }
