@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="18–20">
+  <meta name="source-slide-count" content="3">
+  <title>Module 2, Lesson 2: Critical thinking frameworks</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <style>
+    .panel[hidden] { display: none; }
+    .framework-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 14px 0; }
+    .framework-grid ul { margin: 6px 0 0; padding-left: 20px; font-size: 16px; }
+    .focus-note { margin: 14px 0; }
+    .important { padding: 14px 16px; border-left: 7px solid var(--color-accent); border-radius: 12px; background: var(--color-surface-muted); }
+    .important h3 { margin: 0 0 6px; font-size: 18px; }
+    .important p { margin: 0; font-size: 16px; }
+    .definition-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 18px; align-items: center; margin-top: 20px; }
+    .ladder-image { height: 330px; background: var(--color-surface); }
+    .ladder-image img { object-fit: contain; min-height: 0; }
+    .ladder-steps { --course-carousel-height: 250px; --course-carousel-mobile-height: 300px; margin-top: 14px; }
+    .ladder-steps .course-carousel__item { text-align: left; align-items: stretch; }
+    .judgment-factors { margin: 8px 0 0; padding-left: 22px; font-size: 16px; line-height: 1.5; }
+    .judgment-factors li + li { margin-top: 10px; }
+    .closing-note { margin: 12px 0 0; font-size: 16px; }
+    .scenario-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .scenario-grid course-flip-card { --course-flip-card-height: 170px; --course-flip-card-padding: 8px; --course-flip-card-title-size: 17px; --course-flip-card-text-size: 16px; }
+    .scenario-grid .course-flip-card__text { font-weight: 400; }
+    .check-scenario { margin: 6px 0; font-size: 16px; }
+    .check-instructions { margin: 0 0 8px; font-size: 16px; }
+    .ladder-match .course-matching-exercise__column-title { margin-bottom: 5px; }
+    .ladder-match .course-matching-exercise__strategy-list,
+    .ladder-match .course-matching-exercise__example-list { gap: 5px; }
+    .ladder-match .course-matching-exercise__strategy { min-height: 32px; padding: 3px 8px; font-size: 16px; }
+    .ladder-match .course-matching-exercise__example { min-height: 32px; padding: 3px 8px 3px 30px; }
+    .ladder-match .course-matching-exercise__check { margin-top: 6px; padding: 5px 16px; }
+    .ladder-match .course-matching-exercise__status { margin-top: 5px; }
+    @media (min-width: 701px) {
+      .ladder-match .course-matching-exercise__layout { grid-template-columns: minmax(0, .75fr) minmax(0, 1.7fr); }
+    }
+    @media (max-width: 700px) {
+      .framework-grid, .definition-layout, .scenario-grid { grid-template-columns: 1fr; }
+      .ladder-image { width: 100%; height: 260px; }
+      .scenario-grid course-flip-card { --course-flip-card-height: 170px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Source slides 18–20 and presenter notes. Ladder definition is on source slide 18; source slide 17 covers Lesson 1. Scenario judgments illustrate the inference process, not verified facts. Slide 5 uses a new email scenario explicitly requested by the user. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 2: Critical thinking frameworks</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress"><div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Frameworks">1</button><span class="rail-label">Frameworks</span><span class="connector"></span></div><div class="rail-step"><button class="dot" type="button"  aria-label="Go to step 2: Definition">2</button><span class="rail-label">Definition</span><span class="connector"></span></div><div class="rail-step"><button class="dot" type="button"  aria-label="Go to step 3: Steps">3</button><span class="rail-label">Steps</span><span class="connector"></span></div><div class="rail-step"><button class="dot" type="button"  aria-label="Go to step 4: In action">4</button><span class="rail-label">In action</span><span class="connector"></span></div><div class="rail-step"><button class="dot" type="button"  aria-label="Go to step 5: Check">5</button><span class="rail-label">Check</span></div></nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="18" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Critical thinking frameworks</h2>
+        <p class="panel-sub">When we consider the various frameworks for critical thinking, a few that come to mind are:</p>
+        <div class="framework-grid">
+          <article class="card"><h3>RED model</h3><ul><li><strong>R:</strong> Recognize assumptions</li><li><strong>E:</strong> Evaluate arguments</li><li><strong>D:</strong> Draw conclusions</li></ul></article>
+          <article class="card"><h3>6 Thinking Hats</h3><p>A way of investigating an issue from a variety of perspectives but in a clear, conflict-free way.</p></article>
+        </div>
+        <p class="focus-note">But the model that we’ll be focusing on is called the <strong>Ladder of Inference</strong>.</p>
+        <aside class="important"><h3>Important</h3><p>The model is not a guide for making good decisions, but rather a way to understand how we naturally make judgments.</p></aside>
+      </section>
+      <section class="panel" data-source-slides="18" aria-labelledby="title-1" hidden>
+        <h2 class="panel-title" id="title-1">Ladder of Inference</h2>
+        <div class="definition-layout"><div class="image-slot filled ladder-image"><img src="images/module2-lesson2-ladder.png" alt="A ladder illustration representing the Ladder of Inference model."></div><course-term class="definition" header="Definition" term="Ladder of Inference"><p>The Ladder of Inference is a psychology model that helps explain how we make decisions based on our individual assumptions. It consists of seven steps or rungs that connect the data we observe to the conclusions we draw.</p></course-term></div>
+      </section>
+      <section class="panel" data-source-slides="19" aria-labelledby="title-2" hidden>
+        <h2 class="panel-title" id="title-2">Ladder of Inference model</h2>
+        <p class="closing-note">The Ladder of Inference can lead to false beliefs and actions if we rush through it without critical thinking. Slowing down and consciously navigating each step helps us make better decisions.</p>
+        <course-carousel class="ladder-steps" aria-label="Seven steps of the Ladder of Inference and factors to consider before judgment"><article data-carousel-item><h3>Step 1: Observation</h3><p>Start by observing reality. This is the raw data you encounter through your senses.</p></article><article data-carousel-item><h3>Step 2: Select data</h3><p>From the observed reality, you selectively choose certain data points to focus on. Not everything you observe makes it to the next step.</p></article><article data-carousel-item><h3>Step 3: Interpretation</h3><p>Assign meaning to the selected data. Interpretation involves making sense of what you’ve observed.</p></article><article data-carousel-item><h3>Step 4: Assumption</h3><p>Based on your interpretation, you form assumptions. These assumptions may come from past experiences or cultural norms.</p></article><article data-carousel-item><h3>Step 5: Conclusions</h3><p>Assumptions converge to form conclusions. These conclusions guide your beliefs and subsequent actions.</p></article><article data-carousel-item><h3>Step 6: Beliefs</h3><p>Conclusions solidify into beliefs. These are deeply held convictions about the situation.</p></article><article data-carousel-item><h3>Step 7: Actions</h3><p>Beliefs drive your actions. Your behavior is influenced by what you believe to be true.</p></article><article data-carousel-item><h3>Before making decisions or casting judgment</h3><ul class="judgment-factors"><li><strong>Self-awareness:</strong> Notice when you’re climbing the ladder. Pause and reflect on each step.</li><li><strong>Challenge assumptions:</strong> Are they valid? Seek evidence.</li><li><strong>Stay open-minded:</strong> Adjust your beliefs as new information emerges.</li></ul></article></course-carousel>
+      </section>
+      <section class="panel" data-source-slides="20" aria-labelledby="title-3" hidden>
+        <h2 class="panel-title" id="title-3">Ladder of Inference in action</h2>
+        <p class="panel-sub">Scenario: A staff member consistently arrives late.</p>
+        <div class="flip-grid scenario-grid" role="group" aria-label="Seven scenario steps of the Ladder of Inference"><course-flip-card guidance="Notice repeated late arrivals to team meetings." title="1: Observation"></course-flip-card><course-flip-card guidance="Focus on punctuality and its effect on the team." title="2: Select data"></course-flip-card><course-flip-card guidance="Read lateness as disrespect for others’ time." title="3: Interpretation"></course-flip-card><course-flip-card guidance="Assume a lack of commitment." title="4: Assumption"></course-flip-card><course-flip-card guidance="Conclude the staff member is unreliable." title="5: Conclusions"></course-flip-card><course-flip-card guidance="Distrust them with important tasks." title="6: Beliefs"></course-flip-card><course-flip-card guidance="Withhold critical tasks, harming morale and trust." title="7: Actions"></course-flip-card></div>
+      </section>
+      <section class="panel" data-source-slides="19" data-activity-origin="User-requested new email scenario" aria-labelledby="title-4" hidden>
+        <h2 class="panel-title" id="title-4">Learning check</h2>
+        <p class="check-scenario"><strong>Scenario:</strong> Sam helps in chat but hasn’t replied to your email for two days.</p>
+        <p class="check-instructions">Match responses to steps. Drag, or use ↑ and ↓.</p>
+        <course-matching-exercise class="ladder-match" left-label="Steps" right-label="Responses — reorder to match" item-label="response" aria-label="Match each email-scenario response to a Ladder of Inference step">
+          <script type="application/json">[
+  {
+    "strategy": "1: Observation",
+    "example": "Notice no email reply after two days."
+  },
+  {
+    "strategy": "2: Select data",
+    "example": "Focus only on the missing email reply."
+  },
+  {
+    "strategy": "3: Interpretation",
+    "example": "Read the silence as dismissal."
+  },
+  {
+    "strategy": "4: Assumption",
+    "example": "Assume Sam deliberately ignored the email."
+  },
+  {
+    "strategy": "5: Conclusions",
+    "example": "Conclude Sam won’t support this project."
+  },
+  {
+    "strategy": "6: Beliefs",
+    "example": "Believe colleagues cannot be relied on."
+  },
+  {
+    "strategy": "7: Actions",
+    "example": "Exclude Sam from project discussions."
+  }
+]</script>
+        </course-matching-exercise>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 5</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/term.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.hidden = i !== current;
+          panel.classList.toggle('active', i === current);
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          panels[current].scrollTop = 0;
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+</body>
+</html>
+
