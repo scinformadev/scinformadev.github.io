@@ -6,20 +6,21 @@
   <title>Lesson 4: Delegation Barriers and Costs</title>
   <link rel="stylesheet" href="styles/theme.css">
   <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/accordion.css">
   <link rel="stylesheet" href="components/flip-card.css">
   <link rel="stylesheet" href="components/true-false.css">
   <style>
     .panel-scroll { overflow-y: auto; padding-right: 6px; }
-    .mistake-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
-    .mistake-card {
-      min-height: 245px;
-      padding: 18px;
-      border-left: 7px solid var(--color-accent);
-      border-radius: var(--radius);
-      background: var(--color-surface-muted);
-    }
-    .mistake-card h3 { margin: 0 0 10px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
-    .mistake-card p { margin: 0; font-size: 17px; line-height: 1.45; }
+    .mistakes-accordion { --course-accordion-summary-padding: 12px 16px; margin-top: 6px; }
+    .mistake-examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .mistake-example { padding: 12px 14px; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
+    .mistake-example h4 { display: flex; align-items: center; gap: 7px; margin: 0 0 5px; font-size: 16px; }
+    .mistake-example__icon { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .mistake-example--misstep { border-color: color-mix(in srgb, var(--color-feedback-negative) 28%, var(--color-surface)); background: color-mix(in srgb, var(--color-feedback-negative) 7%, var(--color-surface)); }
+    .mistake-example--misstep h4 { color: var(--color-feedback-negative); }
+    .mistake-example--better { border-color: color-mix(in srgb, var(--color-feedback-positive) 28%, var(--color-surface)); background: color-mix(in srgb, var(--color-feedback-positive) 7%, var(--color-surface)); }
+    .mistake-example--better h4 { color: var(--color-feedback-positive); }
+    .mistake-example p { margin: 0; font-size: 16px; line-height: 1.45; }
     .barrier-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
     .barrier-grid course-flip-card {
       --course-flip-card-height: 315px;
@@ -44,9 +45,13 @@
     .quote-card p { margin: 0; font-size: 18px; font-style: italic; }
     .source-note { margin: 0; font-size: 14px; }
     .learning-check-grid { display: grid; gap: 12px; margin-top: 18px; }
+    .download-card { margin-top: 22px; padding: 18px; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface-muted); }
+    .download-card h3 { margin: 0 0 6px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
+    .download-card p { margin: 0 0 10px; font-size: 16px; }
+    .download-card a { color: var(--color-primary); font-weight: 700; }
+    .download-card a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
     @media (max-width: 820px) {
-      .mistake-grid, .barrier-grid { grid-template-columns: 1fr; }
-      .mistake-card { min-height: 0; }
+      .mistake-examples, .barrier-grid { grid-template-columns: 1fr; }
       .chart-layout { grid-template-columns: 1fr; }
       .chart-layout .image-slot { height: 260px; min-height: 260px; }
       .chart-layout .image-slot img { height: 260px; min-height: 260px; }
@@ -69,21 +74,36 @@
     <main class="stage" id="stage" tabindex="-1">
       <section class="panel panel-scroll active" aria-labelledby="title-0">
         <h2 class="panel-title" id="title-0">Mistakes to Avoid</h2>
-        <p class="panel-sub">Review three delegation mistakes that can limit employee growth and satisfaction.</p>
-        <div class="mistake-grid" role="list" aria-label="Three delegation mistakes to avoid">
-          <article class="mistake-card" role="listitem">
-            <h3>Number 1</h3>
-            <p>Failure to express confidence and empower their people.</p>
-          </article>
-          <article class="mistake-card" role="listitem">
-            <h3>Number 2</h3>
-            <p>Failure to establish a plan for monitoring and ensuring progress is made.</p>
-          </article>
-          <article class="mistake-card" role="listitem">
-            <h3>Number 3</h3>
-            <p>Delegating only administrative tasks and never assigning more challenging work to help employees grow and feel satisfied in their work.</p>
-          </article>
-        </div>
+        <p class="panel-sub">Compare each delegation mistake with a more effective approach. Click a mistake to see the details.</p>
+        <course-accordion class="mistakes-accordion" role="group" aria-label="Three delegation mistakes to avoid">
+          <details class="course-accordion__item" open>
+            <summary class="course-accordion__summary"><h3>1. Failing to express confidence and empower employees</h3></summary>
+            <div class="course-accordion__panel">
+              <div class="mistake-examples">
+                <div class="mistake-example mistake-example--misstep"><h4><svg class="mistake-example__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><span>What the mistake looks like</span></h4><p>“Before you train the staff on Excel, send me your curriculum and check with me before making any decisions.” The leader becomes a bottleneck.</p></div>
+                <div class="mistake-example mistake-example--better"><h4><svg class="mistake-example__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>A better approach</span></h4><p>“I trust you to plan and lead the Excel training. Make the decisions you need to, and let me know what support would help.”</p></div>
+              </div>
+            </div>
+          </details>
+          <details class="course-accordion__item">
+            <summary class="course-accordion__summary"><h3>2. Failing to plan how to monitor progress</h3></summary>
+            <div class="course-accordion__panel">
+              <div class="mistake-examples">
+                <div class="mistake-example mistake-example--misstep"><h4><svg class="mistake-example__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><span>What the mistake looks like</span></h4><p>“Go ahead with the training. I’ll check in periodically.” The employee has no clear plan for when progress will be reviewed.</p></div>
+                <div class="mistake-example mistake-example--better"><h4><svg class="mistake-example__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>A better approach</span></h4><p>“I’ll attend one training session each week and share feedback afterward. We’ll use that time to discuss progress and any support you need.”</p></div>
+              </div>
+            </div>
+          </details>
+          <details class="course-accordion__item">
+            <summary class="course-accordion__summary"><h3>3. Delegating only routine administrative tasks</h3></summary>
+            <div class="course-accordion__panel">
+              <div class="mistake-examples">
+                <div class="mistake-example mistake-example--misstep"><h4><svg class="mistake-example__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><span>What the mistake looks like</span></h4><p>A capable employee who wants to contribute more is repeatedly assigned only routine data entry. Their skills and interest in growing go unused.</p></div>
+                <div class="mistake-example mistake-example--better"><h4><svg class="mistake-example__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><span>A better approach</span></h4><p>Offer a suitable challenge, such as helping design the Excel training, with the resources and authority needed to succeed.</p></div>
+              </div>
+            </div>
+          </details>
+        </course-accordion>
       </section>
 
       <section class="panel panel-scroll" aria-labelledby="title-1">
@@ -145,6 +165,11 @@
             explanation="The presentation connects recognition and appreciation with employees' future willingness to contribute.">
           </course-true-false>
         </div>
+        <div class="download-card">
+          <h3>Delegation Decision Template</h3>
+          <p>Use this printable worksheet to plan a task, choose a person, define the outcome, identify resources, and agree on communication.</p>
+          <a href="downloads/Delegation-Decision-Process.docx" download>Download the Delegation Decision Template (Word document)</a>
+        </div>
       </section>
     </main>
 
@@ -192,5 +217,6 @@
   </script>
   <script src="components/flip-card.js" defer></script>
   <script src="components/true-false.js" defer></script>
+  <script src="components/accordion.js" defer></script>
 </body>
 </html>

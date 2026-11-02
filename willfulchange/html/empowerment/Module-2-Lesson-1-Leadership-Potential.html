@@ -87,6 +87,12 @@
     .assessment-grid .course-flip-card__front { align-items: center; text-align: center; }
     .assessment-grid .course-flip-card__back { align-items: center; text-align: center; }
     .learning-check-grid { display: grid; gap: 12px; margin-top: 18px; }
+    .download-card { margin-top: 22px; padding: 18px; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface-muted); }
+    .download-card h3 { margin: 0 0 6px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
+    .download-card p { margin: 0 0 10px; font-size: 16px; }
+    .download-card a { color: var(--color-primary); font-weight: 700; }
+    .download-card a:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+    .download-card a + a { display: block; margin-top: 8px; }
 
     @media (max-width: 820px) {
       .fact-grid, .flip-card-grid, .assessment-grid { grid-template-columns: 1fr; }
@@ -134,23 +140,23 @@
 
       <section class="panel panel-scroll" aria-labelledby="title-1">
         <h2 class="panel-title" id="title-1">What is Leadership Potential?</h2>
-        <p class="panel-sub">Flip each card to review examples of general, leadership, and destination potential.</p>
+        <p class="panel-sub">Three types of potential can help you recognize different kinds of future leadership capability.</p>
         <div class="flip-card-grid" role="group" aria-label="Three types of potential">
           <course-flip-card
             title="General Potential"
-            summary="Flip to review the examples."
+            summary="Latent or hidden qualities or abilities that may be developed and lead to future success in life."
             back-heading="Examples:"
             back-list="Innovative Thinking|Adaptability|Effective Communication Skills|Problem Solving Aptitude">
           </course-flip-card>
           <course-flip-card
             title="Leadership Potential"
-            summary="Flip to review the examples."
+            summary="Skills and behaviors that are early indicators or predictors of leadership effectiveness at higher levels."
             back-heading="Examples:"
             back-list="Making decisions aligned with org’s vision|Identifying and addressing issues w/o waiting for direction|Clearly articulating ideas|Supporting colleagues and promoting a positive team culture|Convincing others to adopt ideas">
           </course-flip-card>
           <course-flip-card
             title="Destination Potential"
-            summary="Flip to review the examples."
+            summary="Specific capabilities and experiences needed for successful performance in a given senior leadership role."
             back-heading="Examples:"
             back-list="Exec Decision-Making &amp; Risk Management|Crisis Management &amp; Business Continuity|Financial &amp; Business Acumen|Corporate Social Responsibility|Change Management">
           </course-flip-card>
@@ -225,6 +231,12 @@
           <course-flip-card title="4: Objective Performance Metrics" guidance="Establish clear and measurable performance metrics aligned with leadership competencies."></course-flip-card>
           <course-flip-card title="5: 360 Degree Feedback" guidance="Gather feedback from peers, subordinates, and supervisors to provide a comprehensive view of an individual’s leadership capabilities."></course-flip-card>
           <course-flip-card title="6: Structured Competency-Based Interviews" guidance="Develop a set of standardized, competency-based interview questions that focus on specific leadership traits and behaviors."></course-flip-card>
+        </div>
+        <div class="download-card">
+          <h3>Assessment resources</h3>
+          <p>Use these editable worksheets to gather feedback and guide competency-based interviews.</p>
+          <a href="downloads/360-Degree-Feedback-Template.docx" download>Download the 360-Degree Feedback Template (Word document)</a>
+          <a href="downloads/Competency-Based-Interview-Questions.docx" download>Download the Competency-Based Interview Questions (Word document)</a>
         </div>
       </section>
 

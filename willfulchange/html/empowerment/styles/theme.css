@@ -20,6 +20,8 @@
   --color-primary: var(--deep-charcoal);
   --color-accent: var(--sage-green);
   --color-accent-warm: var(--coral-rose);
+  --color-feedback-negative: #A13D36;
+  --color-feedback-positive: #2D6841;
   --color-surface: var(--warm-cream);
   --color-surface-muted: var(--pale-sage);
   --color-text: var(--charcoal);

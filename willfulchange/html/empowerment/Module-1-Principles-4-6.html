@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lesson 2: Principles 4–6</title>
+  <title>Lesson 3: Principles 4–6</title>
   <link rel="stylesheet" href="styles/theme.css">
   <link rel="stylesheet" href="styles/lesson.css">
   <link rel="stylesheet" href="components/flip-card.css">
@@ -20,40 +20,73 @@
     .principle-grid .course-flip-card__front .course-flip-card__text { display: none; }
     .three-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .three-card-grid course-flip-card { --course-flip-card-height: 330px; }
-    .important-card {
-      margin-top: 18px;
-      padding: 24px;
-      border: 2px solid var(--color-primary);
-      border-radius: var(--radius);
-      background: var(--color-surface-muted);
+    .description-example-grid .course-flip-card__back { align-items: stretch; text-align: left; }
+    .description-example-grid .course-flip-card__back-heading {
+      margin-bottom: 14px;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: var(--course-flip-card-text-size, 15px);
+      font-weight: 400;
+      line-height: 1.4;
     }
-    .important-card h3 { margin: 0 0 8px; color: var(--color-primary); font-family: Cambria, serif; font-size: 22px; }
-    .important-card p { margin: 0; font-size: 19px; line-height: 1.45; }
-    .failure-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 18px; align-items: start; margin-top: 18px; }
+    .failure-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 18px; align-items: start; margin-top: 12px; }
     .failure-layout .image-slot { width: 200px; height: 200px; min-height: 200px; padding: 0; }
     .failure-layout .image-slot img { width: 200px; height: 200px; min-height: 200px; object-fit: cover; }
-    .failure-layout .important-card { margin-top: 0; }
-    .reflection-card {
+    .failure-layout .decision-card { margin-top: 0; }
+    .decision-card {
       margin-top: 16px;
       padding: 18px;
       border-left: 7px solid var(--color-accent);
       border-radius: var(--radius);
       background: var(--color-surface-muted);
     }
-    .reflection-card h3 { margin: 0 0 5px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
-    .reflection-card p { margin: 0; font-size: 17px; }
+    .decision-card h3 { margin: 0 0 6px; color: var(--color-primary); font-family: Cambria, serif; font-size: 20px; }
+    .decision-question { margin: 0; font-size: 17px; line-height: 1.45; }
+    .decision-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+    .decision-option {
+      padding: 11px 14px;
+      border: 2px solid var(--color-primary);
+      border-radius: 10px;
+      background: var(--color-text-inverse);
+      color: var(--color-primary);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .decision-option:hover { background: var(--color-surface); }
+    .decision-option.is-selected { background: var(--color-primary); color: var(--color-text-inverse); }
+    .decision-option:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+    .decision-feedback {
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      color: var(--color-text);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+    .decision-feedback[data-state="correct"] {
+      border-color: var(--color-accent);
+      background: color-mix(in srgb, var(--color-accent) 14%, var(--color-text-inverse));
+    }
+    .decision-feedback[data-state="incorrect"] {
+      border-color: var(--color-accent-warm);
+      background: color-mix(in srgb, var(--color-accent-warm) 14%, var(--color-text-inverse));
+    }
+    .decision-feedback[hidden] { display: none; }
     .check-intro { margin-bottom: 16px; }
     @media (max-width: 700px) {
       .principle-grid, .three-card-grid { grid-template-columns: 1fr; }
       .failure-layout { grid-template-columns: 1fr; }
       .failure-layout .image-slot { justify-self: center; }
+      .decision-options { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="app">
     <header class="lesson-header">
-      <div class="header-inner"><h1>Lesson 2: Principles 4–6</h1></div>
+      <div class="header-inner"><h1>Lesson 3: Principles 4–6</h1></div>
       <nav class="progress-rail" aria-label="Lesson progress">
         <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Provide the Right Resources and Level of Authority">1</button><span class="rail-label">Resources and Authority</span><span class="connector"></span></div>
         <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Establish Clear Communication Channels">2</button><span class="rail-label">Communication Channels</span><span class="connector"></span></div>
@@ -65,39 +98,39 @@
     <main class="stage" id="stage" tabindex="-1">
       <section class="panel panel-scroll active" aria-labelledby="title-0">
         <h2 class="panel-title" id="title-0">4) Provide the Right Resources and Level of Authority</h2>
-        <p class="panel-sub">Avoid micromanagement by focusing on:</p>
-        <div class="principle-grid three-card-grid" role="group" aria-label="Resources and authority considerations">
-          <course-flip-card title="What the desired end goal is" guidance="Keep the desired end goal clear so the employee understands what they are working toward."></course-flip-card>
-          <course-flip-card title="Why the task is important" guidance="Provide proper context and explain how the task connects to the organization's goals."></course-flip-card>
-          <course-flip-card title="Helping to address any gaps between the outcome and their current skill set" guidance="As a leader, it is your responsibility to ensure that proper training, resources, and authority are accessible or provided for the assigned project."></course-flip-card>
+        <p class="panel-sub">Equip the employee to lead the assignment without unnecessary oversight.</p>
+        <div class="principle-grid three-card-grid description-example-grid" role="group" aria-label="Resources and authority considerations">
+          <course-flip-card title="Resources and access" back-heading="Identify the tools, information, workspace, and system access required to complete the assignment." back-prefix="Example:" guidance="Reserve the computer room on Tuesdays and Wednesdays from 2:00–4:00, and provide the Excel files, practice exercises, and training-computer access needed for each session."></course-flip-card>
+          <course-flip-card title="Preparation and support" back-heading="Prepare the employee to lead the work, then remain available for guidance without taking control of the assignment." back-prefix="Example:" guidance="Review the Excel lesson plan with the employee, answer questions before the first session, and allow them to adjust the practice activities based on the learners' needs."></course-flip-card>
+          <course-flip-card title="Decision-making authority" back-heading="Define which decisions the employee can make independently and when your input or approval is required." back-prefix="Example:" guidance="Introduce the employee as the point person for Excel questions and authorize them to schedule sessions and respond directly, while escalating only changes to the deadline or scope."></course-flip-card>
         </div>
       </section>
 
       <section class="panel panel-scroll" aria-labelledby="title-1">
         <h2 class="panel-title" id="title-1">5) Establish Clear Communication Channels</h2>
-        <p class="panel-sub">You may want to consider the following:</p>
-        <div class="principle-grid three-card-grid" role="group" aria-label="Clear communication channels">
-          <course-flip-card title="Regular check-in meetings (1-on-1)" guidance="The communication channel should make the person you're delegating to feel comfortable asking questions and providing progress updates."></course-flip-card>
-          <course-flip-card title="Progress updates via email, virtual, or in-person" back-prefix="Example:" guidance="Status update, next steps, expected completion date."></course-flip-card>
-          <course-flip-card title="Establish a frequency for communication" back-prefix="Example:" guidance="Weekly, biweekly, etc."></course-flip-card>
+        <p class="panel-sub">Clear communication channels make it easier for employees to ask questions, share progress, and raise concerns before they affect the work.</p>
+        <div class="principle-grid three-card-grid description-example-grid" role="group" aria-label="Clear communication channels">
+          <course-flip-card title="Decide how you will meet" back-heading="Choose a meeting format that makes it easy to ask questions and share progress." back-prefix="Example:" guidance="Use a formal one-on-one, a brief informal check-in, or designated office hours."></course-flip-card>
+          <course-flip-card title="Define what updates should include" back-heading="Specify the information the employee should prepare and the channel they should use." back-prefix="Example:" guidance="Send an email before each meeting with the current status, next steps, expected completion date, and any questions."></course-flip-card>
+          <course-flip-card title="Set the communication frequency" back-heading="Agree on how often communication should occur based on the assignment's complexity and timeline." back-prefix="Example:" guidance="Schedule a weekly check-in for the duration of the assignment."></course-flip-card>
         </div>
       </section>
 
       <section class="panel panel-scroll" aria-labelledby="title-2">
         <h2 class="panel-title" id="title-2">6) Allow for Failure</h2>
+        <p class="panel-sub">Allowing room for failure encourages experimentation and empowers employees to try new approaches.</p>
         <div class="failure-layout">
           <div class="image-slot filled">
             <img src="images/module1-lesson2-slide3.png" alt="A supportive manager helps an employee review and improve a first attempt at a project, illustrating experimentation and learning from failure.">
           </div>
-          <div>
-            <div class="important-card">
-              <h3>IMPORTANT</h3>
-              <p>You need to allow for failure, not because your employees might fail, but because it will enable experimentation and empower the people you're assigning tasks to take a new approach.</p>
+          <div class="decision-card" id="failureDecision">
+            <h3>Delegation Decision Scenario</h3>
+            <p class="decision-question" id="failureDecisionQuestion">A time-sensitive project aligns with an employee's growth goals, but they would need additional training before beginning. Based on the principle of allowing room for failure, would you delegate this task?</p>
+            <div class="decision-options" role="group" aria-labelledby="failureDecisionQuestion">
+              <button class="decision-option" type="button" data-answer="yes" aria-pressed="false">Yes, I would delegate it</button>
+              <button class="decision-option" type="button" data-answer="no" aria-pressed="false">No, I would not delegate it</button>
             </div>
-            <div class="reflection-card">
-              <h3>Agree or Disagree and Why?</h3>
-              <p>Consider how allowing room for failure can support experimentation and empower employees to take a new approach.</p>
-            </div>
+            <p class="decision-feedback" id="failureDecisionFeedback" aria-live="polite" hidden></p>
           </div>
         </div>
       </section>
@@ -109,7 +142,7 @@
           <script type="application/json">
             [
               {"strategy":"4) Provide the Right Resources and Level of Authority","example":"A leader explains the desired end goal and why the task is important, then provides the training, resources, and authority needed for the project."},
-              {"strategy":"5) Establish Clear Communication Channels","example":"A manager agrees on regular check-ins, progress updates, and a communication frequency so the employee can ask questions and share status."},
+              {"strategy":"5) Establish Clear Communication Channels","example":"A manager agrees how they will meet, what updates should include and how they will be delivered, and how frequently they will communicate."},
               {"strategy":"6) Allow for Failure","example":"A leader gives an employee room to experiment and try a new approach, while treating mistakes as opportunities for learning and improvement."}
             ]
           </script>
@@ -131,6 +164,8 @@
       const nextBtn = document.getElementById('nextBtn');
       const backBtn = document.getElementById('backBtn');
       const stepCounter = document.getElementById('stepCounter');
+      const decisionOptions = [...document.querySelectorAll('.decision-option')];
+      const decisionFeedback = document.getElementById('failureDecisionFeedback');
       let current = 0;
 
       function showStep(index, focusStage = true) {
@@ -156,6 +191,21 @@
       railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
       nextBtn.addEventListener('click', () => showStep(current + 1));
       backBtn.addEventListener('click', () => showStep(current - 1));
+      decisionOptions.forEach((option) => {
+        option.addEventListener('click', () => {
+          const isCorrect = option.dataset.answer === 'no';
+          decisionOptions.forEach((candidate) => {
+            const selected = candidate === option;
+            candidate.classList.toggle('is-selected', selected);
+            candidate.setAttribute('aria-pressed', String(selected));
+          });
+          decisionFeedback.dataset.state = isCorrect ? 'correct' : 'incorrect';
+          decisionFeedback.textContent = isCorrect
+            ? 'Correct. Because the project is time-sensitive and requires additional training, there is too little room for experimentation, mistakes, and recovery. Choose a different task or adjust the timeline before delegating it.'
+            : "Incorrect. Although the task supports the employee's growth, its tight timeline and training needs leave too little room for experimentation or recovery from mistakes. This is not the right task to delegate under this principle.";
+          decisionFeedback.hidden = false;
+        });
+      });
       showStep(0, false);
     })();
   </script>

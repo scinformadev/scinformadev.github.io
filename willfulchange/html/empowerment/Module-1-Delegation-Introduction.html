@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 1: Delegation Definition and Benefits</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--color-surface); color: var(--color-text); font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 17px; line-height: 1.5; }
+    button { font: inherit; cursor: pointer; }
+    button:focus-visible { outline: 4px solid var(--color-focus); outline-offset: 3px; }
+    .lesson-header { padding: 12px 28px; background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-muted) 100%); color: var(--color-primary); }
+    .header-inner, .stage { max-width: 980px; margin: 0 auto; }
+    h1, h2 { line-height: 1.2; }
+    h1 { margin: 0; font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 22px; }
+    .progress-rail { display: flex; align-items: flex-start; max-width: 980px; margin: 0 auto; padding: 18px 0 0; }
+    .rail-step { display: flex; min-width: 0; flex: 1; align-items: center; }
+    .rail-step:last-child { flex: 0 0 auto; }
+    .dot { width: 32px; height: 32px; flex: 0 0 32px; border: 2px solid var(--color-accent); border-radius: 50%; background: var(--color-surface-muted); color: var(--color-primary); font-weight: 700; font-size: 16px; }
+    .rail-step.active .dot, .rail-step.complete .dot { border-color: var(--color-primary); background: var(--color-primary); color: var(--color-text-inverse); }
+    .rail-label { margin-left: 9px; color: var(--color-text); font-size: 16px; font-weight: 700; }
+    .connector { height: 2px; min-width: 18px; flex: 1; margin: 0 12px; background: var(--color-progress-line); }
+    .stage { position: relative; height: 480px; overflow: hidden; padding: 26px 28px 0; }
+    .panel { position: absolute; inset: 26px 28px 0; display: none; animation: rise .3s ease-out; }
+    .panel.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .panel-title { margin: 0; color: var(--color-primary); font-family: Cambria, 'Times New Roman', Georgia, serif; font-size: 24px; }
+    .panel-sub { max-width: 720px; margin: 4px 0 14px; font-size: 17px; }
+    .benefit-carousel { margin-top: 16px; --course-carousel-height: 125px; --course-carousel-padding: 14px; }
+    .benefit-carousel .course-carousel__item p { font-size: 20px; line-height: 1.35; }
+    .nav-controls { display: flex; max-width: 980px; margin: 0 auto; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 28px 4px; border-top: 1px solid var(--color-border); }
+    .btn { min-width: 120px; padding: 11px 22px; border: 2px solid var(--color-primary); border-radius: 9px; background: var(--color-text-inverse); color: var(--color-primary); font-size: 16px; font-weight: 700; }
+    .btn:hover:not(:disabled) { background: var(--color-surface-muted); }
+    .btn.primary { border-color: var(--color-primary); background: var(--color-primary); color: var(--color-text-inverse); }
+    .btn.primary:hover:not(:disabled) { border-color: var(--color-accent); background: var(--color-accent); color: var(--color-primary); }
+    .btn:disabled { cursor: not-allowed; opacity: .55; }
+    .step-counter { color: var(--color-primary); font-size: 16px; font-weight: 700; letter-spacing: .05em; }
+    @media (max-width: 700px) { .lesson-header { padding: 12px 18px; } .rail-label { display: none; } .connector { margin: 19px 6px 0; } .stage { height: auto; min-height: 0; overflow: visible; } .panel { position: static; } .nav-controls { flex-wrap: wrap; padding: 18px 18px 4px; } .step-counter { order: -1; width: 100%; text-align: center; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="lesson-header">
+    <div class="header-inner"><h1>Lesson 1: Delegation Definition and Benefits</h1></div>
+    <nav class="progress-rail" aria-label="Lesson progress">
+      <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Delegation defined">1</button><span class="rail-label">Definition</span><span class="connector"></span></div>
+      <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Benefits of delegation">2</button><span class="rail-label">Benefits</span></div>
+    </nav>
+  </header>
+  <main class="stage" id="stage" tabindex="-1">
+    <section class="panel active" aria-labelledby="title-0">
+      <h2 class="panel-title" id="title-0">Delegation defined</h2>
+      <p class="panel-sub">Begin with what delegation means before exploring the principles.</p>
+      <course-term term="Delegation">The process of distributing and entrusting work to another person. In leadership, it involves a manager aiming to efficiently distribute work, decision-making, and responsibility to subordinate workers in an organization.</course-term>
+    </section>
+    <section class="panel" aria-labelledby="title-1">
+      <h2 class="panel-title" id="title-1">Benefits of delegation</h2>
+      <p class="panel-sub">Delegation can benefit both leaders and team members.</p>
+      <course-carousel class="benefit-carousel" aria-label="Benefits of delegation">
+        <article data-carousel-item data-title="Free up time to focus on higher-value activities"><p>Free up time to focus on higher-value activities</p></article>
+        <article data-carousel-item data-title="Keeps employees engaged with greater autonomy"><p>Keeps employees engaged with greater autonomy</p></article>
+        <article data-carousel-item data-title="It enhances creativity and innovation by leveraging diverse skills"><p>It enhances creativity and innovation by leveraging diverse skills</p></article>
+        <article data-carousel-item data-title="Boosts morale &amp; motivation"><p>Boosts morale &amp; motivation</p></article>
+        <article data-carousel-item data-title="Increases Productivity"><p>Increases Productivity</p></article>
+        <article data-carousel-item data-title="Reduce Employee Turnover"><p>Reduce Employee Turnover</p></article>
+        <article data-carousel-item data-title="Improves trust &amp; communication"><p>Improves trust &amp; communication</p></article>
+      </course-carousel>
+    </section>
+  </main>
+  <div class="nav-controls">
+    <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+    <span class="step-counter" id="stepCounter" aria-live="polite">STEP 1 OF 2</span>
+    <button class="btn primary" id="nextBtn" type="button">Next →</button>
+  </div>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+      function showStep(index, focusStage = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => { panel.classList.toggle('active', i === current); panel.setAttribute('aria-hidden', i === current ? 'false' : 'true'); });
+        railSteps.forEach((step, i) => { step.classList.toggle('active', i === current); step.classList.toggle('complete', i < current); const dot = step.querySelector('.dot'); if (i === current) dot.setAttribute('aria-current', 'step'); else dot.removeAttribute('aria-current'); });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        if (focusStage) document.getElementById('stage').focus({ preventScroll: true });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+  <script src="components/term.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+</body>
+</html>

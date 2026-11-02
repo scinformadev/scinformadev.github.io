@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lesson 1: Principles 1–3</title>
+  <title>Lesson 2: Principles 1–3</title>
   <link rel="stylesheet" href="styles/theme.css">
   <link rel="stylesheet" href="styles/lesson.css">
   <link rel="stylesheet" href="components/flip-card.css">
@@ -29,6 +29,15 @@
     .principle-grid .course-flip-card__front .course-flip-card__text { display: none; }
     .principle-grid.three-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .principle-grid.three-card-grid course-flip-card { --course-flip-card-height: 330px; }
+    .desired-outcome-grid .course-flip-card__back { align-items: stretch; text-align: left; }
+    .desired-outcome-grid .course-flip-card__back-heading {
+      margin-bottom: 14px;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: var(--course-flip-card-text-size, 15px);
+      font-weight: 400;
+      line-height: 1.4;
+    }
     .task-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .task-grid course-flip-card {
       --course-flip-card-height: 330px;
@@ -68,7 +77,7 @@
 <body>
   <div class="app">
     <header class="lesson-header">
-      <div class="header-inner"><h1>Lesson 1: Principles 1–3</h1></div>
+      <div class="header-inner"><h1>Lesson 2: Principles 1–3</h1></div>
       <nav class="progress-rail" aria-label="Lesson progress">
         <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Overview">1</button><span class="rail-label">Overview</span><span class="connector"></span></div>
         <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Identify Task Suitable for Delegation">2</button><span class="rail-label">Identify Task</span><span class="connector"></span></div>
@@ -99,7 +108,7 @@
           </course-flip-card>
           <course-flip-card
             title="Delegate Out"
-            front-list="Routine administrative task|Skill development and training|Project execution and task implementation|Problem-solving within defined parameters|Team meetings and communication|Research and information gathering"
+            front-list="Routine administrative tasks (such as scheduling or data entry)|Skill development and training|Project execution and task implementation|Problem-solving within defined parameters|Team meetings and communication|Research and information gathering"
             back-heading="Questions You May Want to Ask Yourself First:"
             back-list="Is it a day-to-day activity that doesn't require my oversight?|Is it a task that my supervisee is equipped to complete?|Would assigning this task help to bolster an employee's career?|Could it be a teachable moment that helps staff develop a new skill?">
           </course-flip-card>
@@ -110,19 +119,19 @@
         <h2 class="panel-title" id="title-2">2) Proper Assignment</h2>
         <p class="panel-sub">You'll want to consider the following:</p>
         <div class="principle-grid three-card-grid" role="group" aria-label="Proper assignment considerations">
-          <course-flip-card title="1: Objective of the assignment" guidance="Consider playing to your employees' strengths and goals. The assignment may align with existing skills or serve as a stretch assignment for skills development."></course-flip-card>
-          <course-flip-card title="2: Capacity for the assigned task" guidance="Don't just add more without assessing whether the employee has room to take on more. Consider what's on their plate now that you can pass on to someone else, automate, or streamline."></course-flip-card>
-          <course-flip-card title="3: Training required" guidance="Will you be able to train them on what's expected and make yourself available to provide support as needed?"></course-flip-card>
+          <course-flip-card title="1: Objective of the assignment" guidance="Before assigning the task, define why you are delegating it. Is your goal to develop a skill, empower the employee with greater ownership, or create time for higher-priority work? Then consider the employee's strengths and goals. The assignment may align with existing skills or serve as a stretch assignment."></course-flip-card>
+          <course-flip-card title="2: Capacity for the assigned task" guidance="Assess the employee's capacity before adding a new responsibility. Review their current workload and determine what can be reassigned, automated, streamlined, or deprioritized so the assignment is manageable."></course-flip-card>
+          <course-flip-card title="3: Training required" guidance="Identify the training and support required for success. Make sure you can explain expectations, provide the necessary instruction and resources, and remain available for questions and guidance throughout the assignment."></course-flip-card>
         </div>
       </section>
 
       <section class="panel panel-scroll" aria-labelledby="title-3">
         <h2 class="panel-title" id="title-3">3) Define the Desired Outcome</h2>
         <p class="panel-sub">Define the desired outcome with clarity. Your employee should know:</p>
-        <div class="principle-grid three-card-grid" role="group" aria-label="Desired outcome requirements">
-          <course-flip-card title="What they need to complete" back-prefix="Example:" guidance="Train your co-workers how to use Excel. Assigning work to someone else is not delegation by itself. The project should come with proper context and a clear connection to the organization's goals."></course-flip-card>
-          <course-flip-card title="When the assignment needs to be completed" back-prefix="Example:" guidance="All staff need to be trained by the end of the quarter."></course-flip-card>
-          <course-flip-card title="How success will be measured" back-prefix="Example:" guidance="Each of your co-workers should be able to create a spreadsheet and effectively use formulas for a streamlined data entry process by the end of the quarter."></course-flip-card>
+        <div class="principle-grid three-card-grid desired-outcome-grid" role="group" aria-label="Desired outcome requirements">
+          <course-flip-card title="What they need to complete" back-heading="Define the task and its purpose clearly. Provide the context the employee needs and connect the work to the organization's goals." back-prefix="Example:" guidance="Train your co-workers how to use Excel."></course-flip-card>
+          <course-flip-card title="When the assignment needs to be completed" back-heading="Set a clear, realistic deadline so the employee can plan the work and understand when the result is expected." back-prefix="Example:" guidance="Train all staff by the end of the quarter."></course-flip-card>
+          <course-flip-card title="How success will be measured" back-heading="Define observable measures of success so the employee understands what effective completion looks like." back-prefix="Example:" guidance="By the end of the quarter, each co-worker can create a spreadsheet and use formulas to streamline data entry."></course-flip-card>
         </div>
       </section>
 
@@ -133,7 +142,7 @@
           <script type="application/json">
             [
               {"strategy":"1) Identify Task Suitable for Delegation","example":"A leader chooses a routine research task that fits an employee's skills and could help develop a new skill, rather than delegating crisis management."},
-              {"strategy":"2) Proper Assignment","example":"Before assigning a new task, a manager considers the employee's strengths, current capacity, and the training required."},
+              {"strategy":"2) Proper Assignment","example":"Before assigning a new task, a manager defines the reason for delegating it, then considers the employee's strengths, current capacity, and the training required."},
               {"strategy":"3) Define the Desired Outcome","example":"A leader explains what must be completed, by what timeline, and which measures will show that the work succeeded."}
             ]
           </script>

@@ -5,6 +5,7 @@
       this.categories = [...this.querySelectorAll('[data-category-sorter-category]')];
       this.status = this.querySelector('[data-category-sorter-status]');
       this.items = [...this.itemsRegion.querySelectorAll('[data-category-sorter-item]')];
+      this.itemType = this.getAttribute('item-type') || 'item';
       this.selectedItem = null;
       this.sortedCount = 0;
 
@@ -43,7 +44,7 @@
       this.items.forEach(candidate => candidate.classList.remove('is-selected'));
       item.classList.add('is-selected');
       this.selectedItem = item;
-      this.setStatus('Now choose the category that best describes this time waster.');
+      this.setStatus(`Now choose the category that best describes this ${this.itemType}.`);
     }
 
     handleItemKeydown(event, item) {
@@ -94,7 +95,7 @@
       const remaining = this.items.length - this.sortedCount;
       this.setStatus(
         remaining === 0
-          ? 'Great work. You sorted every time waster. Notice the pattern, then consider which response would protect your time.'
+          ? `Great work. You classified every ${this.itemType}. Notice the pattern, then consider how the strategies support initiative.`
           : `Correct. ${remaining} example${remaining === 1 ? '' : 's'} left to sort.`,
         remaining === 0 ? 'success' : 'neutral',
       );
