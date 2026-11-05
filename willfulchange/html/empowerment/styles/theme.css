@@ -30,6 +30,10 @@
   --color-progress-line: #B7CDB8;
   --color-focus: var(--deep-charcoal);
   --color-shadow: rgba(48, 52, 55, 0.12);
+  --color-glass-surface: color-mix(in srgb, var(--color-surface) 68%, transparent);
+  --color-glass-control: color-mix(in srgb, var(--color-text-inverse) 72%, transparent);
+  --color-glass-bubble: color-mix(in srgb, var(--color-surface) 84%, transparent);
+  --color-glass-border: color-mix(in srgb, var(--color-text-inverse) 62%, transparent);
 
   --radius: 14px;
   --shadow: 0 4px 18px rgba(48, 52, 55, 0.12);

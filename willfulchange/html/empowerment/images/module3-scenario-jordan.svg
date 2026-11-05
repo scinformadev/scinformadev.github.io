@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 320" role="img" aria-labelledby="t">
+<title id="t">Jordan, a team leader</title>
+<ellipse cx="130" cy="305" rx="90" ry="12" fill="#d8e5d8"/>
+<path d="M48 292q8-83 82-83t82 83" fill="#35413b"/>
+<path d="M100 204h60v48q-30 25-60 0z" fill="#a56549"/>
+<ellipse cx="130" cy="119" rx="62" ry="78" fill="#aa6c50"/>
+<path d="M67 119q-4-82 63-85 72 0 65 84l-14-28q-26 7-49-14-29 23-65 22z" fill="#453c38"/>
+<circle cx="108" cy="128" r="4" fill="#2f3437"/><circle cx="151" cy="128" r="4" fill="#2f3437"/>
+<path d="M111 164q19 11 38 0" fill="none" stroke="#663c32" stroke-width="4" stroke-linecap="round"/>
+</svg>
