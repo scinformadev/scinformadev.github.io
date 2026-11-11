@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="3">
+  <title>Opening Reflection</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <style>
+    .panel[hidden] { display: none; }
+    .prompt-layout { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); gap: 20px; align-items: center; margin-top: 18px; }
+    .prompt-image { height: 280px; }
+    .prompt-image img { min-height: 0; height: 100%; object-fit: cover; }
+    .question-card { padding: 20px; background: var(--color-surface-muted); }
+    .question-card h3 { margin: 0 0 10px; font-size: 20px; }
+    .question-card p { margin: 0; font-size: 17px; line-height: 1.5; }
+    .question-card .instruction { margin-top: 16px; color: var(--color-text-muted); font-size: 16px; }
+    .example-intro { margin: 6px 0 14px; font-size: 16px; }
+    .example-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .example-card { min-height: 280px; padding: 17px 18px; border-left: 7px solid var(--color-accent); }
+    .example-card h3 { margin: 0 0 12px; font-size: 20px; }
+    .example-card p { margin: 0 0 10px; font-size: 16px; line-height: 1.4; }
+    .example-card strong { color: var(--color-primary); }
+    .reflection-note { margin: 16px 0 0; padding: 12px 15px; border-radius: var(--radius); background: var(--color-surface-accent); font-size: 16px; line-height: 1.35; }
+    @media (max-width: 700px) { .prompt-layout, .example-grid { grid-template-columns: 1fr; } .prompt-image { height: 250px; } .example-card { min-height: 0; } }
+  </style>
+</head>
+<body>
+  <!-- Source prompt and image: presentation slide 3. Example responses are illustrative course applications requested by the user. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Opening Reflection</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Reflection question">1</button><span class="rail-label">Reflection</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Example responses">2</button><span class="rail-label">Examples</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Course connection">3</button><span class="rail-label">Course connection</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Opening reflection question</h2>
+        <div class="prompt-layout">
+          <div class="image-slot filled prompt-image"><img src="images/welcome-icebreaker-slide3.jpeg" alt="A person considers a tangled set of possible directions and a clear path forward."></div>
+          <div class="scenario question-card"><h3>Think of a recent problem</h3><p>Describe a problem you’ve encountered recently and share details around the skills or framework you used to approach solving the problem?</p><p class="instruction">Review the sample responses on the next slide. As you read, consider how you approached a problem of your own.</p></div>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="title-1" hidden>
+        <h2 class="panel-title" id="title-1">Sample responses</h2>
+        <p class="example-intro">These examples show two ways a person might describe a recent challenge. You will explore the methods in the course.</p>
+        <div class="example-grid">
+          <article class="card example-card"><h3>Problem-solving example</h3><p><strong>Problem:</strong> Our team kept missing project deadlines.</p><p><strong>Approach:</strong> I used listening and collaboration. I spoke with the people involved to understand what was getting in the way. Together, we identified a change to try and watched whether it helped.</p></article>
+          <article class="card example-card"><h3>Decision-making example</h3><p><strong>Problem:</strong> Our team needed to choose between two possible dates for an event.</p><p><strong>Approach:</strong> I used careful comparison and communication. I considered how each date would affect the people involved, then chose one and explained the reason to the team.</p></article>
+        </div>
+        <p class="reflection-note"><strong>Reflect:</strong> Does your recent experience sound more like solving a problem, making a decision, or both?</p>
+      </section>
+      <section class="panel" aria-labelledby="title-2" hidden>
+        <h2 class="panel-title" id="title-2">Carry your reflection into the course</h2>
+        <div class="scenario question-card" style="margin-top: 18px;">
+          <h3>Your experience is a starting point</h3>
+          <p>As you work through this course, you will learn ways to understand problems, examine information, develop possible solutions, and make decisions. Return to the situation you thought of today and consider how each new skill could help you approach it.</p>
+        </div>
+        <p class="reflection-note"><strong>Reflect:</strong> What did you do first, and what might you do differently after learning a new approach?</p>
+      </section>
+    </main>
+    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" role="status">STEP 1 OF 3</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
+  </div>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      const stage = document.getElementById('stage');
+      let current = 0;
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => { panel.hidden = i !== current; panel.classList.toggle('active', i === current); });
+        railSteps.forEach((step, i) => { step.classList.toggle('active', i === current); step.classList.toggle('complete', i < current); const dot = step.querySelector('.dot'); if (i === current) dot.setAttribute('aria-current', 'step'); else dot.removeAttribute('aria-current'); });
+        backBtn.disabled = current === 0; nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        if (moveFocus) stage.focus({ preventScroll: true });
+      }
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+</body>
+</html>
