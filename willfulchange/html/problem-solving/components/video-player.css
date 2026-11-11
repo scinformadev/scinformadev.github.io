@@ -16,9 +16,10 @@ course-video-player { display: block; min-width: 0; }
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: color-mix(in srgb, var(--color-primary) 78%, transparent);
+  background: color-mix(in srgb, var(--color-primary) 82%, transparent);
   color: var(--color-text-inverse);
   text-align: center;
+  text-shadow: 0 1px 3px var(--color-primary);
 }
 .course-video-player__overlay h3 { margin: 0 0 7px; color: inherit; font-family: var(--font-family); font-size: 22px; }
 .course-video-player__overlay p { margin: 0 0 14px; font-size: 16px; }
@@ -33,6 +34,7 @@ course-video-player { display: block; min-width: 0; }
   font-size: 16px;
   font-weight: 700;
   text-decoration: none;
+  text-shadow: none;
   cursor: pointer;
 }
 .course-video-player__play:hover { background: var(--color-surface-accent); }
