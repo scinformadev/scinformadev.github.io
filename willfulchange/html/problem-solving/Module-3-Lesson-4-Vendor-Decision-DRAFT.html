@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="29–30">
+  <title>Scenario Exercise: Choosing a Training Vendor — Draft</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <style>
+    .panel[hidden], [hidden] { display: none !important; }
+    .lede { margin: 6px 0 14px; font-size: 16px; line-height: 1.35; }
+    .briefing { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: stretch; }
+    .scene { min-height: 290px; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; border-radius: var(--radius); background: linear-gradient(90deg, var(--color-primary), transparent 85%), url('images/module3-lesson4-vendor-briefing.webp') center / cover; color: var(--color-text-inverse); box-shadow: var(--shadow); }
+    .scene h3, .scene p { color: inherit; margin: 0; }
+    .scene h3 { font-size: 22px; }
+    .scene p { margin-top: 8px; font-size: 16px; }
+    .brief-card, .vendor-card, .matrix-card, .result { padding: 14px 16px; border: 2px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); box-shadow: var(--shadow); }
+    .brief-card h3, .vendor-card h3 { margin: 0 0 7px; font-size: 18px; }
+    .brief-card p, .brief-card li, .vendor-card p, .vendor-card li { font-size: 16px; line-height: 1.35; }
+    .brief-card ul, .vendor-card ul { margin: 5px 0 0; padding-left: 19px; }
+    .brief-card li + li, .vendor-card li + li { margin-top: 5px; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
+    .select-btn { min-height: 44px; padding: 8px 13px; border: 2px solid var(--color-primary); border-radius: 9px; background: var(--color-surface); color: var(--color-primary); font-size: 16px; font-weight: 700; }
+    .select-btn:hover { background: var(--color-surface-muted); }
+    .select-btn[aria-pressed="true"] { background: var(--color-primary); color: var(--color-text-inverse); }
+    .choice-row.three .select-btn { flex: 1 1 175px; }
+    .vendor-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .vendor-card { padding: 11px 13px; }
+    .vendor-card .cost { margin: 0 0 7px; color: var(--color-accent); font-weight: 700; }
+    .vendor-card ul { font-size: 15px; }
+    .vendor-card li { font-size: 15px; line-height: 1.25; }
+    .note { margin: 9px 0 0; color: var(--color-text-muted); font-size: 14px; line-height: 1.3; }
+    .result { margin-top: 12px; border-color: var(--color-accent); background: var(--color-surface-accent); font-size: 16px; line-height: 1.35; }
+    .result p { margin: 0; }
+    .result p + p { margin-top: 6px; }
+    .matrix-card { padding: 10px 12px; }
+    .matrix-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td { padding: 5px 9px; border-bottom: 1px solid var(--color-border); text-align: center; }
+    th:first-child { text-align: left; }
+    thead th { background: var(--color-surface-muted); color: var(--color-primary); }
+    tfoot th, tfoot td { font-weight: 700; border-top: 2px solid var(--color-primary); }
+    .rating-key { margin: 7px 0 0; font-size: 14px; line-height: 1.3; }
+    .review-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .review-layout .brief-card { min-height: 185px; }
+    @media (max-width: 700px) {
+      .briefing, .vendor-grid, .review-layout { grid-template-columns: 1fr; }
+      .scene { min-height: 170px; }
+      .panel { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Draft application of source slides 29–30. Matrix ratings and feedback are provisional interpretations for course-owner review. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Scenario Exercise: Choosing a Training Vendor</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Briefing">1</button><span class="rail-label">Briefing</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Vendors">2</button><span class="rail-label">Vendors</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Matrix">3</button><span class="rail-label">Matrix</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Decision">4</button><span class="rail-label">Decision</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Your decision briefing</h2>
+        <p class="lede">Your organization has a $60,000 budget for leadership development training. The goal is to improve leadership effectiveness, employee engagement, and organizational performance.</p>
+        <div class="briefing">
+          <div class="scene">
+            <h3>Three proposals. One vendor choice.</h3>
+            <p>Compare the vendors, explore a weighted decision matrix, and review what your choice offers and leaves uncertain.</p>
+          </div>
+          <div class="brief-card"><h3>The organization’s priority</h3><p>Comprehensive training is important. The organization is willing to invest more when the overall benefit outweighs the cost.</p><p class="note">Use the Back and Next buttons to move through the exercise. Select the preset choices to reveal feedback; there are no written responses.</p></div>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="title-1" hidden>
+        <h2 class="panel-title" id="title-1">Compare the three proposals</h2>
+        <p class="lede">All three vendors fit within the $60,000 budget. Compare cost, duration, program features, and the strength of each vendor’s evidence.</p>
+        <div class="vendor-grid">
+          <article class="vendor-card"><h3>Vendor A</h3><p class="cost">$50,000 · 6 months</p><ul><li>Personalized coaching, online modules, in-person workshops</li><li>Track record with similar organizations; high satisfaction</li><li>Flexible schedule and strong reputation</li></ul></article>
+          <article class="vendor-card"><h3>Vendor B</h3><p class="cost">$40,000 · 4 months</p><ul><li>Online modules, virtual workshops, peer discussions</li><li>Practical skills focus and good online platform</li><li>Moderate satisfaction; less brand recognition</li></ul></article>
+          <article class="vendor-card"><h3>Vendor C</h3><p class="cost">$55,000 · 8 months</p><ul><li>Comprehensive curriculum, in-person workshops, ongoing support</li><li>Innovative and interactive methods; excellent customer reviews</li><li>Mixed reviews on effectiveness</li></ul></article>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="title-2" hidden>
+        <h2 class="panel-title" id="title-2">Explore a decision matrix</h2>
+        <p class="lede">Select a priority to see how the weighted comparison changes. These draft ratings interpret the proposal descriptions; they are not measured vendor outcomes.</p>
+        <div class="choice-row three" role="group" aria-label="Decision priority">
+          <button class="select-btn" type="button" data-priority="comprehensive" aria-pressed="false">Comprehensive program</button>
+          <button class="select-btn" type="button" data-priority="evidence" aria-pressed="false">Proven track record</button>
+          <button class="select-btn" type="button" data-priority="cost" aria-pressed="false">Lower cost</button>
+        </div>
+        <div class="matrix-card">
+          <div class="matrix-wrap"><table aria-label="Illustrative weighted vendor decision matrix">
+            <thead><tr><th scope="col">Criterion</th><th scope="col">Weight</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th></tr></thead>
+            <tbody id="matrix-body"></tbody>
+            <tfoot><tr><th scope="row" colspan="2">Weighted score / 5</th><td id="total-a">—</td><td id="total-b">—</td><td id="total-c">—</td></tr></tfoot>
+          </table></div>
+          <p class="rating-key">Ratings: 1 = less favorable; 5 = more favorable. Weights total 100%. Weighted score = rating × weight percentage, summed across criteria.</p>
+        </div>
+        <div class="result" id="matrix-feedback" role="status" hidden></div>
+      </section>
+      <section class="panel" aria-labelledby="title-3" hidden>
+        <h2 class="panel-title" id="title-3">Make and explain your choice</h2>
+        <p class="lede">Based on the information provided, which vendor would you recommend? Each option has a benefit and a question to resolve before a final commitment.</p>
+        <div class="choice-row three" role="group" aria-label="Vendor recommendation">
+          <button class="select-btn" type="button" data-vendor="A" aria-pressed="false">Recommend A</button>
+          <button class="select-btn" type="button" data-vendor="B" aria-pressed="false">Recommend B</button>
+          <button class="select-btn" type="button" data-vendor="C" aria-pressed="false">Recommend C</button>
+        </div>
+        <div class="review-layout">
+          <div class="brief-card"><h3>What the choice supports</h3><p id="benefit">Select a vendor to review its strongest case.</p></div>
+          <div class="brief-card"><h3>What to verify</h3><p id="caution">The proposal alone cannot establish the program’s effect on leadership, engagement, or performance.</p></div>
+        </div>
+        <div class="result" id="decision-feedback" role="status" hidden></div>
+      </section>
+    </main>
+    <div class="nav-controls"><button class="btn" id="backBtn" type="button" disabled>← Back</button><span class="step-counter" id="stepCounter" role="status">STEP 1 OF 4</span><button class="btn primary" id="nextBtn" type="button">Next →</button></div>
+  </div>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const steps = [...document.querySelectorAll('.rail-step')];
+      const next = document.getElementById('nextBtn');
+      const back = document.getElementById('backBtn');
+      const counter = document.getElementById('stepCounter');
+      const stage = document.getElementById('stage');
+      let current = 0;
+      function show(index, focus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => { panel.hidden = i !== current; panel.classList.toggle('active', i === current); });
+        steps.forEach((step, i) => { step.classList.toggle('active', i === current); step.classList.toggle('complete', i < current); const dot = step.querySelector('.dot'); if (i === current) dot.setAttribute('aria-current', 'step'); else dot.removeAttribute('aria-current'); });
+        back.disabled = current === 0; next.disabled = current === panels.length - 1;
+        counter.textContent = `STEP ${current + 1} OF ${panels.length}`;
+        if (focus) stage.focus({preventScroll:true});
+      }
+      steps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => show(i)));
+      next.addEventListener('click', () => show(current + 1));
+      back.addEventListener('click', () => show(current - 1));
+      function choose(button, selector) { document.querySelectorAll(selector).forEach(b => b.setAttribute('aria-pressed', String(b === button))); }
+      const criteria = [
+        {name:'Cost', scores:[3,5,2]},
+        {name:'Program breadth', scores:[4,3,5]},
+        {name:'Track record / evidence', scores:[5,3,2]}
+      ];
+      const priorities = {
+        comprehensive: {weights:[15,70,15], explanation:'With program breadth weighted highest, Vendor C leads this illustrative matrix. Its mixed effectiveness reviews remain a reason to seek stronger evidence.'},
+        evidence: {weights:[15,25,60], explanation:'With track record weighted highest, Vendor A leads this illustrative matrix. Its higher cost than B should still be justified by expected benefit.'},
+        cost: {weights:[70,15,15], explanation:'With cost weighted highest, Vendor B leads this illustrative matrix. Its shorter program and moderate satisfaction still deserve consideration.'}
+      };
+      document.querySelectorAll('[data-priority]').forEach(button => button.addEventListener('click', () => {
+        choose(button, '[data-priority]'); const preset = priorities[button.dataset.priority]; const totals = [0,0,0];
+        document.getElementById('matrix-body').innerHTML = criteria.map((criterion, i) => { criterion.scores.forEach((score, j) => totals[j] += score * preset.weights[i] / 100); return `<tr><th scope="row">${criterion.name}</th><td>${preset.weights[i]}%</td>${criterion.scores.map(score => `<td>${score}</td>`).join('')}</tr>`; }).join('');
+        ['a','b','c'].forEach((vendor, i) => document.getElementById(`total-${vendor}`).textContent = totals[i].toFixed(2));
+        const box = document.getElementById('matrix-feedback'); box.textContent = preset.explanation; box.hidden = false;
+      }));
+      const vendors = {
+        A: {benefit:'Personalized coaching, workshops, a relevant track record, and flexible scheduling support the organization’s stated goals.', caution:'Confirm the evidence behind its track record and whether the $50,000 cost produces enough added benefit over B.', feedback:'A is a defensible choice when proven experience and coaching carry substantial weight.'},
+        B: {benefit:'The lowest cost and shortest duration leave more of the budget available while emphasizing practical skills.', caution:'Check whether its shorter program and moderate satisfaction can deliver the breadth and support the organization wants.', feedback:'B is a defensible choice when cost and practical training carry substantial weight.'},
+        C: {benefit:'The broadest curriculum, ongoing support, and interactive methods match the priority for comprehensive training.', caution:'Investigate the mixed reviews on effectiveness before treating its excellent customer reviews as proof of impact.', feedback:'C is a defensible choice when comprehensive programming and support carry substantial weight.'}
+      };
+      document.querySelectorAll('[data-vendor]').forEach(button => button.addEventListener('click', () => { choose(button, '[data-vendor]'); const choice = vendors[button.dataset.vendor]; document.getElementById('benefit').textContent = choice.benefit; document.getElementById('caution').textContent = choice.caution; const box = document.getElementById('decision-feedback'); box.textContent = choice.feedback + ' Explain the priority, the tradeoff, and the evidence still needed when informing others of the decision.'; box.hidden = false; }));
+      show(0, false);
+    })();
+  </script>
+</body>
+</html>

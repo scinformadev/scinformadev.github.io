@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="28">
+  <meta name="source-slide-count" content="1">
+  <title>Module 3, Lesson 2: SWOT Analysis</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/video-player.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/category-sorter.css">
+  <style>
+    .panel[hidden] { display: none; }
+    .intro-layout, .how-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: center; margin-top: 18px; }
+    .swot-video { --course-video-player-height: 280px; --course-video-player-mobile-height: 220px; }
+    .swot-video .course-video-player__overlay { background: color-mix(in srgb, var(--color-primary) 38%, transparent); text-shadow: 0 1px 3px var(--color-primary); }
+    .swot-video .course-video-player__play { text-shadow: none; }
+    .use-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; --course-flip-card-height: 180px; --course-flip-card-padding: 16px; }
+    .use-grid .course-flip-card__back .course-flip-card__text { font-weight: 400; }
+    .swot-steps { --course-carousel-height: 230px; --course-carousel-mobile-height: 180px; }
+    .swot-chart-image { display: block; width: 100%; max-height: 320px; object-fit: contain; }
+    .swot-check .category-sorter__items, .swot-check .category-sorter__categories { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .swot-check .category-sorter__item { min-height: 78px; padding: 10px 8px; }
+    .swot-check .category-sorter__item h3 { font-size: 14px; line-height: 1.25; }
+    .swot-check .category-sorter__category { min-height: 86px; padding: 10px 6px; }
+    .swot-check .category-sorter__category h3 { font-size: 16px; }
+    .swot-check .category-sorter__status { min-height: 42px; margin-bottom: 10px; padding: 8px 12px; font-size: 14px; }
+    .swot-check .category-sorter__category-items .category-sorter__item { padding: 7px 5px; }
+    .swot-check .category-sorter__category-items .category-sorter__item h3 { font-size: 13px; }
+    .check-scenario { margin: 8px 0; font-size: 16px; line-height: 1.35; }
+    @media (max-width: 700px) {
+      .intro-layout, .how-layout, .use-grid { grid-template-columns: 1fr; }
+      .swot-check .category-sorter__items, .swot-check .category-sorter__categories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Source: slide 28 and its presenter notes. The video URL and learning-check case were chosen by the user. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 2: SWOT Analysis</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: SWOT Analysis">1</button><span class="rail-label">SWOT Analysis</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: When to use">2</button><span class="rail-label">When to use</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: How to use">3</button><span class="rail-label">How to use</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Learning check">4</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="28" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">SWOT Analysis</h2>
+        <div class="intro-layout">
+          <course-video-player class="swot-video" playback="external" src="https://www.youtube.com/watch?v=Us91JPMjHtE" poster="images/module3-lesson2-slide1.jpg" title="SWOT Analysis video" heading="Watch the video" description="9 min 20 sec · Opens on YouTube"></course-video-player>
+          <course-term header="Definition" term="SWOT Analysis"><p>SWOT analysis helps in understanding the internal and external factors affecting a decision. SWOT stands for Strengths, Weaknesses, Opportunities, and Threats.</p></course-term>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="28 notes" aria-labelledby="title-1" hidden>
+        <h2 class="panel-title" id="title-1">When to use SWOT Analysis?</h2>
+        <div class="use-grid" role="group" aria-label="Four situations for SWOT Analysis">
+          <course-flip-card title="Strategic planning" guidance="A SWOT analysis helps identify strengths to leverage, weaknesses to address, opportunities to pursue, and threats to mitigate."></course-flip-card>
+          <course-flip-card title="Business evaluation" guidance="Before launching a new product, service, or business venture, conduct a SWOT analysis to understand the competitive landscape."></course-flip-card>
+          <course-flip-card title="Project management" guidance="During project planning, a SWOT analysis helps project managers anticipate challenges and capitalize on existing resources."></course-flip-card>
+          <course-flip-card title="Change management" guidance="A hospital transitioning to electronic health records can use a SWOT analysis to address staff training needs and system integration challenges."></course-flip-card>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="28" aria-labelledby="title-2" hidden>
+        <h2 class="panel-title" id="title-2">How to use SWOT Analysis?</h2>
+        <div class="how-layout">
+          <img class="swot-chart-image" src="images/module3-lesson2-slide4.png" alt="Four-color SWOT chart with Strengths and Weaknesses above Opportunities and Threats.">
+          <course-carousel class="swot-steps" aria-label="Four SWOT Analysis steps">
+            <article data-carousel-item><h3>Identify Strengths</h3><p>List the internal strengths of the organization or project.</p></article>
+            <article data-carousel-item><h3>Identify Weaknesses</h3><p>List the internal weaknesses.</p></article>
+            <article data-carousel-item><h3>Identify Opportunities</h3><p>List the external opportunities that could benefit the organization.</p></article>
+            <article data-carousel-item><h3>Identify Threats</h3><p>List the external threats that could harm the organization.</p></article>
+          </course-carousel>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="28 notes" aria-labelledby="title-3" hidden>
+        <h2 class="panel-title" id="title-3">Learning check</h2>
+        <p class="check-scenario">A hospital is transitioning to electronic health records. Classify each factor as a strength, weakness, opportunity, or threat. Select a factor, then select its category.</p>
+        <course-category-sorter class="swot-check" item-type="factor" completion-message="Correct. You classified the internal strengths and weaknesses and the external opportunities and threats." aria-label="Classify SWOT factors for the hospital transition">
+          <p class="category-sorter__status" data-category-sorter-status role="status" aria-live="polite">Select a factor, then choose its category.</p>
+          <div class="category-sorter__items" data-category-sorter-items aria-label="Factors to classify">
+            <article class="category-sorter__item" draggable="true" data-category-sorter-item="vendor" data-category="threat" data-rationale="vendor system incompatibility is an external integration risk"><h3>Vendor systems may not integrate</h3></article>
+            <article class="category-sorter__item" draggable="true" data-category-sorter-item="staff" data-category="strength" data-rationale="an in-house IT team is an existing internal resource"><h3>Experienced in-house IT team</h3></article>
+            <article class="category-sorter__item" draggable="true" data-category-sorter-item="training" data-category="weakness" data-rationale="the training need is an internal gap to address"><h3>Staff need system training</h3></article>
+            <article class="category-sorter__item" draggable="true" data-category-sorter-item="grant" data-category="opportunity" data-rationale="a grant from outside the hospital could support the transition"><h3>External grant for digital records</h3></article>
+          </div>
+          <div class="category-sorter__categories" data-category-sorter-categories role="group" aria-label="SWOT categories">
+            <div class="category-sorter__category" data-category-sorter-category="strength" tabindex="0" role="button" aria-label="Strengths. Place the selected factor here."><h3>Strengths</h3><div class="category-sorter__category-items" data-category-sorter-category-items></div></div>
+            <div class="category-sorter__category" data-category-sorter-category="weakness" tabindex="0" role="button" aria-label="Weaknesses. Place the selected factor here."><h3>Weaknesses</h3><div class="category-sorter__category-items" data-category-sorter-category-items></div></div>
+            <div class="category-sorter__category" data-category-sorter-category="opportunity" tabindex="0" role="button" aria-label="Opportunities. Place the selected factor here."><h3>Opportunities</h3><div class="category-sorter__category-items" data-category-sorter-category-items></div></div>
+            <div class="category-sorter__category" data-category-sorter-category="threat" tabindex="0" role="button" aria-label="Threats. Place the selected factor here."><h3>Threats</h3><div class="category-sorter__category-items" data-category-sorter-category-items></div></div>
+          </div>
+        </course-category-sorter>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 4</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/term.js" defer></script>
+  <script src="components/video-player.js" defer></script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/category-sorter.js" defer></script>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => { panel.hidden = i !== current; panel.classList.toggle('active', i === current); });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+</body>
+</html>

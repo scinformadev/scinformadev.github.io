@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="29">
+  <meta name="source-slide-count" content="1">
+  <title>Module 3, Lesson 3: Decision Matrix</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/video-player.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/carousel.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    .panel[hidden] { display: none; }
+    .intro-layout, .how-layout { display: grid; gap: 18px; align-items: center; margin-top: 18px; }
+    .intro-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .how-layout { grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); }
+    .matrix-video { --course-video-player-height: 280px; --course-video-player-mobile-height: 220px; }
+    .matrix-video .course-video-player__overlay { background: color-mix(in srgb, var(--color-primary) 38%, transparent); text-shadow: 0 1px 3px var(--color-primary); }
+    .matrix-video .course-video-player__play { text-shadow: none; }
+    .use-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; --course-flip-card-height: 180px; --course-flip-card-padding: 16px; }
+    .use-grid .course-flip-card__back .course-flip-card__text { font-weight: 400; }
+    .matrix-image { display: block; width: 100%; max-height: 250px; object-fit: contain; }
+    .matrix-steps { --course-carousel-height: 235px; --course-carousel-mobile-height: 180px; }
+    .check-scenario { margin: 6px 0 10px; font-size: 16px; line-height: 1.3; }
+    .matrix-match .course-matching-exercise__column-title { margin-bottom: 4px; }
+    .matrix-match .course-matching-exercise__strategy-list,
+    .matrix-match .course-matching-exercise__example-list { gap: 4px; }
+    .matrix-match .course-matching-exercise__strategy,
+    .matrix-match .course-matching-exercise__example { min-height: 35px; padding-top: 3px; padding-bottom: 3px; font-size: 14px; line-height: 1.2; }
+    .matrix-match .course-matching-exercise__check { margin-top: 7px; padding: 6px 16px; }
+    .matrix-match .course-matching-exercise__status { margin-top: 5px; }
+    @media (min-width: 701px) {
+      .matrix-match .course-matching-exercise__layout { grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); }
+    }
+    @media (max-width: 700px) {
+      .intro-layout, .how-layout, .use-grid { grid-template-columns: 1fr; }
+      .matrix-image { max-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Source: slide 29 and its presenter notes. The video and images were supplied by the user. Slide 4 uses a user-requested new example. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 3: Decision Matrix</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Decision Matrix">1</button><span class="rail-label">Decision Matrix</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: When to use">2</button><span class="rail-label">When to use</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: How to use">3</button><span class="rail-label">How to use</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Learning check">4</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="29" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Decision Matrix</h2>
+        <div class="intro-layout">
+          <course-video-player class="matrix-video" playback="external" src="https://www.youtube.com/watch?v=0aylzRwRqg8" poster="images/module3-lesson3-slide1.jpg" title="How to use a Decision Matrix" heading="Watch the video" description="5 min 43 sec · Opens on YouTube"></course-video-player>
+          <course-term header="Definition" term="Decision Matrix (Weighted Scoring Model)"><p>A decision matrix is a tool that assesses and prioritizes a list of options. A list of weighted criteria is formulated, and each option is assessed against those criteria.</p></course-term>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="29 notes" aria-labelledby="title-1" hidden>
+        <h2 class="panel-title" id="title-1">When to use a Decision Matrix?</h2>
+        <div class="use-grid" role="group" aria-label="Four situations for using a decision matrix">
+          <course-flip-card title="Similar options" guidance="Use a decision matrix when comparing multiple similar options."></course-flip-card>
+          <course-flip-card title="One choice" guidance="Use a decision matrix when a list of options has to be narrowed to one choice."></course-flip-card>
+          <course-flip-card title="Several criteria" guidance="Use a decision matrix when the decision is based on several criteria."></course-flip-card>
+          <course-flip-card title="Logical viewpoint" guidance="Use a decision matrix when you need a logical approach rather than an intuitive or emotional one."></course-flip-card>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="29" aria-labelledby="title-2" hidden>
+        <h2 class="panel-title" id="title-2">How to use a Decision Matrix?</h2>
+        <div class="how-layout">
+          <img class="matrix-image" src="images/module3-lesson3-slide3.png" alt="Blank decision matrix with three solutions, four weighted criteria, and a total benefit column.">
+          <course-carousel class="matrix-steps" aria-label="Seven decision matrix steps">
+            <article data-carousel-item><h3>1. List options</h3><p>Identify all the options or alternatives to be considered.</p></article>
+            <article data-carousel-item><h3>2. Determine criteria</h3><p>Identify the criteria that are important for the decision.</p></article>
+            <article data-carousel-item><h3>3. Assign weights</h3><p>Assign a weight to each criterion based on its importance, for example, from 1 to 5.</p></article>
+            <article data-carousel-item><h3>4. Score options</h3><p>Score each option against each criterion, for example, on a scale of 1 to 5. The highest number is best.</p></article>
+            <article data-carousel-item><h3>5. Calculate weighted scores</h3><p>Multiply each criterion score by its weight, then sum the results for each option.</p></article>
+            <article data-carousel-item><h3>6. Compare scores</h3><p>Compare the total weighted scores for each option.</p></article>
+            <article data-carousel-item><h3>7. Make a decision</h3><p>Choose the option with the highest weighted score.</p></article>
+          </course-carousel>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="29" aria-labelledby="title-3" hidden>
+        <h2 class="panel-title" id="title-3">Learning check</h2>
+        <p class="check-scenario">A community organization must choose one of three dates for a public workshop. Match each decision matrix step to an action. Drag actions, or use the Up and Down arrow keys.</p>
+        <course-matching-exercise class="matrix-match" left-label="Decision matrix step" right-label="Workshop planning action — reorder to match" item-label="action" aria-label="Match decision matrix steps to workshop planning actions">
+          <script type="application/json">
+[
+  {"strategy":"List options","example":"List the three possible workshop dates."},
+  {"strategy":"Determine criteria","example":"Consider expected attendance, staffing, and cost."},
+  {"strategy":"Assign weights","example":"Give each criterion an importance weight from 1 to 5."},
+  {"strategy":"Score options","example":"Score each date against each criterion from 1 to 5."},
+  {"strategy":"Calculate weighted scores","example":"Multiply each score by its weight and total the results for each date."},
+  {"strategy":"Compare scores","example":"Compare the total weighted scores for the three dates."},
+  {"strategy":"Make a decision","example":"Choose the date with the highest weighted score."}
+]
+          </script>
+        </course-matching-exercise>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 4</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/term.js" defer></script>
+  <script src="components/video-player.js" defer></script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/carousel.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => { panel.hidden = i !== current; panel.classList.toggle('active', i === current); });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="source-slides" content="25–27, 30–31">
+  <meta name="source-slide-count" content="5">
+  <title>Module 3, Lesson 1: Decision-making</title>
+  <link rel="stylesheet" href="styles/theme.css">
+  <link rel="stylesheet" href="styles/lesson.css">
+  <link rel="stylesheet" href="components/term.css">
+  <link rel="stylesheet" href="components/video-player.css">
+  <link rel="stylesheet" href="components/flip-card.css">
+  <link rel="stylesheet" href="components/matching-exercise.css">
+  <style>
+    .panel[hidden] { display: none; }
+    .intro-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: center; margin-top: 20px; }
+    .decision-video { --course-video-player-height: 280px; --course-video-player-mobile-height: 220px; }
+    .decision-video .course-video-player__overlay { background: color-mix(in srgb, var(--color-primary) 38%, transparent); text-shadow: 0 1px 3px var(--color-primary); }
+    .decision-video .course-video-player__play { text-shadow: none; }
+    .importance-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; --course-flip-card-height: 180px; --course-flip-card-padding: 16px; }
+    .importance-grid .course-flip-card__back .course-flip-card__text { font-weight: 400; }
+    .factor-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 16px; --course-flip-card-height: 174px; --course-flip-card-padding: 12px; --course-flip-card-title-size: 17px; --course-flip-card-text-size: 15px; }
+    .factor-grid .course-flip-card__back .course-flip-card__text { font-weight: 400; }
+    .process-list { display: grid; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+    .process-list li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; padding: 8px 12px; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
+    .process-number { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: var(--color-primary); color: var(--color-text-inverse); font-weight: 700; }
+    .process-list h3 { margin: 0; color: var(--color-primary); font-size: 17px; line-height: 1.25; }
+    .process-list p { margin: 2px 0 0; font-size: 16px; line-height: 1.3; }
+    .check-scenario { margin: 8px 0; font-size: 16px; line-height: 1.35; }
+    .steps-match .course-matching-exercise__column-title { margin-bottom: 4px; }
+    .steps-match .course-matching-exercise__strategy-list,
+    .steps-match .course-matching-exercise__example-list { gap: 6px; }
+    .steps-match .course-matching-exercise__strategy { min-height: 48px; padding: 4px 10px; font-size: 15px; }
+    .steps-match .course-matching-exercise__example { min-height: 48px; padding: 4px 10px 4px 32px; font-size: 13px; }
+    .steps-match .course-matching-exercise__check { margin-top: 6px; padding: 6px 16px; }
+    .steps-match .course-matching-exercise__status { margin-top: 6px; }
+    @media (min-width: 701px) {
+      .steps-match .course-matching-exercise__layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
+    }
+    @media (max-width: 700px) {
+      .intro-layout, .importance-grid { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Source: Developing your problem solving and critical thinking skills-Shortened Version.pptx.
+       Slide 1: definition from source slide 26 and a public TED decision-making video.
+       Slide 2: importance headings and explanations from slide 26 and presenter notes.
+       Slide 3: decision-making factors from source slide 31, with approved card explanations.
+       Slide 4: five decision-making steps from source slide 27, with user-provided explanations.
+       Slide 5: application check using the source slide 30 vendor scenario. -->
+  <div class="app">
+    <header class="lesson-header">
+      <div class="header-inner"><h1>Lesson 1: Decision-making</h1></div>
+      <nav class="progress-rail" aria-label="Lesson progress">
+        <div class="rail-step active"><button class="dot" type="button" aria-current="step" aria-label="Go to step 1: Decision-making">1</button><span class="rail-label">Decision-making</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 2: Importance">2</button><span class="rail-label">Importance</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 3: Decision-making factors">3</button><span class="rail-label">Factors</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 4: Decision-making process">4</button><span class="rail-label">Process</span><span class="connector"></span></div>
+        <div class="rail-step"><button class="dot" type="button" aria-label="Go to step 5: Learning check">5</button><span class="rail-label">Check</span></div>
+      </nav>
+    </header>
+    <main class="stage" id="stage" tabindex="-1">
+      <section class="panel active" data-source-slides="25–26" aria-labelledby="title-0">
+        <h2 class="panel-title" id="title-0">Decision-making</h2>
+        <div class="intro-layout">
+          <course-video-player class="decision-video" playback="external" src="https://www.youtube.com/watch?v=rVOJaXDN7Es" poster="images/module3-lesson1-slide1.jpg" title="Five Key Elements for Better Decision Making" heading="Decision-making in practice" description="Harvard Business Impact · 1 min 26 sec"></course-video-player>
+          <course-term header="Definition" term="Decision-making"><p>In psychology, decision-making is regarded as the cognitive process resulting in the selection of a belief or a course of action among several possible alternative options. It is a reasoning process based on assumptions about the values, preferences, and beliefs of the decision maker.</p></course-term>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="26" aria-labelledby="title-1" hidden>
+        <h2 class="panel-title" id="title-1">Importance of decision-making</h2>
+        <div class="importance-grid" role="group" aria-label="Four reasons decision-making is important">
+          <course-flip-card title="Improve workplace productivity" guidance="Effective decisions can save time and propel work projects forward, increasing employee productivity."></course-flip-card>
+          <course-flip-card title="Create action plans in emergency situations" guidance="Emergency situations may require managers to make quick, impactful decisions to minimize damage and optimize benefits."></course-flip-card>
+          <course-flip-card title="Establish trust with employees" guidance="When a manager takes the time to evaluate, analyze, and explain decisions, they also display thoughtfulness and trustworthiness. Employees may feel they can confide in their managers about their interests and concerns."></course-flip-card>
+          <course-flip-card title="Reduce conflict" guidance="The decision-making process can decrease conflict by setting clear expectations for employees, leaving little room for misunderstandings."></course-flip-card>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="31" aria-labelledby="title-2" hidden>
+        <h2 class="panel-title" id="title-2">Decision-making factors to consider</h2>
+        <div class="factor-grid" role="group" aria-label="Ten decision-making factors">
+          <course-flip-card title="Objectives and Goals" guidance="What outcome are you trying to achieve?"></course-flip-card>
+          <course-flip-card title="Data and Evidence" guidance="What information supports the decision?"></course-flip-card>
+          <course-flip-card title="Risks and Uncertainties" guidance="What could go wrong, and what remains unknown?"></course-flip-card>
+          <course-flip-card title="Resources and Constraints" guidance="What time, money, and capacity are available?"></course-flip-card>
+          <course-flip-card title="Stakeholder Impact" guidance="Who will be affected by the decision?"></course-flip-card>
+          <course-flip-card title="Ethical Considerations" guidance="Is the decision responsible and consistent with your values?"></course-flip-card>
+          <course-flip-card title="Strategic Alignment" guidance="Does the choice support the organization’s direction?"></course-flip-card>
+          <course-flip-card title="Long-Term Consequences" guidance="What effects could emerge over time?"></course-flip-card>
+          <course-flip-card title="Equity and Fairness" guidance="Are the benefits and burdens distributed fairly?"></course-flip-card>
+          <course-flip-card title="Inclusivity" guidance="Have relevant perspectives been considered?"></course-flip-card>
+        </div>
+      </section>
+      <section class="panel" data-source-slides="27" aria-labelledby="title-3" hidden>
+        <h2 class="panel-title" id="title-3">The decision-making process</h2>
+        <ol class="process-list">
+          <li><span class="process-number" aria-hidden="true">1</span><div><h3>Identifying the challenge</h3><p>In this step, the manager discovers an issue and determines the circumstances that led to the situation.</p></div></li>
+          <li><span class="process-number" aria-hidden="true">2</span><div><h3>Devising solutions</h3><p>After learning more information about the case, the manager creates one or several possible solutions.</p></div></li>
+          <li><span class="process-number" aria-hidden="true">3</span><div><h3>Weighing options</h3><p>The manager analyzes the advantages and disadvantages of each option and explores alternative solutions if needed.</p></div></li>
+          <li><span class="process-number" aria-hidden="true">4</span><div><h3>Making a choice</h3><p>Once a thorough assessment takes place, the manager makes a final decision about what action to take.</p></div></li>
+          <li><span class="process-number" aria-hidden="true">5</span><div><h3>Informing others of the decision</h3><p>The manager informs employees of the decision and explains how the decision influences the workplace.</p></div></li>
+        </ol>
+      </section>
+      <section class="panel" data-source-slides="27, 30" aria-labelledby="title-4" hidden>
+        <h2 class="panel-title" id="title-4">Apply the decision-making steps</h2>
+        <p class="check-scenario">Your organization must choose a leadership-development training vendor within a $60,000 budget. Match each step to a manager action. Drag actions, or use the Up and Down arrow keys.</p>
+        <course-matching-exercise class="steps-match" left-label="Decision-making step" right-label="Manager action — reorder to match" item-label="action" aria-label="Match decision-making steps to actions in the vendor selection scenario">
+          <script type="application/json">
+[
+            {
+                        "strategy": "Identifying the challenge",
+                        "example": "Confirm the training must improve leadership effectiveness, engagement, and performance."
+            },
+            {
+                        "strategy": "Devising solutions",
+                        "example": "Gather training proposals from Vendors A, B, and C."
+            },
+            {
+                        "strategy": "Weighing options",
+                        "example": "Compare each vendor’s cost, duration, features, and benefits."
+            },
+            {
+                        "strategy": "Making a choice",
+                        "example": "Select the vendor whose benefits best justify its cost."
+            },
+            {
+                        "strategy": "Informing others of the decision",
+                        "example": "Announce the selected vendor and explain the decision to employees."
+            }
+]
+          </script>
+        </course-matching-exercise>
+      </section>
+    </main>
+    <div class="nav-controls">
+      <button class="btn" id="backBtn" type="button" disabled>← Back</button>
+      <span class="step-counter" id="stepCounter" role="status">STEP 1 OF 5</span>
+      <button class="btn primary" id="nextBtn" type="button">Next →</button>
+    </div>
+  </div>
+  <script src="components/term.js" defer></script>
+  <script src="components/video-player.js" defer></script>
+  <script src="components/flip-card.js" defer></script>
+  <script src="components/matching-exercise.js" defer></script>
+  <script>
+    (() => {
+      const panels = [...document.querySelectorAll('.panel')];
+      const railSteps = [...document.querySelectorAll('.rail-step')];
+      const nextBtn = document.getElementById('nextBtn');
+      const backBtn = document.getElementById('backBtn');
+      const stepCounter = document.getElementById('stepCounter');
+      let current = 0;
+
+      function showStep(index, moveFocus = true) {
+        current = Math.max(0, Math.min(index, panels.length - 1));
+        panels.forEach((panel, i) => {
+          panel.hidden = i !== current;
+          panel.classList.toggle('active', i === current);
+        });
+        railSteps.forEach((step, i) => {
+          step.classList.toggle('active', i === current);
+          step.classList.toggle('complete', i < current);
+          const dot = step.querySelector('.dot');
+          if (i === current) dot.setAttribute('aria-current', 'step');
+          else dot.removeAttribute('aria-current');
+        });
+        backBtn.disabled = current === 0;
+        nextBtn.disabled = current === panels.length - 1;
+        stepCounter.textContent = 'STEP ' + (current + 1) + ' OF ' + panels.length;
+        if (moveFocus) {
+          panels[current].scrollTop = 0;
+          document.getElementById('stage').focus({ preventScroll: true });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      }
+
+      railSteps.forEach((step, i) => step.querySelector('.dot').addEventListener('click', () => showStep(i)));
+      nextBtn.addEventListener('click', () => showStep(current + 1));
+      backBtn.addEventListener('click', () => showStep(current - 1));
+      showStep(0, false);
+    })();
+  </script>
+</body>
+</html>
+

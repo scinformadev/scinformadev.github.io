@@ -14,6 +14,10 @@
   --color-accent-warm: #146B86;
   --color-highlight: #4FD093;
   --color-highlight-secondary: #54BCDF;
+  --color-feedback-correct: var(--color-accent);
+  --color-feedback-correct-surface: var(--color-surface-accent);
+  --color-feedback-incorrect: #A62B36;
+  --color-feedback-incorrect-surface: #FFF1F2;
   --color-border: #CFDCE2;
   --color-border-control: #718793;
   --color-progress-line: var(--color-border);
